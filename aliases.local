@@ -1,0 +1,6 @@
+# Navigation
+alias cdproj="cd ~/projects"
+alias cdprojects="cd ~/projects"
+alias cdjs="cd ~/projects/odin-project/js_jquery"
+alias cdblog="cd ~/projects/colbycheeze.com"
+alias cd='cs'

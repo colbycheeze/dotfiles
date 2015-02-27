@@ -1,0 +1,2 @@
+stty -ixon
+

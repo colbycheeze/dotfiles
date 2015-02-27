@@ -1,0 +1,49 @@
+#Allow mouse usage
+set -g mode-mouse on
+setw -g mode-mouse on
+set -g mouse-resize-pane on
+set -g mouse-select-pane on
+set -g mouse-select-window on
+
+# Shift + arrows to resize pane
+bind -n S-Left resize-pane -L 2
+bind -n S-Right resize-pane -R 2
+bind -n S-Down resize-pane -D 1
+bind -n S-Up resize-pane -U 1
+
+# smart pane switching with awareness of vim splits
+bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-h) || tmux select-pane -L"
+bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
+bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
+bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
+bind -n C-\ run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys 'C-\\') || tmux select-pane -l"
+
+#vi style selection and copying to clipboard
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+
+# Update default binding of `Enter` to also use copy-pipe
+unbind -t vi-copy Enter
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+
+#copy paste to clipboard
+#set-option -g default-command "reattach-to-user-namespace -l zsh" # or bash...
+#bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
+#bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
+
+bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
+set-option -g status-left-length 50
+set-option -g status-right "#(battery -t) #(date '+%a, %b %d - %I:%M')"
+
+bind-key h split-window -v -c '#{pane_current_path}'
+bind-key v split-window -h -c '#{pane_current_path}'
+
+bind-key c new-window -c '#{pane_current_path}'
+bind-key k confirm kill-window
+
+# Quickly edit todo list
+bind-key t split-window -h "vim ~/Dropbox/notebook/todo.md"
+bind-key b new-window -c "vim ~/Dropbox/notebook/"
+
+bind-key K run-shell 'tmux switch-client -n \; kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session'
+
