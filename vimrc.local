@@ -4,6 +4,9 @@ let g:solarized_termcolors=16
 set background=dark
 colorscheme solarized
 
+" Set Vim Wiki to my Dropbox directory
+let g:vimwiki_list = [{'path':'$HOME/Dropbox/vimwiki'}]
+
 "Allow usage of mouse in iTerm
 set ttyfast
 set mouse=a
@@ -29,6 +32,10 @@ set matchpairs+=<:>
 let g:tmux_navigator_no_mappings = 1
 let g:tmux_navigator_save_on_switch = 1
 let g:rspec_command = "call VtrSendCommand('rspec {spec}')"
+
+" Syntastic won't hilight HTML unless you specify with :SyntasticCheck
+" This is to deal with handlebars issues in meteor
+let syntastic_mode_map = { 'passive_filetypes': ['html']  }
 
 map <C-n> :NERDTreeToggle<cr>
 nnoremap <C-t> :call NumberToggle()<cr>
@@ -56,6 +63,10 @@ nnoremap <leader>= :wincmd =<cr>
 
 " Reload webpage when using LiveReload plugin
 nnoremap <leader>blr :BLReloadPage <cr>
+
+" Key mapping for Cosco.vim - space + ; to add semicolon or comma in Javascript or CSS
+autocmd FileType javascript,css nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
+autocmd FileType javascript,css inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =

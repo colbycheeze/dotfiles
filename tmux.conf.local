@@ -42,8 +42,7 @@ bind-key c new-window -c '#{pane_current_path}'
 bind-key k confirm kill-window
 
 # Quickly edit todo list
-bind-key t split-window -h "vim ~/Dropbox/notebook/todo.md"
-bind-key b new-window -c "vim ~/Dropbox/notebook/"
+bind-key t split-window -h "vim"
 
 bind-key K run-shell 'tmux switch-client -n \; kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session'
 
