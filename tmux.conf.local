@@ -46,3 +46,9 @@ bind-key t split-window -h "vim"
 
 bind-key K run-shell 'tmux switch-client -n \; kill-session -t "$(tmux display-message -p "#S")" || tmux kill-session'
 
+# Tmux will auto-start on system boot
+set -g @continuum-boot 'on'
+set -g @continuum-boot-options 'iterm'
+set -g @continuum-restore 'on'
+set -g @continuum-save-interval '5'
+set -g @resurrect-strategy-vim 'session'
