@@ -6,33 +6,149 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
-" Let Vundle manage Vundle
+" Plugins to manage plugins. Pluginception?
 Plugin 'gmarik/Vundle.vim'
-
-" Define bundles via Github repos
-Plugin 'christoomey/vim-run-interactive'
-Plugin 'croaky/vim-colors-github'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'pbrisbin/vim-mkdir'
-Plugin 'scrooloose/syntastic'
-Plugin 'slim-template/vim-slim'
-Plugin 'thoughtbot/vim-rspec'
 Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-eunuch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
+
+""" Make Vim work like an IDE...Core plugins for me
+"
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'christoomey/vim-tmux-runner.git'
+Plugin 'christoomey/vim-run-interactive'
+Plugin 'vim-scripts/ctags.vim'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'ervandew/supertab'
+Plugin 'vim-scripts/tComment'
+Plugin 'vim-scripts/HTML-AutoCloseTag'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'vim-scripts/ctags.vim'
-Plugin 'vim-scripts/matchit.zip'
-Plugin 'vim-scripts/tComment'
+  " Make git awesome
+Plugin 'tpope/vim-fugitive'
+  " Highlighting, syntax, etc for various Languages
+Plugin 'Slava/vim-spacebars'
+Plugin 'groenewege/vim-less'
+Plugin 'kchmck/vim-coffee-script'
+  " Ruby
+  " Plugin 'vim-ruby/vim-ruby'
+  " Plugin 'tpope/vim-endwise'
 
-if filereadable(expand("~/.vimrc.bundles.local"))
-  source ~/.vimrc.bundles.local
-endif
+
+" TODO: Fix whatever issue is causing error here
+" Plugin 'marijnh/tern_for_vim'
+Plugin 'lfilho/cosco.vim'
+
+""" Theme / Pretty stuff
+"
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'bling/vim-airline'
+Plugin 'majutsushi/tagbar'
+
+""" Extras that I find useful
+"
+Plugin 'pbrisbin/vim-mkdir'
+  " Snippets ftw!
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'cmather/vim-meteor-snippets'
+  " Make gists easily from Vim
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
+  " I LOVE vimiwki. Just Google it if you are curious :)
+Plugin 'vimwiki/vimwiki'
+Plugin 'mattn/calendar-vim'
+
+" These were required by something...forgot what though
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
 
 call vundle#end()
 filetype on
+
+" Plugins to get sessions to auto-save
+" Plugin 'xolox/vim-session'
+" Plugin 'xolox/vim-misc'
+
+
+" Included in Vim 6.0+
+" Plugin 'vim-scripts/matchit.zip'
+
+""" PLUGIN RELATED TWEAKS
+"
+
+" Color scheme
+syntax enable
+let g:solarized_termcolors=16
+set background=dark
+colorscheme solarized
+
+"Allow moving around between Tmux windows
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
+
+"tmux integration
+let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_save_on_switch = 1
+
+"Open a tmux pane with Node
+nnoremap <leader>node :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'node'}<cr>
+
+map <C-n> :NERDTreeToggle<cr>
+nnoremap <C-t> :call ToggleRelativeOn()<cr>
+
+" mapping for Vimwiki
+:autocmd FileType vimwiki map <leader>c :call ToggleCalendar() <cr>
+
+" Key mapping for Cosco.vim - space + ; to add semicolon or comma in Javascript or CSS
+autocmd FileType javascript,css nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
+autocmd FileType javascript,css inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
+
+" Syntastic won't hilight HTML unless you specify with :SyntasticCheck
+" This is to deal with handlebars issues in meteor
+let syntastic_mode_map = { 'passive_filetypes': ['html']  }
+
+" Allow powerline symbols to show up
+let g:airline_powerline_fonts = 1
+
+" Set Vim Wiki to my Dropbox directory
+let g:vimwiki_list = [{'path':'$HOME/Dropbox/vimwiki'}]
+
+" configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+
+" Index ctags from any project
+map <Leader>ct :!ctags -R .<CR>
+
+" Run commands that require an interactive shell
+nnoremap <Leader>r :RunInInteractiveShell<space>
+
+" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+if executable('ag')
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+function! ToggleCalendar()
+  execute ":Calendar"
+  if exists("g:calendar_open")
+    if g:calendar_open == 1
+      execute "q"
+      unlet g:calendar_open
+    else
+      g:calendar_open = 1
+    end
+  else
+    let g:calendar_open = 1
+  end
+endfunction

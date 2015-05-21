@@ -2,7 +2,7 @@
 " possible, as it has side effects.
 set nocompatible
 
-" Leader
+" Leader - ( Spacebar )
 let mapleader = " "
 
 set backspace=2   " Backspace deletes like most programs in insert mode
@@ -16,17 +16,118 @@ set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
 
+"Allow usage of mouse in iTerm
+set ttyfast
+set mouse=a
+set ttymouse=xterm2
+
+" case insensitive searching (unless specified)
+set ignorecase
+set smartcase
+
+" Softtabs, 2 spaces
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+
+" Display extra whitespace
+set list listchars=tab:»·,trail:·,nbsp:·
+
+" Make it obvious where 80 characters is
+set textwidth=80
+set colorcolumn=+1
+
+" Numbers
+set number
+set numberwidth=5
+
+" Open new split panes to right and bottom, which feels more natural
+set splitbelow
+set splitright
+
+" Auto resize Vim splits to active split
+set winwidth=84
+set winheight=5
+set winminheight=5
+set winheight=999
+
+"HTML Editing
+set matchpairs+=<:>
+
+" Treat <li> and <p> tags like the block tags they are
+let g:html_indent_tags = 'li\|p'
+
+"Toggle relative numbering, and set to absolute on loss of focus or insert mode
+set rnu
+function ToggleNumbersOn()
+    set nu!
+    set rnu
+endfunction
+function ToggleRelativeOn()
+    set rnu!
+    set nu
+endfunction
+autocmd FocusLost * call ToggleRelativeOn()
+autocmd FocusGained * call ToggleRelativeOn()
+autocmd InsertEnter * call ToggleRelativeOn()
+autocmd InsertLeave * call ToggleRelativeOn()
+
+" Quicker window movement
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+
+" Set spellfile to location that is guaranteed to exist, can be symlinked to
+" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
+set spellfile=$HOME/.vim-spell-en.utf-8.add
+
+" Always use vertical diffs
+set diffopt+=vertical
+
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if (&t_Co > 2 || has("gui_running")) && !exists("syntax_on")
   syntax on
 endif
 
+" Load up all of our plugins
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
 
 filetype plugin indent on
+
+"Copy paste commands
+set pastetoggle=<F2> "F2 before pasting to preserve indentation
+"Copy paste to/from clipboard
+vnoremap <C-c> "*y 
+map <Leader>v :set paste<CR>o<esc>"*]p:set nopaste<cr>"
+map <C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
+
+"Map Ctrl + S to save in any mode
+noremap <silent> <C-S>          :update<CR>
+vnoremap <silent> <C-S>         <C-C>:update<CR>
+inoremap <silent> <C-S>         <C-O>:update<CR>
+" Also map leader + s
+nnoremap <leader> <C-s>
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <S-Tab> <c-n>
+
+" Switch between the last two files
+nnoremap <leader><leader> <c-^>
+
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+"update dir to current file
+autocmd BufEnter * silent! cd %:p:h
 
 augroup vimrcEx
   autocmd!
@@ -54,46 +155,9 @@ augroup vimrcEx
   autocmd FileType gitcommit setlocal spell
 
   " Allow stylesheets to autocomplete hyphenated words
-  autocmd FileType css,scss,sass setlocal iskeyword+=-
+  autocmd FileType css,scss,sass,less setlocal iskeyword+=-
 augroup END
 
-" Softtabs, 2 spaces
-set tabstop=2
-set shiftwidth=2
-set shiftround
-set expandtab
-
-" Display extra whitespace
-set list listchars=tab:»·,trail:·,nbsp:·
-
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
-if executable('ag')
-  " Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  let g:ctrlp_use_caching = 0
-endif
-
-" Color scheme
-syntax enable
-let g:solarized_termcolors=16
-set background=dark
-colorscheme solarized
-
-" highlight NonText guibg=#060606
-" highlight Folded  guibg=#0A0A0A guifg=#9090D0
-
-" Make it obvious where 80 characters is
-set textwidth=80
-set colorcolumn=+1
-
-" Numbers
-set number
-set numberwidth=5
 
 " Tab completion
 " will insert tab at beginning of line,
@@ -107,58 +171,3 @@ function! InsertTabWrapper()
         return "\<c-p>"
     endif
 endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <S-Tab> <c-n>
-
-" Exclude Javascript files in :Rtags via rails.vim due to warnings when parsing
-let g:Tlist_Ctags_Cmd="ctags --exclude='*.js'"
-
-" Index ctags from any project, including those outside Rails
-map <Leader>ct :!ctags -R .<CR>
-
-" Switch between the last two files
-nnoremap <leader><leader> <c-^>
-
-" Get off my lawn
-nnoremap <Left> :echoe "Use h"<CR>
-nnoremap <Right> :echoe "Use l"<CR>
-nnoremap <Up> :echoe "Use k"<CR>
-nnoremap <Down> :echoe "Use j"<CR>
-
-" vim-rspec mappings
-nnoremap <Leader>t :call RunCurrentSpecFile()<CR>
-nnoremap <Leader>s :call RunNearestSpec()<CR>
-nnoremap <Leader>l :call RunLastSpec()<CR>
-nnoremap <Leader>a :call RunAllSpecs()<CR>
-
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
-
-" Treat <li> and <p> tags like the block tags they are
-let g:html_indent_tags = 'li\|p'
-
-" Open new split panes to right and bottom, which feels more natural
-set splitbelow
-set splitright
-
-" Quicker window movement
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-h> <C-w>h
-nnoremap <C-l> <C-w>l
-
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-
-" Set spellfile to location that is guaranteed to exist, can be symlinked to
-" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
-set spellfile=$HOME/.vim-spell-en.utf-8.add
-
-" Always use vertical diffs
-set diffopt+=vertical
-
-" Local config
-if filereadable($HOME . "/.vimrc.local")
-  source ~/.vimrc.local
-endif

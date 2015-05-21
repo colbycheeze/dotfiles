@@ -36,5 +36,11 @@
 	smudge = git hawser smudge %f
 	required = true
 [user]
-	name = Colby Williams
+	name = Colby \"CheeZe\" Williams
 	email = colby@colbycheeze.com
+[filter "lfs"]
+	clean = git lfs clean %f
+	smudge = git lfs smudge %f
+	required = true
+[github]
+	user = colbycheeze
