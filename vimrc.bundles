@@ -16,34 +16,33 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner.git'
 Plugin 'christoomey/vim-run-interactive'
 Plugin 'vim-scripts/ctags.vim'
-Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic' "Syntax Highlighting
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
 Plugin 'vim-scripts/tComment'
 Plugin 'vim-scripts/HTML-AutoCloseTag'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'tpope/vim-fugitive' "Make git awesome
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
-  " Make git awesome
-Plugin 'tpope/vim-fugitive'
-  " Highlighting, syntax, etc for various Languages
+""" Highlighting, syntax, etc for various Languages
+"
 Plugin 'Slava/vim-spacebars'
 Plugin 'groenewege/vim-less'
 Plugin 'kchmck/vim-coffee-script'
-  " Ruby
   " Plugin 'vim-ruby/vim-ruby'
   " Plugin 'tpope/vim-endwise'
 
 
-" TODO: Fix whatever issue is causing error here
-" Plugin 'marijnh/tern_for_vim'
-Plugin 'lfilho/cosco.vim'
+  " TODO: Fix whatever issue is causing error here
+  " Plugin 'marijnh/tern_for_vim'
+  Plugin 'lfilho/cosco.vim' "Adds a ; at the end of a line
 
 """ Theme / Pretty stuff
 "
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline' "Awesome looking meta at bottom
 Plugin 'majutsushi/tagbar'
 
 """ Extras that I find useful
@@ -64,16 +63,16 @@ Plugin 'mattn/calendar-vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 
-call vundle#end()
-filetype on
-
 " Plugins to get sessions to auto-save
 " Plugin 'xolox/vim-session'
 " Plugin 'xolox/vim-misc'
 
-
 " Included in Vim 6.0+
 " Plugin 'vim-scripts/matchit.zip'
+
+call vundle#end()
+filetype on
+
 
 """ PLUGIN RELATED TWEAKS
 "
@@ -139,6 +138,7 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
+" Calender is used within VimWiki
 function! ToggleCalendar()
   execute ":Calendar"
   if exists("g:calendar_open")

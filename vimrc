@@ -99,12 +99,24 @@ endif
 
 filetype plugin indent on
 
-"Copy paste commands
+""" SYSTEM CLIPBORD COPY & PASTE SUPPORT
 set pastetoggle=<F2> "F2 before pasting to preserve indentation
 "Copy paste to/from clipboard
-vnoremap <C-c> "*y 
-map <Leader>v :set paste<CR>o<esc>"*]p:set nopaste<cr>"
-map <C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
+vnoremap <C-c> "*y
+map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
+map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
+map <silent><C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
+
+
+""" MORE AWESOME HOTKEYS
+"
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind \ (backward slash) to grep shortcut
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+nnoremap \ :Ag<SPACE>
 
 "Map Ctrl + S to save in any mode
 noremap <silent> <C-S>          :update<CR>
