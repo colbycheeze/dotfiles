@@ -48,6 +48,10 @@ Plugin 'majutsushi/tagbar'
 """ Extras that I find useful
 "
 Plugin 'pbrisbin/vim-mkdir'
+  " Adds :Dash integratio
+Plugin 'rizzatti/dash.vim'
+  " '%' matches html tags now
+Plugin 'vim-scripts/matchit.zip'
   " Snippets ftw!
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
@@ -67,8 +71,6 @@ Plugin 'tomtom/tlib_vim'
 " Plugin 'xolox/vim-session'
 " Plugin 'xolox/vim-misc'
 
-" Included in Vim 6.0+
-" Plugin 'vim-scripts/matchit.zip'
 
 call vundle#end()
 filetype on
@@ -95,6 +97,10 @@ let g:tmux_navigator_save_on_switch = 1
 
 "Open a tmux pane with Node
 nnoremap <leader>node :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'node'}<cr>
+
+" open a dash search for the keyword under cursor
+nmap <silent><leader>d <Plug>DashSearch
+nmap <leader>D :Dash! 
 
 map <C-n> :NERDTreeToggle<cr>
 nnoremap <C-t> :call ToggleRelativeOn()<cr>

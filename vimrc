@@ -15,6 +15,7 @@ set showcmd       " display incomplete command
 set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
+set autoread      " Reload files changted outside vim
 
 "Allow usage of mouse in iTerm
 set ttyfast
@@ -58,13 +59,19 @@ set matchpairs+=<:>
 " Treat <li> and <p> tags like the block tags they are
 let g:html_indent_tags = 'li\|p'
 
+" ================ Scrolling ========================
+
+set scrolloff=8         "Start scrolling when we're 8 lines away from margins
+set sidescrolloff=15
+set sidescroll=1
+
 "Toggle relative numbering, and set to absolute on loss of focus or insert mode
 set rnu
-function ToggleNumbersOn()
+function! ToggleNumbersOn()
     set nu!
     set rnu
 endfunction
-function ToggleRelativeOn()
+function! ToggleRelativeOn()
     set rnu!
     set nu
 endfunction
@@ -99,7 +106,7 @@ endif
 
 filetype plugin indent on
 
-""" SYSTEM CLIPBORD COPY & PASTE SUPPORT
+""" SYSTEM CLIPBOARD COPY & PASTE SUPPORT
 set pastetoggle=<F2> "F2 before pasting to preserve indentation
 "Copy paste to/from clipboard
 vnoremap <C-c> "*y
@@ -110,12 +117,14 @@ map <silent><C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 
 """ MORE AWESOME HOTKEYS
 "
-
+"
+" Run the q macro
+nnoremap <leader>q @q
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
 
 "Map Ctrl + S to save in any mode
@@ -123,11 +132,17 @@ noremap <silent> <C-S>          :update<CR>
 vnoremap <silent> <C-S>         <C-C>:update<CR>
 inoremap <silent> <C-S>         <C-O>:update<CR>
 " Also map leader + s
-nnoremap <leader> <C-s>
+map <leader>s <C-S>
 
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
+
+" resize panes
+nnoremap <silent> <Right> :vertical resize +5<cr>
+nnoremap <silent> <Left> :vertical resize -5<cr>
+nnoremap <silent> <Up> :resize +5<cr>
+nnoremap <silent> <Down> :resize -5<cr>
 
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <S-Tab> <c-n>
