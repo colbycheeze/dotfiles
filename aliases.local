@@ -1,7 +1,4 @@
 # Navigation
 alias cdproj="cd ~/projects"
-alias cdjs="cd ~/projects/odin-project/js_jquery"
 alias cdblog="cd ~/projects/colbycheeze.com"
-alias cdmon="cd ~/projects/meteor_money"
-alias vmon="vim ~/projects/meteor_money"
 alias cd='cs'
