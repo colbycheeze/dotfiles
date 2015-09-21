@@ -17,6 +17,8 @@ Plugin 'christoomey/vim-tmux-runner.git'
 Plugin 'christoomey/vim-run-interactive'
 Plugin 'vim-scripts/ctags.vim'
 Plugin 'scrooloose/syntastic' "Syntax Highlighting
+Plugin 'mxw/vim-jsx' "Syntax Highlighting for JSX
+Plugin 'pangloss/vim-javascript' "Requirement for mxw/vim-jsx
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'

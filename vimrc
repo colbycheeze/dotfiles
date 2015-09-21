@@ -134,6 +134,10 @@ inoremap <silent> <C-S>         <C-O>:update<CR>
 " Also map leader + s
 map <leader>s <C-S>
 
+" Quickly close windows
+nnoremap <leader>x :x<cr>
+nnoremap <leader>X :q<cr>
+
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
