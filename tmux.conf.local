@@ -32,8 +32,6 @@ bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
 #bind C-v run "reattach-to-user-namespace pbpaste | tmux load-buffer - && tmux paste-buffer"
 
 bind-key r source-file ~/.tmux.conf \; display-message "~/.tmux.conf reloaded"
-set-option -g status-left-length 50
-set-option -g status-right "#(battery -t) #(date '+%a, %b %d - %I:%M')"
 
 bind-key h split-window -v -c '#{pane_current_path}'
 bind-key v split-window -h -c '#{pane_current_path}'
