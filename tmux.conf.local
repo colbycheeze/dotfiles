@@ -50,3 +50,4 @@ set -g @continuum-boot-options 'iterm'
 set -g @continuum-restore 'on'
 set -g @continuum-save-interval '5'
 set -g @resurrect-strategy-vim 'session'
+set -g @resurrect-strategy-nvim 'session' #for Neo Vim

@@ -1,3 +1,8 @@
+"
+" Type :so % to refresh .vimrc after making changes
+" Type :PluginInstall to update
+"
+
 if &compatible
   set nocompatible
 end
@@ -12,13 +17,12 @@ Plugin 'tpope/vim-bundler'
 
 """ Make Vim work like an IDE...Core plugins for me
 "
+Plugin 'tpope/vim-obsession' "Vim sessions auto-save
+" Type :Obession <directory> to begin saving a vim session
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner.git'
 Plugin 'christoomey/vim-run-interactive'
 Plugin 'vim-scripts/ctags.vim'
-Plugin 'scrooloose/syntastic' "Syntax Highlighting
-Plugin 'mxw/vim-jsx' "Syntax Highlighting for JSX
-Plugin 'pangloss/vim-javascript' "Requirement for mxw/vim-jsx
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
@@ -30,6 +34,9 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 """ Highlighting, syntax, etc for various Languages
 "
+Plugin 'scrooloose/syntastic' "Syntax Highlighting
+Plugin 'mxw/vim-jsx' "Syntax Highlighting for JSX
+Plugin 'pangloss/vim-javascript' "Requirement for mxw/vim-jsx
 Plugin 'Slava/vim-spacebars'
 Plugin 'groenewege/vim-less'
 Plugin 'kchmck/vim-coffee-script'
@@ -39,7 +46,7 @@ Plugin 'kchmck/vim-coffee-script'
 
   " TODO: Fix whatever issue is causing error here
   " Plugin 'marijnh/tern_for_vim'
-  Plugin 'lfilho/cosco.vim' "Adds a ; at the end of a line
+  Plugin 'lfilho/cosco.vim' "Adds a ; at the end of a line by pressing <leader> ;
 
 """ Theme / Pretty stuff
 "
@@ -102,13 +109,14 @@ nnoremap <leader>node :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd
 
 " open a dash search for the keyword under cursor
 nmap <silent><leader>d <Plug>DashSearch
-nmap <leader>D :Dash! 
+nmap <leader>D :Dash!
 
 map <C-n> :NERDTreeToggle<cr>
 nnoremap <C-t> :call ToggleRelativeOn()<cr>
 
 " mapping for Vimwiki
 :autocmd FileType vimwiki map <leader>c :call ToggleCalendar() <cr>
+set foldmethod=manual
 
 " Key mapping for Cosco.vim - space + ; to add semicolon or comma in Javascript or CSS
 autocmd FileType javascript,css nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
