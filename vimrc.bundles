@@ -17,12 +17,9 @@ Plugin 'tpope/vim-bundler'
 
 """ Make Vim work like an IDE...Core plugins for me
 "
-Plugin 'tpope/vim-obsession' "Vim sessions auto-save
-" Type :Obession <directory> to begin saving a vim session
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'christoomey/vim-tmux-runner.git'
 Plugin 'christoomey/vim-run-interactive'
-Plugin 'vim-scripts/ctags.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ervandew/supertab'
@@ -32,16 +29,15 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'tpope/vim-fugitive' "Make git awesome
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+
 """ Highlighting, syntax, etc for various Languages
 "
 Plugin 'scrooloose/syntastic' "Syntax Highlighting
 Plugin 'mxw/vim-jsx' "Syntax Highlighting for JSX
+
 Plugin 'pangloss/vim-javascript' "Requirement for mxw/vim-jsx
 Plugin 'Slava/vim-spacebars'
 Plugin 'groenewege/vim-less'
-Plugin 'kchmck/vim-coffee-script'
-  " Plugin 'vim-ruby/vim-ruby'
-  " Plugin 'tpope/vim-endwise'
 
 
   " TODO: Fix whatever issue is causing error here
@@ -52,29 +48,37 @@ Plugin 'kchmck/vim-coffee-script'
 "
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'bling/vim-airline' "Awesome looking meta at bottom
-Plugin 'majutsushi/tagbar'
+
 
 """ Extras that I find useful
 "
 Plugin 'pbrisbin/vim-mkdir'
-  " Adds :Dash integratio
+
+  " For this to work, you need to do:
+  " npm install -g instant-markdown-d
+Plugin 'suan/vim-instant-markdown'
+
+  " Adds :Dash integration
 Plugin 'rizzatti/dash.vim'
+
   " '%' matches html tags now
 Plugin 'vim-scripts/matchit.zip'
+
   " Snippets ftw!
 Plugin 'garbas/vim-snipmate'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+
 Plugin 'honza/vim-snippets'
 Plugin 'cmather/vim-meteor-snippets'
+Plugin 'justinj/vim-react-snippets'
+
   " Make gists easily from Vim
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
+
   " I LOVE vimiwki. Just Google it if you are curious :)
 Plugin 'vimwiki/vimwiki'
-Plugin 'mattn/calendar-vim'
-
-" These were required by something...forgot what though
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
 
 " Plugins to get sessions to auto-save
 " Plugin 'xolox/vim-session'
@@ -111,16 +115,15 @@ nnoremap <leader>node :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd
 nmap <silent><leader>d <Plug>DashSearch
 nmap <leader>D :Dash!
 
-map <C-n> :NERDTreeToggle<cr>
+map <silent> <C-n> :NERDTreeToggle<cr>
 nnoremap <C-t> :call ToggleRelativeOn()<cr>
-
-" mapping for Vimwiki
-:autocmd FileType vimwiki map <leader>c :call ToggleCalendar() <cr>
-set foldmethod=manual
 
 " Key mapping for Cosco.vim - space + ; to add semicolon or comma in Javascript or CSS
 autocmd FileType javascript,css nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
 autocmd FileType javascript,css inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
+
+"Snippets
+let g:snipMate.scope_aliases.javascript = 'javascript-react,javascript.d3,javascript-jquery'
 
 " Syntastic won't hilight HTML unless you specify with :SyntasticCheck
 " This is to deal with handlebars issues in meteor
@@ -131,6 +134,9 @@ let g:airline_powerline_fonts = 1
 
 " Set Vim Wiki to my Dropbox directory
 let g:vimwiki_list = [{'path':'$HOME/Dropbox/vimwiki'}]
+
+" Allow JSX format to work with regular js files
+let g:jsx_ext_required = 0
 
 " configure syntastic syntax checking to check on open as well as save
 let g:syntastic_check_on_open=1
@@ -149,22 +155,9 @@ if executable('ag')
 
   " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
   let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+  let g:ctrlp_working_path_mode = 'r'
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
 
-" Calender is used within VimWiki
-function! ToggleCalendar()
-  execute ":Calendar"
-  if exists("g:calendar_open")
-    if g:calendar_open == 1
-      execute "q"
-      unlet g:calendar_open
-    else
-      g:calendar_open = 1
-    end
-  else
-    let g:calendar_open = 1
-  end
-endfunction
