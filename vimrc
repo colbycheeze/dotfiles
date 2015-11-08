@@ -15,19 +15,34 @@ set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitigno
 set history=50
 set ruler         " show the cursor position all the time
 set showcmd       " display incomplete command
-set incsearch     " do incremental searching
 set laststatus=2  " Always display the status line
 set autowrite     " Automatically :write before running commands
-set autoread      " Reload files changted outside vim
+set autoread      " Reload files changed outside vim
+" Trigger autoread when changing buffers or coming back to vim in terminal.
+au FocusGained,BufEnter * :silent! !
+
+"Set default font in mac vim and gvim
+set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+set cursorline    " highlight the current line
+set visualbell    " stop that ANNOYING beeping
+set wildmenu
+set wildmode=list:longest,full
 
 "Allow usage of mouse in iTerm
 set ttyfast
 set mouse=a
-set ttymouse=xterm2
+" set ttymouse=xterm2
 
-" case insensitive searching (unless specified)
-set ignorecase
+" Make searching better
+nnoremap / /\v
+vnoremap / /\v
+set gdefault      " Never have to type /g at the end of search / replace again
+set ignorecase    " case insensitive searching (unless specified)
 set smartcase
+set hlsearch
+nnoremap <silent> <leader>, :noh<cr> " Stop highlight after searching
+set incsearch
+set showmatch
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -40,6 +55,9 @@ set list listchars=tab:»·,trail:·,nbsp:·
 
 " Make it obvious where 80 characters is
 set textwidth=80
+" set formatoptions=cq
+set formatoptions=qrn1
+set wrapmargin=0
 set colorcolumn=+1
 
 " Numbers
@@ -88,6 +106,18 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+" <c-h> is interpreted as <bs> in neovim
+" This is a bandaid fix until the team decides how
+" they want to handle fixing it...(https://github.com/neovim/neovim/issues/2048)
+nnoremap <silent> <bs> :TmuxNavigateLeft<cr>
+
+" Navigate properly when lines are wrapped
+nnoremap j gj
+nnoremap k gk
+
+" Use tab to jump between blocks, because it's easier
+nnoremap <tab> %
+vnoremap <tab> %
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
 " Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
@@ -117,7 +147,6 @@ map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
 map <silent><C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 
-
 """ MORE AWESOME HOTKEYS
 "
 "
@@ -139,7 +168,7 @@ map <leader>s <C-S>
 
 " Quickly close windows
 nnoremap <leader>x :x<cr>
-nnoremap <leader>X :q<cr>
+nnoremap <leader>X :q!<cr>
 
 " zoom a vim pane, <C-w>= to re-balance
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
@@ -156,6 +185,12 @@ inoremap <S-Tab> <c-n>
 
 " Switch between the last two files
 nnoremap <leader><leader> <c-^>
+
+" AUTOCOMMANDS - Do stuff
+
+" Save whenever switching windows or leaving vim. This is useful when running
+" the tests inside vim without having to save all files first.
+au FocusLost,WinLeave * :silent! wa
 
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
@@ -178,6 +213,9 @@ augroup vimrcEx
   autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
 
+  " autocmd BufRead *.jsx set ft=jsx.html
+  " autocmd BufNewFile *.jsx set ft=jsx.html
+
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
 
@@ -196,7 +234,6 @@ augroup END
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-set wildmode=list:longest,list:full
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
