@@ -64,6 +64,12 @@ Plug 'suan/vim-instant-markdown'
 " [9]
 Plug 'justinj/vim-react-snippets' | Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
+" [10] supertab makes YCM compatible with ultisnips
+Plug 'ervandew/supertab'
+Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
+
+
 """ TODO / Plugins to evaluate
 " Figure out how to create / version control my own snippets
 " Figure out how to change matchit to ALSO use <tab>
@@ -140,20 +146,16 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
+" [10] make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
+" Not sure what the below code does...look into Tern docs etc and figure it out?
+" Found this snippet on a forum post that says it gets everything working
+" https://github.com/Valloric/YouCompleteMe/issues/570
+" autocmd FileType javascript setlocal omnifunc=tern#Complete
 
-
-" "Snippets
-" " let g:snipMate.scope_aliases.javascript = 'javascript-react,javascript.d3,javascript-jquery'
-"
-" " Syntastic won't hilight HTML unless you specify with :SyntasticCheck
-" " This is to deal with handlebars issues in meteor
-" let syntastic_mode_map = { 'passive_filetypes': ['html']  }
-"
-"
-" " Index ctags from any project
-" map <Leader>ct :!ctags -R .<CR>
-"
 " " Run commands that require an interactive shell
 " nnoremap <Leader>r :RunInInteractiveShell<space>
 "
