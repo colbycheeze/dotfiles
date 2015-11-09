@@ -7,147 +7,100 @@ if &compatible
   set nocompatible
 end
 
-filetype off
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-
-" Plugins to manage plugins. Pluginception?
-Plugin 'gmarik/Vundle.vim'
-Plugin 'tpope/vim-bundler'
-
-""" Make Vim work like an IDE...Core plugins for me
-"
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'christoomey/vim-tmux-runner.git'
-Plugin 'christoomey/vim-run-interactive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ervandew/supertab'
-Plugin 'vim-scripts/tComment'
-Plugin 'vim-scripts/HTML-AutoCloseTag'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'tpope/vim-fugitive' "Make git awesome
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-surround'
-
-""" Highlighting, syntax, etc for various Languages
-"
-Plugin 'scrooloose/syntastic' "Syntax Highlighting
-Plugin 'mxw/vim-jsx' "Syntax Highlighting for JSX
-
-Plugin 'pangloss/vim-javascript' "Requirement for mxw/vim-jsx
-Plugin 'Slava/vim-spacebars'
-Plugin 'groenewege/vim-less'
-
-
-  " TODO: Fix whatever issue is causing error here
-  " Plugin 'marijnh/tern_for_vim'
-  Plugin 'lfilho/cosco.vim' "Adds a ; at the end of a line by pressing <leader> ;
+call plug#begin('~/.vim/plugged')
 
 """ Theme / Pretty stuff
+"""
+" [1]
+Plug 'altercation/vim-colors-solarized'
+" Awesome looking meta at bottom
+" Fugitive will help with git related stuff, and show branch on status
+Plug 'tpope/vim-fugitive' | Plug 'bling/vim-airline'
+""
+
+""" Some ESSENTIAL IDE like plugins for Vim
+"""
+" [2] File tree viewer
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+
+" [3]
+" Several plugins to help work with Tmux
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-runner.git'
+Plug 'christoomey/vim-run-interactive'
+
+" [4] search filesystem with ctrl+p
+Plug 'ctrlpvim/ctrlp.vim'
+
+" [5] highlighting for Javascript
+Plug 'scrooloose/syntastic' "Syntax Highlighting
+Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
+
+" [6] Adds a ; at the end of a line by pressing <leader> ;
+Plug 'lfilho/cosco.vim'
+
+Plug 'jiangmiao/auto-pairs' "MANY features, but mostly closes ([{' etc
+Plug 'vim-scripts/HTML-AutoCloseTag' "close tags after >
+Plug 'vim-scripts/tComment' "Comment easily with gcc
+Plug 'tpope/vim-repeat' "allow plugins to utilize . command
+Plug 'tpope/vim-surround' "easily surround things...just read docs for info
+Plug 'vim-scripts/matchit.zip' " % also matches HTML tags / words / etc
+""
+
+""" Utilities / Extras / Etc
+"""
+" [7] Make gists of current buffer
+" View (https://github.com/mattn/gist-vim) for setup instructions
+Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
+
+" [8] Diary, notes, whatever. It's amazing
+Plug 'vimwiki/vimwiki'
+
+" Opens a browser to preview markdown files
+" For this to work, you need to type npm install -g instant-markdown-d
+Plug 'suan/vim-instant-markdown'
+""
+
+" [9]
+Plug 'justinj/vim-react-snippets' | Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+""" TODO / Plugins to evaluate
+" Figure out how to create / version control my own snippets
+" Figure out how to change matchit to ALSO use <tab>
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'junegunn/vim-easy-align'
+call plug#end()
+
+"""" PLUGIN RELATED TWEAKS
+""
 "
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline' "Awesome looking meta at bottom
 
-
-""" Extras that I find useful
-"
-Plugin 'pbrisbin/vim-mkdir'
-
-  " For this to work, you need to do:
-  " npm install -g instant-markdown-d
-Plugin 'suan/vim-instant-markdown'
-
-  " Adds :Dash integration
-Plugin 'rizzatti/dash.vim'
-
-  " '%' matches html tags now
-Plugin 'vim-scripts/matchit.zip'
-
-  " Snippets ftw!
-Plugin 'garbas/vim-snipmate'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tomtom/tlib_vim'
-
-Plugin 'honza/vim-snippets'
-Plugin 'cmather/vim-meteor-snippets'
-Plugin 'justinj/vim-react-snippets'
-
-  " Make gists easily from Vim
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-
-  " I LOVE vimiwki. Just Google it if you are curious :)
-Plugin 'vimwiki/vimwiki'
-
-" Plugins to get sessions to auto-save
-" Plugin 'xolox/vim-session'
-" Plugin 'xolox/vim-misc'
-
-
-call vundle#end()
-filetype on
-
-
-""" PLUGIN RELATED TWEAKS
-"
-
+" [1]
 " Color scheme
 syntax enable
 let g:solarized_termcolors=16
 set background=dark
 colorscheme solarized
+" Allow powerline symbols to show up
+let g:airline_powerline_fonts = 1
 
-"Allow moving around between Tmux windows
+" [2]
+map <silent> <C-n> :NERDTreeToggle<cr>
+nnoremap <C-t> :call ToggleRelativeOn()<cr>
+
+" [3]
+" Allow moving around between Tmux windows
 nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <C-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <C-k> :TmuxNavigateUp<cr>
 nnoremap <silent> <C-l> :TmuxNavigateRight<cr>
-
-"tmux integration
 let g:tmux_navigator_no_mappings = 1
 let g:tmux_navigator_save_on_switch = 1
-
+"
 "Open a tmux pane with Node
 nnoremap <leader>node :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'node'}<cr>
 
-" open a dash search for the keyword under cursor
-nmap <silent><leader>d <Plug>DashSearch
-nmap <leader>D :Dash!
-
-map <silent> <C-n> :NERDTreeToggle<cr>
-nnoremap <C-t> :call ToggleRelativeOn()<cr>
-
-" Key mapping for Cosco.vim - space + ; to add semicolon or comma in Javascript or CSS
-autocmd FileType javascript,css nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
-autocmd FileType javascript,css inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
-
-"Snippets
-let g:snipMate.scope_aliases.javascript = 'javascript-react,javascript.d3,javascript-jquery'
-
-" Syntastic won't hilight HTML unless you specify with :SyntasticCheck
-" This is to deal with handlebars issues in meteor
-let syntastic_mode_map = { 'passive_filetypes': ['html']  }
-
-" Allow powerline symbols to show up
-let g:airline_powerline_fonts = 1
-
-" Set Vim Wiki to my Dropbox directory
-let g:vimwiki_list = [{'path':'$HOME/Dropbox/vimwiki'}]
-
-" Allow JSX format to work with regular js files
-let g:jsx_ext_required = 0
-
-" configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
-let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-
-" Index ctags from any project
-map <Leader>ct :!ctags -R .<CR>
-
-" Run commands that require an interactive shell
-nnoremap <Leader>r :RunInInteractiveShell<space>
-
+" [4]
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
   " Use Ag over Grep
@@ -160,4 +113,48 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
 endif
+
+" [5] configure syntastic syntax checking to check on open as well as save
+let g:syntastic_check_on_open=1
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+" Allow highlighting of HTML within Javascript (for React)
+let g:javascript_enable_domhtmlcss = 1
+let g:jsx_ext_required = 0
+
+" [6] Key mapping for Cosco.vim - space + ; to add semicolon or comma in Javascript or CSS
+autocmd FileType javascript,css nnoremap <silent> <Leader>; :call cosco#commaOrSemiColon()<CR>
+autocmd FileType javascript,css inoremap <silent> <Leader>; <c-o>:call cosco#commaOrSemiColon()<CR>
+
+" [7] Gist setup
+let g:gist_clip_command = 'pbcopy' "Using Gist will copy URL to clipboard automatically
+let g:gist_detect_filetype = 1
+let g:gist_open_browser_after_post = 1
+
+" [8] Set Vim Wiki to my Dropbox directory
+let g:vimwiki_list = [{'path':'$HOME/Dropbox/vimwiki'}]
+
+" [9]
+" Set ultisnips triggers
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+let g:UltiSnipsEditSplit="vertical"
+
+
+
+
+" "Snippets
+" " let g:snipMate.scope_aliases.javascript = 'javascript-react,javascript.d3,javascript-jquery'
+"
+" " Syntastic won't hilight HTML unless you specify with :SyntasticCheck
+" " This is to deal with handlebars issues in meteor
+" let syntastic_mode_map = { 'passive_filetypes': ['html']  }
+"
+"
+" " Index ctags from any project
+" map <Leader>ct :!ctags -R .<CR>
+"
+" " Run commands that require an interactive shell
+" nnoremap <Leader>r :RunInInteractiveShell<space>
+"
 
