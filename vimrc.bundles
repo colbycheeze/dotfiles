@@ -35,6 +35,7 @@ Plug 'ctrlpvim/ctrlp.vim'
 " [5] highlighting for Javascript
 Plug 'scrooloose/syntastic' "Syntax Highlighting
 Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
+Plug 'jimmyhchan/dustjs.vim' "Highlighting for dust
 
 " [6] Adds a ; at the end of a line by pressing <leader> ;
 Plug 'lfilho/cosco.vim'
@@ -45,6 +46,7 @@ Plug 'vim-scripts/tComment' "Comment easily with gcc
 Plug 'tpope/vim-repeat' "allow plugins to utilize . command
 Plug 'tpope/vim-surround' "easily surround things...just read docs for info
 Plug 'vim-scripts/matchit.zip' " % also matches HTML tags / words / etc
+Plug 'duff/vim-scratch' "Open a throwaway scratch buffer
 ""
 
 """ Utilities / Extras / Etc
@@ -62,7 +64,7 @@ Plug 'suan/vim-instant-markdown'
 ""
 
 " [9]
-Plug 'justinj/vim-react-snippets' | Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips' | Plug 'justinj/vim-react-snippets' | Plug 'colbycheeze/vim-snippets'
 
 " [10] supertab makes YCM compatible with ultisnips
 Plug 'ervandew/supertab'
@@ -93,6 +95,8 @@ let g:airline_powerline_fonts = 1
 " [2]
 map <silent> <C-n> :NERDTreeToggle<cr>
 nnoremap <C-t> :call ToggleRelativeOn()<cr>
+" Close vim if only NERDTree is open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " [3]
 " Allow moving around between Tmux windows

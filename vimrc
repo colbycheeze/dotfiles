@@ -34,8 +34,6 @@ set mouse=a
 " set ttymouse=xterm2
 
 " Make searching better
-nnoremap / /\v
-vnoremap / /\v
 set gdefault      " Never have to type /g at the end of search / replace again
 set ignorecase    " case insensitive searching (unless specified)
 set smartcase

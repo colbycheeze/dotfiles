@@ -98,3 +98,5 @@ _load_settings "$HOME/.zsh/configs"
 
 # Local config
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+### Added by the Bluemix CLI
+source /usr/local/Bluemix/bx/zsh_autocomplete
