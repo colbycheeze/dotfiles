@@ -1,4 +1,3 @@
-
 " Type :so % to refresh .vimrc after making changes
 
 " Use Vim settings, rather then Vi settings. This setting must be as early as
@@ -99,6 +98,12 @@ autocmd FocusGained * call ToggleRelativeOn()
 autocmd InsertEnter * call ToggleRelativeOn()
 autocmd InsertLeave * call ToggleRelativeOn()
 
+"Use enter to create new lines w/o entering insert mode
+nnoremap <CR> o<Esc>
+"Below is to fix issues with the ABOVE mappings in quickfix window
+autocmd CmdwinEnter * nnoremap <CR> <CR>
+autocmd BufReadPost quickfix nnoremap <CR> <CR>
+
 " Quicker window movement
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -143,7 +148,6 @@ set pastetoggle=<F2> "F2 before pasting to preserve indentation
 vnoremap <C-c> "*y
 map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
-map <silent><C-v> :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 
 """ MORE AWESOME HOTKEYS
 "
