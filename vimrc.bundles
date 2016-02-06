@@ -71,6 +71,8 @@ Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 
+Plug 'editorconfig/editorconfig-vim'
+
 
 """ TODO / Plugins to evaluate
 " Figure out how to create / version control my own snippets
