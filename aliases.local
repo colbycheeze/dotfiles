@@ -1,6 +1,0 @@
-# Navigation
-alias cdproj="cd ~/projects"
-alias cdwiki="cd ~/Dropbox/vimwiki"
-alias cd='cs'
-alias bsync="browser-sync start --proxy localhost:3000"
-alias killn="ps -ax | grep notifyd | head -1 | awk '{print \$1}' | sudo xargs kill"

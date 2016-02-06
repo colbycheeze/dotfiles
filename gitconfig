@@ -7,9 +7,20 @@
 [alias]
   aa = add --all
   ap = add --patch
-  ca = commit --amend
   ci = commit -v
-  co = checkout
+
+  # Commit all changes
+  ca = !git add -A && git commit -av
+
+  # Commit all changes
+  caa = !git add -A && git commit --amend -av
+
+  # Switch to a branch, creating it if necessary
+  co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+
+  # Show the diff between the latest commit and the current state
+  d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
   co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
   create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
@@ -23,8 +34,15 @@
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
+[diff]
+  tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [merge]
-  ff = only
+  tool = Kaleidoscope
+[mergetool "Kaleidoscope"]
+  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+  trustExitCode = true
 [commit]
   template = ~/.gitmessage
 [fetch]
