@@ -1,6 +1,7 @@
 "
-" Type :so % to refresh .vimrc after making changes
-" Type :PluginInstall to update
+" :so % to refresh .vimrc after making changes
+" :PlugInstall to install new stuff
+" :PlugUpdate to update to latest versions
 "
 
 if &compatible
@@ -13,8 +14,9 @@ call plug#begin('~/.vim/plugged')
 """
 " [1]
 Plug 'altercation/vim-colors-solarized'
+Plug 'endel/vim-github-colorscheme'
 " Awesome looking meta at bottom
-" Fugitive will help with git related stuff, and show branch on status
+" Fugitive will help with git related stuff, and show branch on statusline
 Plug 'tpope/vim-fugitive' | Plug 'bling/vim-airline'
 ""
 
@@ -26,16 +28,19 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " [3]
 " Several plugins to help work with Tmux
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'christoomey/vim-tmux-runner.git'
+Plug 'https://github.com/christoomey/vim-tmux-runner'
 Plug 'christoomey/vim-run-interactive'
 
 " [4] search filesystem with ctrl+p
 Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
-" [5] highlighting for Javascript
-Plug 'scrooloose/syntastic' "Syntax Highlighting
+" [5] Code highlighting and linting
+Plug 'scrooloose/syntastic' "Run linters and display errors etc
+" Plug 'benekastah/neomake' "Async Jobs (can use it instead of syntastic, but hard to setup)
 Plug 'pangloss/vim-javascript' | Plug 'mxw/vim-jsx'
-Plug 'jimmyhchan/dustjs.vim' "Highlighting for dust
+Plug 'jimmyhchan/dustjs.vim' "Highlighting for Dust
+Plug 'elmcast/elm-vim' "Highlighting for Elm
 
 " [6] Adds a ; at the end of a line by pressing <leader> ;
 Plug 'lfilho/cosco.vim'
@@ -59,25 +64,26 @@ Plug 'mattn/webapi-vim' | Plug 'mattn/gist-vim'
 Plug 'vimwiki/vimwiki'
 
 " Opens a browser to preview markdown files
-" For this to work, you need to type npm install -g instant-markdown-d
-Plug 'suan/vim-instant-markdown'
+Plug 'suan/vim-instant-markdown', {'do': 'npm install -g instant-markdown-d'}
 ""
 
 " [9]
 Plug 'SirVer/ultisnips' | Plug 'justinj/vim-react-snippets' | Plug 'colbycheeze/vim-snippets'
 
-" [10] supertab makes YCM compatible with ultisnips
+" [10]
+" supertab makes tab work with autocomplete and ultisnips
 Plug 'ervandew/supertab'
-Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+" Provides Async autocomplete with Tern
+Plug 'https://github.com/Shougo/deoplete.nvim'
+" IDE like code intelligence for Javascript
 Plug 'ternjs/tern_for_vim', {'do': 'npm install'}
 
+" Reads any .editorconfig files and sets spacing etc automatically
 Plug 'editorconfig/editorconfig-vim'
 
 
 """ TODO / Plugins to evaluate
-" Figure out how to create / version control my own snippets
 " Figure out how to change matchit to ALSO use <tab>
-" Plug 'Valloric/YouCompleteMe'
 " Plug 'junegunn/vim-easy-align'
 call plug#end()
 
@@ -88,7 +94,11 @@ call plug#end()
 " [1]
 " Color scheme
 syntax enable
-let g:solarized_termcolors=16
+" let g:solarized_termcolors=16
+let g:solarized_termcolors=256
+let g:solarized_visibility = "high"
+let g:solarized_contrast = "high"
+let g:colarized_termtrans = 1
 set background=dark
 colorscheme solarized
 " Allow powerline symbols to show up
@@ -124,12 +134,42 @@ if executable('ag')
 
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
+
+  let g:ctrlp_extensions = ['line']
 endif
 
-" [5] configure syntastic syntax checking to check on open as well as save
-let g:syntastic_check_on_open=1
+" [5]
+" Setup for NEOMAKE plugin ~~~~~~~
+" let g:neomake_scss_csslint_maker = ['sass-lint']
+" let g:neomake_javascript_enabled_makers = ['eslint']
+" let g:neomake_open_list = 0
+" let g:neomake_warning_sign = {
+"       \ 'texthl': 'WarningMsg',
+"       \ }
+"
+" let g:neomake_error_sign = {
+"       \ 'texthl': 'ErrorMsg',
+"       \ }
+" autocmd! BufWritePost,BufEnter * Neomake
+"       ~~~~~~~~~~~~~~~~
+" configure syntastic syntax checking to check on open as well as save
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
-" Allow highlighting of HTML within Javascript (for React)
+let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': ['javascript'], 'passive_filetypes': [] }
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+" " Syntastic will search for an .eslintrc in your project, otherwise it defaults
+autocmd FileType javascript let b:syntastic_checkers = findfile('.eslintrc', '.;') != '' ? ['eslint'] : ['standard']
+" these 2 lines check to see if eslint is installed via local npm and runs that before going global
+let s:eslint_path = system('PATH=$(npm bin):$PATH && which eslint')
+let b:syntastic_javascript_eslint_exec = substitute(s:eslint_path, '^\n*\s*\(.\{-}\)\n*\s*$', '\1', '')
+" " Allow highlighting of HTML within Javascript (for React)
 let g:javascript_enable_domhtmlcss = 1
 let g:jsx_ext_required = 0
 
@@ -153,9 +193,34 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 " [10] make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<Up>']
 let g:SuperTabDefaultCompletionType = '<C-n>'
+
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" omnifuncs
+augroup omnifuncs
+  autocmd!
+  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+augroup end
+
+" tern
+if exists('g:plugs["tern_for_vim"]')
+  let g:tern_show_argument_hints = 'on_hold'
+  let g:tern_show_signature_in_pum = 1
+  let g:tern_map_keys = 1
+
+  autocmd FileType javascript setlocal omnifunc=tern#Complete
+endif
+
+"set up path to editorconfig
+let g:EditorConfig_exec_path = findfile('.editorconfig', '.;')
 
 " Not sure what the below code does...look into Tern docs etc and figure it out?
 " Found this snippet on a forum post that says it gets everything working

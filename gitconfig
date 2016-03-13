@@ -6,43 +6,34 @@
   ui = auto
 [alias]
   aa = add --all
-  ap = add --patch
   ci = commit -v
 
   # Commit all changes
   ca = !git add -A && git commit -av
 
-  # Commit all changes
+  # Add all changes to last commit
   caa = !git add -A && git commit --amend -av
 
   # Switch to a branch, creating it if necessary
   co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
+  # Rename local branch
+  rn = "!f() { git branch -m $1; }; f"
+
+  # Sync origin with remote named github
+  gg = "!f() { old=$(git current-branch) && git checkout master && git pull origin master && git push github master && git checkout $old; }; f"
+
+  # Grab latest from origin, sync with github branch, and rebase changes from current branch on top
+  ggr = "!f() { old=$(git current-branch) && git checkout master && git pull origin master && git push github master && git checkout $old && git rebase master; }; f"
+
   # Show the diff between the latest commit and the current state
   d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
-  co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
-  create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
-  ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
   current-branch = !sh -c 'git rev-parse --abbrev-ref HEAD' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
-  merge-branch = !git checkout master && git merge @{-1}
-  pr = !gh pull-request
-  rename-branch = !sh -c 'old=$(git current-branch) && git branch -m $old $1 && git push origin --set-upstream $1 && git push origin --delete $old' -
-  st = status
-  up = !git fetch origin && git rebase origin/master
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
-[diff]
-  tool = Kaleidoscope
-[difftool "Kaleidoscope"]
-  cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
-[merge]
-  tool = Kaleidoscope
-[mergetool "Kaleidoscope"]
-  cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-  trustExitCode = true
 [commit]
   template = ~/.gitmessage
 [fetch]
@@ -50,15 +41,15 @@
 [include]
   path = ~/.gitconfig.local
 [filter "hawser"]
-	clean = git hawser clean %f
-	smudge = git hawser smudge %f
-	required = true
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
 [user]
-	name = Colby Williams
-	email = colby@colbycheeze.com
+  name = Colby Williams
+  email = colby@colbycheeze.com
 [filter "lfs"]
-	clean = git lfs clean %f
-	smudge = git lfs smudge %f
-	required = true
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
 [github]
-	user = colbycheeze
+  user = colbycheeze

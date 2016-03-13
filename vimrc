@@ -21,7 +21,7 @@ set autoread      " Reload files changed outside vim
 au FocusGained,BufEnter * :silent! !
 
 "Set default font in mac vim and gvim
-set guifont=Source\ Code\ Pro\ for\ Powerline:h12
+set guifont=Inconsolata\ for\ Powerline:h24
 set cursorline    " highlight the current line
 set visualbell    " stop that ANNOYING beeping
 set wildmenu
@@ -50,8 +50,8 @@ set expandtab
 " Display extra whitespace
 set list listchars=tab:»·,trail:·,nbsp:·
 
-" Make it obvious where 80 characters is
-set textwidth=80
+" Make it obvious where 100 characters is
+set textwidth=100
 " set formatoptions=cq
 set formatoptions=qrn1
 set wrapmargin=0
@@ -62,11 +62,11 @@ set number
 set numberwidth=5
 
 " Open new split panes to right and bottom, which feels more natural
-set splitbelow
+" set splitbelow
 set splitright
 
 " Auto resize Vim splits to active split
-set winwidth=84
+set winwidth=104
 set winheight=5
 set winminheight=5
 set winheight=999
@@ -154,12 +154,15 @@ map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
 "
 " Run the q macro
 nnoremap <leader>q @q
+
 " bind K to grep word under cursor
 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut
 command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
+" Ag will search from project root
+let g:ag_working_path_mode="r"
 
 "Map Ctrl + S to save in any mode
 noremap <silent> <C-S>          :update<CR>
@@ -212,7 +215,6 @@ augroup vimrcEx
     \ endif
 
   " Set syntax highlighting for specific file types
-  autocmd BufRead,BufNewFile Appraisals set filetype=ruby
   autocmd BufRead,BufNewFile *.md set filetype=markdown
 
   " autocmd BufRead *.jsx set ft=jsx.html
@@ -221,11 +223,11 @@ augroup vimrcEx
   " Enable spellchecking for Markdown
   autocmd FileType markdown setlocal spell
 
-  " Automatically wrap at 80 characters for Markdown
-  autocmd BufRead,BufNewFile *.md setlocal textwidth=80
+  " Automatically wrap at 100 characters for Markdown
+  autocmd BufRead,BufNewFile *.md setlocal textwidth=100
 
-  " Automatically wrap at 72 characters and spell check git commit messages
-  autocmd FileType gitcommit setlocal textwidth=72
+  " Automatically wrap at 100 characters and spell check git commit messages
+  autocmd FileType gitcommit setlocal textwidth=100
   autocmd FileType gitcommit setlocal spell
 
   " Allow stylesheets to autocomplete hyphenated words
@@ -233,14 +235,15 @@ augroup vimrcEx
 augroup END
 
 
+" TODO: Don't think I need this anymore? Pretty sure supertab handles it
 " Tab completion
 " will insert tab at beginning of line,
 " will use completion if not at beginning
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-p>"
-    endif
-endfunction
+" function! InsertTabWrapper()
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1] !~ '\k'
+"         return "\<tab>"
+"     else
+"         return "\<c-p>"
+"     endif
+" endfunction

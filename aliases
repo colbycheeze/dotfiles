@@ -13,8 +13,6 @@ alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
 
-# git
-
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
 
@@ -22,6 +20,20 @@ alias path="echo $PATH | tr -s ':' '\n'"
 alias cdproj="cd ~/projects"
 alias cdwiki="cd ~/Dropbox/vimwiki"
 alias cd='cs'
-alias bsync="browser-sync start --proxy localhost:3000"
+
+# Go to the root of a project (git root)
+alias root='cd $(git rev-parse --show-cdup)'
+
 # This kills a process that slows down my Mac every once in a while...??
 alias killn="ps -ax | grep notifyd | head -1 | awk '{print \$1}' | sudo xargs kill"
+
+# kill a rogue process running on a specific port
+killp() { lsof -n "-i4TCP:${1:-3002}" | grep LISTEN | tr -s ' ' | cut -f 2 -d ' ' | xargs kill -9}
+
+# Do all of my login stuff for cf
+alias cfgo="cf login -a api.stage1.ng.bluemix.net -u colbycheeze@us.ibm.com -p SECRET -o colbycheeze@us.ibm.com -s dev && npm start"
+
+# Start a browsersync server watching the current directory
+bsync() { browser-sync start --files "./**" --server; }
+# Start a browsersync server and proxy 3000 (or pass a different number to proxy something else, IE: bsyncp 8000 for localhost:8000)
+bsyncp() { browser-sync start --files "./**" --proxy "localhost:${1:-3000}" --no-open; }
