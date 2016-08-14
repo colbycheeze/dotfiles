@@ -20,14 +20,22 @@
   # Rename local branch
   rn = "!f() { git branch -m $1; }; f"
 
-  # Sync origin with remote named github
-  gg = "!f() { old=$(git current-branch) && git checkout master && git pull origin master && git push github master && git checkout $old; }; f"
+  # Sync upstream with origin remote
+  gg = "!f() { old=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $old; }; f"
 
-  # Grab latest from origin, sync with github branch, and rebase changes from current branch on top
-  ggr = "!f() { old=$(git current-branch) && git checkout master && git pull origin master && git push github master && git checkout $old && git rebase master; }; f"
+  # Grab latest from upstream, sync with origin, and rebase changes from current branch on top
+  # Use this if you haven't pushed to your remote yet
+  ggr = "!f() { old=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $old && git rebase master; }; f"
+
+  # Grab latest from upstream, sync with origin, and merge changes from current branch
+  # Use this if you have already pushed changes to the remote
+  ggm = "!f() { old=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $old && git merge origin/master; }; f"
 
   # Show the diff between the latest commit and the current state
   d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
+
+  # deploy a folder to gh-pages branch (public by default)
+  ghp = "!f() { git subtree push --prefix ${1:-public} origin gh-pages; }; f"
 
   current-branch = !sh -c 'git rev-parse --abbrev-ref HEAD' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
@@ -45,8 +53,8 @@
   smudge = git hawser smudge %f
   required = true
 [user]
-  name = Colby Williams
-  email = colby@colbycheeze.com
+	name = COLBY C. WILLIAMS
+	email = colbycheeze@us.ibm.com
 [filter "lfs"]
   clean = git lfs clean %f
   smudge = git lfs smudge %f

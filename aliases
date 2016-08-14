@@ -31,7 +31,7 @@ alias killn="ps -ax | grep notifyd | head -1 | awk '{print \$1}' | sudo xargs ki
 killp() { lsof -n "-i4TCP:${1:-3002}" | grep LISTEN | tr -s ' ' | cut -f 2 -d ' ' | xargs kill -9}
 
 # Do all of my login stuff for cf
-alias cfgo="cf login -a api.stage1.ng.bluemix.net -u colbycheeze@us.ibm.com -p SECRET -o colbycheeze@us.ibm.com -s dev && npm start"
+alias cfgo="cf login -a $CFAPI -u $CFEMAIL -p $CFPASSWORD -o $CFEMAIL -s dev && npm start"
 
 # Start a browsersync server watching the current directory
 bsync() { browser-sync start --files "./**" --server; }

@@ -73,6 +73,8 @@ Plug 'SirVer/ultisnips' | Plug 'justinj/vim-react-snippets' | Plug 'colbycheeze/
 " [10]
 " supertab makes tab work with autocomplete and ultisnips
 Plug 'ervandew/supertab'
+" For YouCompleteMe, have you installed using:
+" ./install.py --tern-completer
 " Provides Async autocomplete with Tern
 Plug 'https://github.com/Shougo/deoplete.nvim'
 " IDE like code intelligence for Javascript
