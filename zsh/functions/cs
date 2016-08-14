@@ -1,4 +1,3 @@
-alias cd='cs'
 function cs() {
   if [ $# -eq 0  ]; then
     cd && ls;
@@ -6,3 +5,4 @@ function cs() {
     cd "$*" && ls;
   fi
 }
+alias cd='cs'

@@ -19,7 +19,6 @@ alias path="echo $PATH | tr -s ':' '\n'"
 # Navigation
 alias cdproj="cd ~/projects"
 alias cdwiki="cd ~/Dropbox/vimwiki"
-alias cd='cs'
 
 # Go to the root of a project (git root)
 alias root='cd $(git rev-parse --show-cdup)'

@@ -1,2 +1,7 @@
 !bin
-vim/bundle/
+*.DS_store
+tmp/**/*
+!tmp/cache/.keep
+.env
+.bundle
+log/*.log

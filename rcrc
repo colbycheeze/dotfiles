@@ -1,2 +1,0 @@
-EXCLUDES="README.md LICENSE tmux/resurrect/* .tmux/resurrect/*"
-DOTFILES_DIRS="$HOME/dotfiles"

@@ -112,3 +112,6 @@ stty -ixon
 source /usr/local/Bluemix/bx/zsh_autocomplete
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.bin:$PATH"
+eval "$(rbenv init - --no-rehash)"
