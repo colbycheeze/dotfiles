@@ -1,0 +1,45 @@
+# You can find more information about keymaps in these guides:
+# * https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings
+# * https://atom.io/docs/latest/behind-atom-keymaps-in-depth
+
+'atom-text-editor.vim-mode:not(.insert-mode)':
+  'ctrl-h': 'window:focus-pane-on-left'
+  'ctrl-l': 'window:focus-pane-on-right'
+  'ctrl-k': 'window:focus-pane-on-top'
+  'ctrl-j': 'window:focus-pane-on-bottom'
+  'g c': 'editor:toggle-line-comments'
+  'space q': 'atom-keyboard-macros-vim:execute_macro_vim'
+  # '%': 'bracket-matcher:go-to-matching-bracket'
+  # '%': 'vim-mode:bracket-matching-motion'
+
+'atom-text-editor.vim-mode.insert-mode':
+  'ctrl-;': 'custom:semicolonize'
+
+'atom-text-editor.vim-mode.normal-mode':
+  'space s': 'window:save-all'
+  'space x': 'core:close'
+  'enter': 'editor:newline-below'
+  'shift-enter': 'editor:newline-above'
+  'space ;': 'custom:semicolonize'
+  'ctrl-;': 'custom:semicolonize'
+
+'.platform-darwin':
+  'cmd-n': 'tree-view:toggle'
+  'ctrl-n': 'tree-view:toggle-focus'
+  'cmd-p': 'fuzzy-finder:toggle-file-finder'
+  'ctrl-p': 'fuzzy-finder:toggle-file-finder'
+
+'.fuzzy-finder atom-text-editor[mini]':
+  'ctrl-v': 'pane:split-right'
+  'ctrl-s': 'pane:split-down'
+
+'.tree-view':
+  'o': 'tree-view:expand-directory'
+  'O': 'tree-view:recursive-expand-directory'
+  'x': 'tree-view:collapse-directory'
+  'X': 'tree-view:recursive-collapse-directory'
+  's': 'tree-view:open-selected-entry-down'
+  'v': 'tree-view:open-selected-entry-right'
+  't': 'tree-view:open-selected-entry'
+  'd': 'tree-view:remove'
+  'c': 'tree-view:duplicate'

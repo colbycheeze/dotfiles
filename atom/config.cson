@@ -1,0 +1,91 @@
+"*":
+  "atom-ternjs":
+    useSnippets: true
+  "autocomplete-modules": {}
+  build:
+    saveOnBuild: true
+  core:
+    disabledPackages: [
+      "linter-flow-plus"
+      "autocomplete-flow"
+      "linter-flow"
+      "atom-ternjs"
+    ]
+    projectHome: "/Users/colbywilliams/projects"
+    themes: [
+      "one-light-ui"
+      "solarized-light-syntax"
+    ]
+  editor:
+    fontSize: 17
+    invisibles: {}
+    preferredLineLength: 100
+    scrollPastEnd: true
+  "exception-reporting":
+    userId: "a58af052-dcc6-4331-81cb-59b673e99ccc"
+  fonts: {}
+  "git-blame":
+    showOnlyLastNames: false
+  "git-diff": {}
+  "language-babel":
+    autoIndentJSX: true
+  linter:
+    errorPanelHeight: 87
+  "linter-eslint":
+    disableEslintIgnore: true
+    disableWhenNoEslintConfig: false
+    fixOnSave: true
+    globalNodePath: "/usr/local"
+  "merge-conflicts":
+    gitPath: "/usr/local/bin/git"
+  "one-dark-ui": {}
+  "one-light-ui": {}
+  pigments:
+    autocompleteScopes: [
+      ".source.scss"
+    ]
+    extendAutocompleteToColorValue: true
+    extendAutocompleteToVariables: true
+    ignoreVcsIgnoredPaths: false
+    ignoredNames: [
+      "src/node_modules/*"
+      "node_modules/*"
+      "public/*"
+      "src/pre-atlas/**/*"
+    ]
+    sourceNames: [
+      "**/*.scss"
+    ]
+  "sync-settings":
+    _analyticsUserId: "971b17cd-cd84-406f-aa72-4dd819000ce2"
+  "tree-view":
+    hideVcsIgnoredFiles: true
+    squashDirectoryNames: true
+  "vim-mode":
+    useSmartcaseForSearch: true
+  "vim-surround": {}
+  welcome:
+    showOnStartup: false
+".attribute-values.js.jsx.source":
+  editor:
+    preferredLineLength: 100
+".babel.regexp.source":
+  editor:
+    preferredLineLength: 100
+".dustjs.html.text":
+  editor:
+    preferredLineLength: 100
+".ini.source":
+  editor:
+    scrollPastEnd: true
+    showIndentGuide: true
+    showInvisibles: true
+".js.jsx.react.source":
+  editor:
+    preferredLineLength: 100
+".js.jsx.source":
+  editor:
+    preferredLineLength: 100
+".js.source.subtlegradient":
+  editor:
+    preferredLineLength: 100
