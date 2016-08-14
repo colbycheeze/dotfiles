@@ -106,8 +106,8 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
-# Local config
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+stty -ixon
+
 ### Added by the Bluemix CLI
 source /usr/local/Bluemix/bx/zsh_autocomplete
 
