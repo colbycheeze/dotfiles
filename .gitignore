@@ -5,3 +5,10 @@ tmp/**/*
 .env
 .bundle
 log/*.log
+
+atom/*
+!atom/config.cson
+!atom/init.coffee
+!atom/keymap.cson
+!atom/snippets.cson
+!atom/styles.less
