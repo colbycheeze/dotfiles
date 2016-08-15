@@ -25,9 +25,12 @@ brew install node
 brew install tmux
 brew install reattach-to-user-namespace
 brew install tree
+brew install python
+brew install python3
 brew install neovim/neovim/neovim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+pip3 install neovim
 
 brew install chrome-cli
 brew install redis
@@ -36,8 +39,6 @@ brew install fzf
 brew install git
 brew install hub
 brew install zsh
-brew install python
-brew install python3
 brew install postgresql
 brew install bash
 brew install bash-completion
