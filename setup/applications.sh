@@ -47,6 +47,7 @@ brew install ruby-build
 brew install heroku
 brew tap cloudfoundry/tap
 brew install cf-cli
+# if permissions get set to root on ~/.cf, just run `sudo chown <username> -R ~/.cf/`
 
 brew tap caskroom/cask
 brew cask install mongodb
@@ -67,6 +68,7 @@ brew cask install caffeine
 brew cask install balsamiq-mockups
 brew cask install screenflow
 brew cask install zoomus
+brew cask install postman
 brew cask install bluemix-cli
 
 fancy_echo "Installing Misc Apps"
