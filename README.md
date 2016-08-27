@@ -15,7 +15,8 @@ Install latest (non beta) Xcode from the [app store](https://developer.apple.com
 ## Finishing touches
   1. Register Divvy and add any hotkeys for window management
   1. Change key repeat rate with karabiner (delay: 225, repeat: 25)
-  1. Swap ESC and CAPS key with seil: [(instructions)](http://stackoverflow.com/a/8437594)
+  1. Swap ESC and CAPS key with seil: [(instructions)](http://stackoverflow.com/a/8437594) or
+     karabiner: [(instructions)](https://cl.ly/1841320I2H3V)
   1. Connect iterm2 profile to dotfiles: [(instructions)](http://stackoverflow.com/a/25122646/4298624)
   1. open `nvim` and run `:PlugInstall` and `:UpdateRemotePlugins`
 
