@@ -19,11 +19,21 @@ if brew list | grep -Fq brew-cask; then
 fi
 
 fancy_echo "Installing apps with Homebrew ..."
-brew install wget
 brew install openssl
+brew install zsh
+brew install bash
+brew install bash-completion
+brew install fzf
+brew install the_silver_searcher
+brew install wget
+
+fancy_echo "Setting up tmux"
 brew install tmux
 brew install reattach-to-user-namespace
 brew install tree
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+fancy_echo "Installing python and setting up Neovim"
 brew install python
 brew install python3
 brew install neovim/neovim/neovim
@@ -32,15 +42,10 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 pip3 install neovim
 
 brew install chrome-cli
-brew install redis
-brew install the_silver_searcher
-brew install fzf
 brew install git
 brew install hub
-brew install zsh
+brew install redis
 brew install postgresql
-brew install bash
-brew install bash-completion
 brew install rbenv
 brew install ruby-build
 brew install heroku

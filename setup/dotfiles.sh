@@ -11,7 +11,6 @@ ln -s ~/dotfiles/agignore ~/.agignore
 ln -s ~/dotfiles/gitconfig ~/.gitconfig
 ln -s ~/dotfiles/gitmessage ~/.gitmessage
 ln -s ~/dotfiles/gvimrc ~/.gvimrc
-ln -s ~/dotfiles/tmux ~/.tmux
 ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
 ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
 ln -s ~/.vim ~/.config/nvimrc
