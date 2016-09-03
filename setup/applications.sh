@@ -21,7 +21,6 @@ fi
 fancy_echo "Installing apps with Homebrew ..."
 brew install wget
 brew install openssl
-brew install node
 brew install tmux
 brew install reattach-to-user-namespace
 brew install tree
@@ -52,16 +51,12 @@ brew install cf-cli
 brew tap caskroom/cask
 brew cask install mongodb
 brew cask install google-chrome
-brew cask install dropbox
 brew cask install iterm2
-brew cask install disk-inventory-x
 brew cask install github-desktop
+brew cask install dropbox
 brew cask install cloud
-brew cask install discord
-brew cask install slack
 brew cask install divvy
 brew cask install karabiner
-brew cask install vlc
 brew cask install skype
 brew cask install seil
 brew cask install caffeine
@@ -72,9 +67,21 @@ brew cask install postman
 brew cask install bluemix-cli
 
 fancy_echo "Installing Misc Apps"
+brew cask install discord
+brew cask install slack
+brew cask install disk-inventory-x
+brew cask install vlc
 brew cask install spotify
 brew cask install steam
 brew cask install kindle
 
-fancy_echo "installing global npm packages"
+fancy_echo "Setting up Node with NVM"
+brew install nvm
+mkdir ~/.nvm
+source setup/shell.sh
+nvm install node
+nvm alias default node
+
+fancy_echo "Installing global npm packages"
+npm install -g npm@latest
 npm install -g redux-cli gulp create-react-app npm-check-updates babel-cli bower browser-sync
