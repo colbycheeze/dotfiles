@@ -27,6 +27,7 @@ alias root='cd $(git rev-parse --show-cdup)'
 alias killn="ps -ax | grep notifyd | head -1 | awk '{print \$1}' | sudo xargs kill"
 
 # kill a rogue process running on a specific port
+# usage: `killp 3000`
 killp() { lsof -n "-i4TCP:${1:-3002}" | grep LISTEN | tr -s ' ' | cut -f 2 -d ' ' | xargs kill -9}
 
 # Do all of my login stuff for cf
