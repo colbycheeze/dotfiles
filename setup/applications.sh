@@ -18,7 +18,7 @@ if brew list | grep -Fq brew-cask; then
  brew uninstall --force brew-cask
 fi
 
-fancy_echo "Installing apps with Homebrew ..."
+fancy_echo "Installing CLI tools"
 brew install openssl
 brew install zsh
 brew install bash
@@ -50,8 +50,9 @@ brew install rbenv
 brew install ruby-build
 brew install heroku
 brew tap cloudfoundry/tap
+fancy_echo "Installing cloud foundry CLI"
 brew install cf-cli
-# if permissions get set to root on ~/.cf, just run `sudo chown <username> -R ~/.cf/`
+fancy_echo "if permissions get set to root on ~/.cf, just run `sudo chown <username> -R ~/.cf/`"
 
 brew tap caskroom/cask
 brew cask install mongodb
@@ -69,7 +70,12 @@ brew cask install balsamiq-mockups
 brew cask install screenflow
 brew cask install zoomus
 brew cask install postman
+brew cask install macdown
 brew cask install bluemix-cli
+
+fancy_echo "Installing Code Editors"
+source ./atom.sh
+source ./vscode.sh
 
 fancy_echo "Installing Misc Apps"
 brew cask install discord
