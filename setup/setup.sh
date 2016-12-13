@@ -5,9 +5,9 @@
 # into an awesome development machine.
 
 # Helpers
-source ./functions.sh
-source ./setup/dotfiles.sh
-source ./applications.sh
+source ~/dotfiles/setup/functions.sh
+source ~/dotfiles/setup/dotfiles.sh
+source ~/dotfiles/setup/applications.sh
 # source setup/shell.sh # This gets sourced from above, during Node setup
-source ./rubysetup.sh
-source ./osxsettings.sh
+source ~/dotfiles/setup/rubysetup.sh
+source ~/dotfiles/setup/osxsettings.sh
