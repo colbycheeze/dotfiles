@@ -28,6 +28,7 @@ else
  sudo chown -R "$LOGNAME:admin" "$HOMEBREW_PREFIX"
 fi
 
+brew uninstall zsh
 case "$SHELL" in
  */zsh) : ;;
  *)

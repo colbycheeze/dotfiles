@@ -82,8 +82,10 @@ brew cask install steam
 brew cask install kindle
 
 fancy_echo "Setting up Node with NVM"
-curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
 mkdir ~/.nvm
+curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 source ~/dotfiles/setup/shell.sh
 nvm install node
 nvm alias default node

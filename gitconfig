@@ -53,7 +53,7 @@
   smudge = git hawser smudge %f
   required = true
 [user]
-	name = COLBY WILLIAMS
+	name = Colby Williams
 	email = colby@colbycheeze.com
 [filter "lfs"]
   clean = git lfs clean %f
