@@ -1,8 +1,8 @@
 #!/bin/sh
+source ~/dotfiles/setup/functions.sh
 
 # TODO: Currently these will nest if a link exists, so add check
 # http://stackoverflow.com/questions/5767062/how-to-check-if-symlink-exists
-
 fancy_echo "Symlinking dotfiles"
 ln -s ~/dotfiles/zsh ~/.zsh
 ln -s ~/dotfiles/bin ~/.bin

@@ -1,4 +1,5 @@
 #!/bin/sh
+source ~/dotfiles/setup/functions.sh
 
 fancy_echo "Installing Atom"
 ln -s ~/dotfiles/atom ~/.atom

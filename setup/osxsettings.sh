@@ -1,4 +1,5 @@
 #!/bin/sh
+source ~/dotfiles/setup/functions.sh
 
 fancy_echo "Apply system and application defaults."
 

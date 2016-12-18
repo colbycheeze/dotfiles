@@ -1,4 +1,5 @@
 #!/bin/sh
+source ~/dotfiles/setup/functions.sh
 
 # shellcheck disable=SC2154
 trap 'ret=$?; test $ret -ne 0 && printf "failed\n\n" >&2; exit $ret' EXIT

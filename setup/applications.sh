@@ -1,4 +1,5 @@
 #!/bin/sh
+source ~/dotfiles/setup/functions.sh
 
 if ! command -v brew >/dev/null; then
  fancy_echo "Installing Homebrew ..."
