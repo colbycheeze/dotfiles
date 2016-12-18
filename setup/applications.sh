@@ -51,6 +51,7 @@ brew install redis
 brew install postgresql
 brew install rbenv
 brew install ruby-build
+brew install imagemagick
 brew install heroku
 
 brew tap caskroom/cask
