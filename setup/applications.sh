@@ -70,6 +70,7 @@ brew cask install screenflow
 brew cask install zoomus
 brew cask install postman
 brew cask install macdown
+brew cask install 1password
 
 fancy_echo "Installing Code Editors"
 source ./atom.sh
