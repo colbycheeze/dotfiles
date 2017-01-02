@@ -18,7 +18,7 @@
       "solarized-light-syntax"
     ]
   editor:
-    fontSize: 15
+    fontSize: 13
     invisibles: {}
     preferredLineLength: 100
     scrollPastEnd: true

@@ -48,12 +48,15 @@ pip3 install neovim
 brew install chrome-cli
 brew install git
 brew install hub
-brew install redis
-brew install postgresql
 brew install rbenv
 brew install ruby-build
 brew install imagemagick
 brew install heroku
+
+brew install postgresql
+brew services start postgresql
+brew install redis
+brew services start redis
 
 brew tap caskroom/cask
 brew cask install mongodb
