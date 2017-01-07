@@ -98,4 +98,4 @@ nvm alias default node
 
 fancy_echo "Installing global npm packages"
 npm install -g npm@latest
-npm install -g redux-cli gulp create-react-app npm-check-updates babel-cli bower browser-sync
+npm install -g npm-check-updates browser-sync
