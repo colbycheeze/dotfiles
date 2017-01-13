@@ -20,17 +20,6 @@
 # Atom Flight Manual:
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
-'.source.html, .source.dustjs, .source.dust':
-  'test':
-    'prefix': 'blah'
-    'body': 'test complete $1'
-  'Class':
-    'prefix': '.'
-    'body': 'class="$1"'
-  'ID':
-    'prefix': '#'
-    'body': 'id="$1"'
-
 '.source.js, .source.javascript, .source.jsx':
   'Block Comment':
     'prefix': 'bcom'
@@ -38,4 +27,262 @@
         // ------------------------------------
         // $1
         // ------------------------------------
+        """
+
+  'className':
+    'prefix': '.'
+    'body': 'className="$1"'
+
+  'className: CSS Module':
+    'prefix': '.m'
+    'body': 'className={classes.$1}'
+
+  'import from':
+    'prefix': 'imp'
+    'body': "import ${1:ComponentName} from '${2:./pathto/ComponentName}'"
+
+  'Validate Children':
+    'prefix': 'children'
+    'body': "children: PT.oneOfType([PT.element, PT.arrayOf(PT.element)])"
+
+  'Function':
+    'prefix': 'f'
+    'body': """
+        ${1:doSomething} = (${2:param1, param2}) => {
+          ${3:// do some things}
+        }
+    """
+  'Element Ref':
+    'prefix': 'ref'
+    'body': 'ref={element => { this.${1:refName} = element }}'
+
+  'React Class Starter':
+    'prefix': 'rcc'
+    'body': """
+        import React, { PureComponent, PropTypes as PT } from 'react'
+
+        export default class ${1:ComponentName} extends PureComponent {
+          static propTypes = {
+            name: PT.string,
+          }
+
+          static defaultProps = {
+            name: 'Colby',
+          }
+
+          render = () => {
+            const { name } = this.props
+
+            return (
+              <div>
+                Hello {name}
+              </div>
+            )
+          }
+        }
+        """
+
+  'Redux Factory Starter':
+    'prefix': 'redfact'
+    'body': """
+        import { MODULE_NAME } from './reduxModuleStarter'
+
+        export const snippetData = {
+          1: {
+            id: '1',
+            isAmazing: true,
+            name: 'Amazing Data',
+            awards: ['1', '2', '3', '4'],
+          },
+          2: {
+            id: '2',
+            isAmazing: false,
+            name: 'Failure Data',
+            awards: [],
+          },
+        }
+
+        export default {
+          [MODULE_NAME]: {
+            snippetData,
+            isLoading: false,
+          },
+        }
+        """
+
+  'Redux Connect':
+    'prefix': 'redcon'
+    'body': """
+        import { connect } from 'react-redux'
+        import { selectThing } from '../modules/things'
+
+        const mapStateToProps = (state, ownProps) => ({
+          name: selectThing(state, ownProps.id).name,
+          createdAt: selectThing(state, ownProps.id).createdAt,
+        })
+
+        const actions = {
+          doSomethingWithThing,
+        }
+
+        export default connect(mapStateToProps, actions)(${1:ComponentName})
+        """
+
+  'Mocked Storybook Starter':
+    'prefix': 'stbm'
+    'body': """
+        import React from 'react'
+        import { storiesOf, action } from '@kadira/storybook'
+
+        import { Provider } from 'react-redux'
+        import reduxThunk from 'redux-thunk'
+        import configureStore from 'redux-mock-store'
+        import axios from 'axios'
+        import MockAdapter from 'axios-mock-adapter'
+
+        import snippetFactory from './factoryStarter.js'
+
+        const mockStore = configureStore([reduxThunk])(snippetFactory)
+        const mockApi = new MockAdapter(axios)
+        mockApi.onAny().reply(200, {})
+
+        storiesOf('${1:Feature Name}', module)
+          .addDecorator((story) => (
+            <Provider store={mockStore}>
+              {story()}
+            </Provider>
+          ))
+          .add('component with mocked store', () => (
+            <div onClick={action('You clicked a div of text!')}>I am a component of some sort</div>
+          ))
+        """
+
+  'Storybook Starter':
+    'prefix': 'stb'
+    'body': """
+        import React from 'react'
+        import { storiesOf, action } from '@kadira/storybook'
+
+        storiesOf('${1:Feature Name}', module)
+          .addDecorator((story) => (
+            <div>
+              <h1>I decorate the story!</h1>
+              {story()}
+            </div>
+          ))
+          .add('Basic story', () => (
+            <div onClick={action('You clicked a div of text!')}>I am a component of some sort</div>
+          ))
+        """
+
+  'Schema Starter':
+    'prefix': 'schs'
+    'body': """
+        import { schema } from 'normalizr'
+
+        const entity = new schema.Entity('entities', {
+          awards: [award],
+        }, {
+          processStrategy: (value) => ({
+              id: value.id,
+              name: value.attributes.name,
+              isAmazing: value.attributes.is_amazing,
+              awards: value.awards,
+            }),
+        })
+
+        const child = new schema.Entity('children')
+
+        export default {
+          data: [entity],
+        }
+        """
+
+  'Redux Module':
+    'prefix': 'rms'
+    'body': """
+        import { normalize } from 'normalizr'
+        import { createSelector } from 'reselect'
+        import { pickBy } from 'lodash'
+
+        import api from 'api_module'
+
+        import ${2:moduleName}Schema from './${2:moduleName}.schema'
+
+        // ------------------------------------
+        // Selectors
+        // ------------------------------------
+        const APP = '${1:appName}'
+        const MODULE = '${2:moduleName}'
+        export const MODULE_NAME = `${APP}::${MODULE}`
+        export const ${2:moduleName}Selector = state => state[MODULE_NAME].snippetData
+        export const amazing${2:moduleName}Selector = createSelector(
+          ${2:moduleName}Selector,
+          (things) => pickBy(things, thing => thing.isAmazing)
+        )
+
+        // ------------------------------------
+        // Constants
+        // ------------------------------------
+        export const FETCH_DATA = `${APP}/${MODULE}/FETCH_DATA`
+        export const FETCH_DATA_SUCCESS = `${APP}/${MODULE}/FETCH_DATA_SUCCESS`
+        export const FETCH_DATA_ERROR = `${APP}/${MODULE}/FETCH_DATA_ERROR`
+
+        // ------------------------------------
+        // Actions & Creators
+        // ------------------------------------
+        const fetchDataStart = () => ({
+          type: FETCH_DATA,
+        })
+
+        const fetchDataSuccess = response => ({
+          type: FETCH_DATA_SUCCESS,
+          payload: normalize(response, ${2:moduleName}Schema),
+        })
+
+        export const fetchData = () => dispatch => {
+          dispatch(fetchDataStart())
+
+          // This is a fake call...obviously (just an example)
+          api.getData()
+          .then(({ data }) => {
+            dispatch(fetchDataSuccess(data))
+          })
+          .catch(error => {
+            // Always remember to handle your errors!
+            console.log('Error happened: ', error)
+          })
+        }
+
+        // ------------------------------------
+        // Action Handlers & Reducer
+        // ------------------------------------
+        const ACTION_HANDLERS = {
+          [FETCH_DATA]: (state) => ({
+            ...state,
+            isLoading: true,
+          }),
+          [FETCH_DATA_SUCCESS]: (state, { payload }) => ({
+            ...state,
+            ${2:moduleName}Data: payload.entities.data || [],
+            isLoading: false,
+          }),
+          [FETCH_DATA_ERROR]: (state) => ({
+            ...state,
+            isLoading: false,
+          }),
+        }
+
+        const initialState = {
+          ${2:moduleName}Data: {},
+          isLoading: false,
+        }
+
+        export const ${2:moduleName}Reducer = (state = initialState, action) => {
+          const handler = ACTION_HANDLERS[action.type]
+
+          return handler ? handler(state, action) : state
+        }
+
+        export default ${2:moduleName}Reducer
         """

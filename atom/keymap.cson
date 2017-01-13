@@ -43,3 +43,7 @@
   't': 'tree-view:open-selected-entry'
   'd': 'tree-view:remove'
   'c': 'tree-view:duplicate'
+
+'atom-workspace atom-text-editor.autocomplete-active':
+  'tab': 'snippets:next-tab-stop'
+  'shift-tab': 'snippets:previous-tab-stop'

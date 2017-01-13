@@ -2,6 +2,9 @@
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
+# Setup for Yarn
+export PATH="$PATH:`yarn global bin`"
+
 # modify the prompt to contain git branch name if applicable
 git_prompt_info() {
   current_branch=$(git current-branch 2> /dev/null)
@@ -20,7 +23,7 @@ git_prompt_info() {
 }
 setopt promptsubst
 
-export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$(echo " 👁 🐝 𝐌 : ")%}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) ➝  '
+export PS1='${SSH_CONNECTION+"%{$fg_bold[green]%}%n@%m:"}%{$(echo " 🧀 : ")%}%{$fg_bold[blue]%}%c%{$reset_color%}$(git_prompt_info) ➝  '
 
 # load our own completion functions
 fpath=(~/.zsh/completion $fpath)

@@ -25,6 +25,10 @@
   "exception-reporting":
     userId: "a58af052-dcc6-4331-81cb-59b673e99ccc"
   fonts: {}
+  gist:
+    tokenFile: "~/.atom/gist-it.token"
+  "gist-it":
+    openAfterCreate: true
   "git-blame":
     showOnlyLastNames: false
   "git-diff": {}

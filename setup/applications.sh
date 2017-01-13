@@ -99,3 +99,8 @@ nvm alias default node
 fancy_echo "Installing global npm packages"
 npm install -g npm@latest
 npm install -g npm-check-updates browser-sync
+
+fancy_echo "Installing Yarn"
+brew install yarn
+export PATH="$PATH:`yarn global bin`"
+
