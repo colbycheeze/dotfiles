@@ -19,7 +19,7 @@ if brew list | grep -Fq brew-cask; then
  brew uninstall --force brew-cask
 fi
 
-brew update
+brew update && brew install `brew outdated`
 
 fancy_echo "Installing CLI tools"
 brew install openssl
@@ -38,7 +38,6 @@ brew install tree
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 fancy_echo "Installing python and setting up Neovim"
-brew install python
 brew install python3
 brew install neovim/neovim/neovim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
@@ -74,9 +73,6 @@ brew cask install zoomus
 brew cask install postman
 brew cask install macdown
 brew cask install 1password
-
-fancy_echo "Installing Code Editors"
-source ./atom.sh
 
 fancy_echo "Installing Misc Apps"
 brew cask install discord
