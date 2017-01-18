@@ -21,6 +21,138 @@
 # https://atom.io/docs/latest/using-atom-basic-customization#cson
 
 '.source.js, .source.javascript, .source.jsx':
+  'describe block':
+    'prefix': 'desc'
+    'body': """
+        describe('${1:Unit being tested}', () => {
+          $2
+        })
+        """
+
+  'it block':
+    'prefix': 'it'
+    'body': """
+        it('${1:will do something}', () => {
+          $2
+        })
+        """
+
+  'expect':
+    'prefix': 'xp'
+    'body': "expect($1).$2()"
+
+  'expect.toBe':
+    'prefix': 'xp='
+    'body': "expect($1).toBe($2)"
+
+  'expect.toBeTruthy':
+    'prefix': 'xpt'
+    'body': "expect($1).toBeTruthy($2)"
+
+  'expect.toBeFalsy':
+    'prefix': 'xpf'
+    'body': "expect($1).toBeFalsy($2)"
+
+  'expect.toBeDefined':
+    'prefix': 'xpd'
+    'body': "expect($1).toBeDefined()"
+
+  'expect.toBeNull':
+    'prefix': 'xpn'
+    'body': "expect($1).toBeNull()"
+
+  'expect.toBeGreaterThan':
+    'prefix': 'xp>'
+    'body': "expect($1).toBeGreaterThan($2)"
+
+  'expect.toBeGreaterThanOrEqual':
+    'prefix': 'xp>='
+    'body': "expect($1).toBeGreaterThanOrEqual($2)"
+
+  'expect.toBeLessThan':
+    'prefix': 'xp<'
+    'body': "expect($1).toBeLessThan($2)"
+
+  'expect.toBeLessThanOrEqual':
+    'prefix': 'xp<='
+    'body': "expect($1).toBeLessThanOrEqual($2)"
+
+  'expect.toEqual (Deep Equal)':
+    'prefix': 'xpde'
+    'body': "expect(${1:{key: value}}).toEqual($2)"
+
+  'expect.toMatch (Regexp)':
+    'prefix': 'xpreg'
+    'body': "expect(${1:'string'}).toMatch(${2:/matcher/})"
+
+  'expect.toHaveLength':
+    'prefix': 'xplen'
+    'body': "expect(${1:[1, 2, 3]}).toHaveLength(${2:3})"
+
+  'expect.toHaveLength':
+    'prefix': 'xplen'
+    'body': "expect(${1:[1, 2, 3]}).toHaveLength(${2:3})"
+
+  'expect.toContain (item in array)':
+    'prefix': 'xpin'
+    'body': "expect(${1:['orange', 'apple', 'pineapple']}).toContain(${2:'apple'})"
+
+  'expect.toContainEqual (deep equal in array)':
+    'prefix': 'xpinde'
+    'body': "expect(${1:[object1, object2]}).toContainEqual(${2:{age: 21}})"
+
+  'expect.toMatchObject (match a subset of key/val in object)':
+    'prefix': 'xpmo'
+    'body': "expect(${1:objectWithManyKeys}).toMatchObject(${2:objectWithSomeKeys})"
+
+  'expect.toThrow':
+    'prefix': 'xpthrow'
+    'body': "expect(() => ${1:someFunction}($2)).toThrow()"
+
+  'expect.toBeCalled':
+    'prefix': 'xptbc'
+    'body': "expect(${1:someFunction}).toBeCalled()"
+
+  'expect.toBeCalledWith':
+    'prefix': 'xptbcw'
+    'body': "expect(${1:someFunction}).toBeCalledWith(${2:'value'})"
+
+  'expect.toHaveBeenCalledTimes':
+    'prefix': 'xptbct'
+    'body': "expect(${1:someFunction}).toHaveBeenCalledTimes(${2:numberOfTimes})"
+
+  'expect.toHaveBeenLastCalledWith':
+    'prefix': 'xptbcwl'
+    'body': "expect(${1:someFunction}).toHaveBeenLastCalledWith(${2:'value'})"
+
+  'expect.toMatchSnapshot':
+    'prefix': 'xpsnap'
+    'body': "expect(${1:wrapper}).toMatchSnapshot()"
+
+  '(Enzyme) Shallow':
+    'prefix': 'shallow'
+    'body': """
+        const wrapper = shallow(<${1:ComponentName} />)
+        $2
+        expect(wrapper).toMatchSnapshot()
+        """
+
+  '(Enzyme) Mount':
+    'prefix': 'mount'
+    'body': """
+        const wrapper = mount(<${1:ComponentName} />)
+        $2
+        expect(wrapper).toMatchSnapshot()
+        """
+
+  '(Enzyme) Render':
+    'prefix': 'render'
+    'body': """
+        const wrapper = render(<${1:ComponentName} />)
+        $2
+        expect(wrapper).toMatchSnapshot()
+        """
+
   'Block Comment':
     'prefix': 'bcom'
     'body': """
