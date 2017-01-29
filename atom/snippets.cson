@@ -1,26 +1,34 @@
-# Your snippets
-#
-# Atom snippets allow you to enter a simple prefix in the editor and hit tab to
-# expand the prefix into a larger code block with templated values.
-#
-# You can create a new snippet in this file by typing "snip" and then hitting
-# tab.
-#
-# An example CoffeeScript snippet to expand log to console.log:
-#
-# '.source.coffee':
-#   'Console log':
-#     'prefix': 'log'
-#     'body': 'console.log $1'
-#
-# Each scope (e.g. '.source.coffee' above) can only be declared once.
-#
-# This file uses CoffeeScript Object Notation (CSON).
-# If you are unfamiliar with CSON, you can read more about it in the
-# Atom Flight Manual:
-# https://atom.io/docs/latest/using-atom-basic-customization#cson
-
+# Custom snippets
 '.source.js, .source.javascript, .source.jsx':
+  'Console log':
+    'prefix': 'log'
+    'body': 'console.log($1)'
+
+  'Console warning':
+    'prefix': 'warn'
+    'body': 'console.warning($1)'
+
+  'Console error':
+    'prefix': 'error'
+    'body': 'console.error($1)'
+
+  'Component Setup for Tests':
+    'prefix': 'setup'
+    'body': """
+        const setup = () => {
+          const spies = {
+            someFunction: jest.fn(),
+          }
+
+          const props = {
+            id: '1',
+            isLoading: true,
+          }
+
+          return { spies, props }
+        }
+        """
+
   'describe block':
     'prefix': 'desc'
     'body': """
@@ -132,24 +140,27 @@
   '(Enzyme) Shallow':
     'prefix': 'shallow'
     'body': """
-        const wrapper = shallow(<${1:ComponentName} />)
-        $2
+        const { props, spies } = setup()
+        const wrapper = shallow(<${1:ComponentName} {...props} />)
+
         expect(wrapper).toMatchSnapshot()
         """
 
   '(Enzyme) Mount':
     'prefix': 'mount'
     'body': """
-        const wrapper = mount(<${1:ComponentName} />)
-        $2
+        const { props, spies } = setup()
+        const wrapper = mount(<${1:ComponentName} {...props} />)
+
         expect(wrapper).toMatchSnapshot()
         """
 
   '(Enzyme) Render':
     'prefix': 'render'
     'body': """
-        const wrapper = render(<${1:ComponentName} />)
-        $2
+        const { props, spies } = setup()
+        const wrapper = render(<${1:ComponentName} {...props} />)
+        
         expect(wrapper).toMatchSnapshot()
         """
 

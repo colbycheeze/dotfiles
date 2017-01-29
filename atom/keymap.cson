@@ -2,7 +2,7 @@
 # * https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings
 # * https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 
-'atom-text-editor.vim-mode:not(.insert-mode)':
+'atom-text-editor.vim-mode-plus:not(.insert-mode)':
   'ctrl-h': 'window:focus-pane-on-left'
   'ctrl-l': 'window:focus-pane-on-right'
   'ctrl-k': 'window:focus-pane-on-top'
@@ -12,10 +12,10 @@
   # '%': 'bracket-matcher:go-to-matching-bracket'
   # '%': 'vim-mode:bracket-matching-motion'
 
-'atom-text-editor.vim-mode.insert-mode':
+'atom-text-editor.vim-mode-plus.insert-mode':
   'ctrl-;': 'custom:semicolonize'
 
-'atom-text-editor.vim-mode.normal-mode':
+'atom-text-editor.vim-mode-plus.normal-mode':
   'space s': 'window:save-all'
   'space x': 'core:close'
   'enter': 'editor:newline-below'
