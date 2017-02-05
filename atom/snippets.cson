@@ -49,91 +49,91 @@
     'prefix': 'xp'
     'body': "expect($1).$2()"
 
-  'expect.toBe':
+  'toBe':
     'prefix': 'xp='
     'body': "expect($1).toBe($2)"
 
-  'expect.toBeTruthy':
+  'toBeTruthy':
     'prefix': 'xpt'
     'body': "expect($1).toBeTruthy($2)"
 
-  'expect.toBeFalsy':
+  'toBeFalsy':
     'prefix': 'xpf'
     'body': "expect($1).toBeFalsy($2)"
 
-  'expect.toBeDefined':
+  'toBeDefined':
     'prefix': 'xpd'
     'body': "expect($1).toBeDefined()"
 
-  'expect.toBeNull':
+  'toBeNull':
     'prefix': 'xpn'
     'body': "expect($1).toBeNull()"
 
-  'expect.toBeGreaterThan':
+  'toBeGreaterThan':
     'prefix': 'xp>'
-    'body': "expect($1).toBeGreaterThan($2)"
+    'body': "expect(${1:aNumber}).toBeGreaterThan(${2:anotherNumber})"
 
-  'expect.toBeGreaterThanOrEqual':
+  'toBeGreaterThanOrEqual':
     'prefix': 'xp>='
-    'body': "expect($1).toBeGreaterThanOrEqual($2)"
+    'body': "expect(${1:aNumber}).toBeGreaterThanOrEqual(${2:anotherNumber})"
 
-  'expect.toBeLessThan':
+  'toBeLessThan':
     'prefix': 'xp<'
-    'body': "expect($1).toBeLessThan($2)"
+    'body': "expect(${1:aNumber}).toBeLessThan(${2:anotherNumber})"
 
-  'expect.toBeLessThanOrEqual':
+  'toBeLessThanOrEqual':
     'prefix': 'xp<='
-    'body': "expect($1).toBeLessThanOrEqual($2)"
+    'body': "expect(${1:aNumber}).toBeLessThanOrEqual(${2:anotherNumber})"
 
-  'expect.toEqual (Deep Equal)':
+  'toEqual (Deep Equal)':
     'prefix': 'xpde'
-    'body': "expect(${1:{key: value}}).toEqual($2)"
+    'body': "expect(${1:deepNestedObject}).toEqual(${2:matchingObject})"
 
-  'expect.toMatch (Regexp)':
+  'toMatch (Regexp)':
     'prefix': 'xpreg'
     'body': "expect(${1:'string'}).toMatch(${2:/matcher/})"
 
-  'expect.toHaveLength':
+  'toHaveLength':
     'prefix': 'xplen'
     'body': "expect(${1:[1, 2, 3]}).toHaveLength(${2:3})"
 
-  'expect.toHaveLength':
+  'toHaveLength':
     'prefix': 'xplen'
     'body': "expect(${1:[1, 2, 3]}).toHaveLength(${2:3})"
 
-  'expect.toContain (item in array)':
+  'toContain (item in array)':
     'prefix': 'xpin'
     'body': "expect(${1:['orange', 'apple', 'pineapple']}).toContain(${2:'apple'})"
 
-  'expect.toContainEqual (deep equal in array)':
+  'toContainEqual (deep equal in array)':
     'prefix': 'xpinde'
     'body': "expect(${1:[object1, object2]}).toContainEqual(${2:{age: 21}})"
 
-  'expect.toMatchObject (match a subset of key/val in object)':
+  'toMatchObject (match a subset of key/val in object)':
     'prefix': 'xpmo'
     'body': "expect(${1:objectWithManyKeys}).toMatchObject(${2:objectWithSomeKeys})"
 
-  'expect.toThrow':
+  'toThrow':
     'prefix': 'xpthrow'
     'body': "expect(() => ${1:someFunction}($2)).toThrow()"
 
-  'expect.toBeCalled':
+  'toBeCalled':
     'prefix': 'xptbc'
     'body': "expect(${1:someFunction}).toBeCalled()"
 
-  'expect.toBeCalledWith':
+  'toBeCalledWith':
     'prefix': 'xptbcw'
     'body': "expect(${1:someFunction}).toBeCalledWith(${2:'value'})"
 
-  'expect.toHaveBeenCalledTimes':
+  'toHaveBeenCalledTimes':
     'prefix': 'xptbct'
     'body': "expect(${1:someFunction}).toHaveBeenCalledTimes(${2:numberOfTimes})"
 
-  'expect.toHaveBeenLastCalledWith':
+  'toHaveBeenLastCalledWith':
     'prefix': 'xptbcwl'
     'body': "expect(${1:someFunction}).toHaveBeenLastCalledWith(${2:'value'})"
 
-  'expect.toMatchSnapshot':
+  'toMatchSnapshot':
     'prefix': 'xpsnap'
     'body': "expect(${1:wrapper}).toMatchSnapshot()"
 
@@ -160,7 +160,7 @@
     'body': """
         const { props, spies } = setup()
         const wrapper = render(<${1:ComponentName} {...props} />)
-        
+
         expect(wrapper).toMatchSnapshot()
         """
 
@@ -170,6 +170,14 @@
         // ------------------------------------
         // $1
         // ------------------------------------
+        """
+
+  'index':
+    'prefix': 'index'
+    'body': """
+        import ${1:ComponentName} from './$1'
+
+        export default $1
         """
 
   'className':

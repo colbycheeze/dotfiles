@@ -14,8 +14,8 @@
     projectHome: "/Users/colbywilliams/projects"
     telemetryConsent: "limited"
     themes: [
-      "one-light-ui"
-      "solarized-light-syntax"
+      "one-dark-ui"
+      "solarized-dark-syntax"
     ]
   editor:
     fontSize: 13
@@ -38,7 +38,6 @@
     errorPanelHeight: 87
   "linter-eslint":
     disableEslintIgnore: true
-    disableWhenNoEslintConfig: false
     fixOnSave: true
     globalNodePath: "/usr/local"
   "merge-conflicts":
@@ -64,6 +63,7 @@
   "sync-settings":
     _analyticsUserId: "971b17cd-cd84-406f-aa72-4dd819000ce2"
   "tree-view":
+    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   "vim-mode":
     useSmartcaseForSearch: true
