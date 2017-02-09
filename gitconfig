@@ -20,6 +20,9 @@
   # Rename local branch
   rn = "!f() { git branch -m $1; }; f"
 
+  # Sync current branch by rebasing on top of develop
+  scb = !git pull origin develop --rebase
+
   # Sync upstream with origin remote
   gg = "!f() { old=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $old; }; f"
 

@@ -6,7 +6,7 @@
 
   'Console warning':
     'prefix': 'warn'
-    'body': 'console.warning($1)'
+    'body': 'console.warn($1)'
 
   'Console error':
     'prefix': 'error'
