@@ -1,4 +1,20 @@
-# Custom snippets
+'.source.sass, .source.css.sass, .source.css.scss, .source.scss, .source.css':
+  'Big Block Comment':
+    'prefix': 'bbcom'
+    'body': """
+        // ====================================
+        // $1
+        // ====================================
+        """
+
+  'Block Comment':
+    'prefix': 'bcom'
+    'body': """
+        // ------------------------------------
+        // $1
+        // ------------------------------------
+        """
+
 '.source.js, .source.javascript, .source.jsx':
   'Console log':
     'prefix': 'log'
@@ -164,6 +180,14 @@
         expect(wrapper).toMatchSnapshot()
         """
 
+  'Big Block Comment':
+    'prefix': 'bbcom'
+    'body': """
+        // ====================================
+        // $1
+        // ====================================
+        """
+
   'Block Comment':
     'prefix': 'bcom'
     'body': """
@@ -182,10 +206,6 @@
 
   'className':
     'prefix': '.'
-    'body': 'className="$1"'
-
-  'className: CSS Module':
-    'prefix': '.m'
     'body': 'className={classes.$1}'
 
   'import from':
@@ -261,6 +281,15 @@
         }
         """
 
+  'Redux Action Group':
+    'prefix': 'action'
+    'body': """
+        export const ${1:ACTION_NAME} = `${ACCOUNT_KEY}/${1:ACTION_NAME}`
+        export const ${2:actionNameFunction} = () => ({ type: ${1:ACTION_NAME} })
+        actions[${1:ACTION_NAME}] = state => merge({}, state, {
+          $3
+        })
+        """
   'Redux Connect':
     'prefix': 'redcon'
     'body': """
