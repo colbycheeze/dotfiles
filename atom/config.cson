@@ -1,7 +1,11 @@
 "*":
   "atom-ternjs":
     useSnippets: true
-  "autocomplete-modules": {}
+  "autocomplete-modules":
+    vendors: [
+      "node_modules"
+      "src"
+    ]
   build:
     saveOnBuild: true
   core:
@@ -34,12 +38,13 @@
   "git-diff": {}
   "language-babel":
     autoIndentJSX: true
-  linter:
-    errorPanelHeight: 87
+  linter: {}
   "linter-eslint":
     disableEslintIgnore: true
     fixOnSave: true
     globalNodePath: "/usr/local"
+  "linter-ui-default":
+    tooltipFollows: "Keyboard"
   "merge-conflicts":
     gitPath: "/usr/local/bin/git"
   "one-dark-ui": {}

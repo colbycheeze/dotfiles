@@ -284,12 +284,61 @@
   'Redux Action Group':
     'prefix': 'action'
     'body': """
-        export const ${1:ACTION_NAME} = `${ACCOUNT_KEY}/${1:ACTION_NAME}`
-        export const ${2:actionNameFunction} = () => ({ type: ${1:ACTION_NAME} })
-        actions[${1:ACTION_NAME}] = state => merge({}, state, {
-          $3
+        export const ${1:ACTION_NAME} = `${KEY}/${1:ACTION_NAME}`
+        export const ${2:actionNameFunction} = (data) => ({
+          type: ${1:ACTION_NAME},
+          payload: { data }
         })
+        actions[${1:ACTION_NAME}] = (state, { payload }) => { ...state,
+
+        }
+        export const ${3:thunkName} = () => async dispatch => {
+          dispatch(${2:actionNameFunction}())
+        }
         """
+
+  'Redux Async Action Group':
+    'prefix': 'aaction'
+    'body': """
+        export const ${1:ACTION_NAME}_REQUEST = `${KEY}/${1:ACTION_NAME}_REQUEST`
+        export const ${1:ACTION_NAME}_SUCCESS = `${KEY}/${1:ACTION_NAME}_SUCCESS`
+        export const ${1:ACTION_NAME}_ERROR = `${KEY}/${1:ACTION_NAME}_ERROR`
+
+        export const ${2:actionName}Request = (data) => ({
+          type: ${1:ACTION_NAME}_REQUEST,
+          payload: { data },
+        })
+        export const ${2:actionName}Success = (data) => ({
+          type: ${1:ACTION_NAME}_SUCCESS,
+          payload: { data },
+        })
+        export const ${2:actionName}Error = (error) => ({
+          type: ${1:ACTION_NAME}_ERROR,
+          payload: { error },
+        })
+
+        actions[${1:ACTION_NAME}_REQUEST] = (state, { payload }) => { ...state,
+
+        }
+        actions[${1:ACTION_NAME}_SUCCESS] = (state, { payload }) => { ...state,
+
+        }
+        actions[${1:ACTION_NAME}_ERROR] = (state, { payload }) => { ...state,
+
+        }
+
+        export const ${3:thunkName} = (data) => async dispatch => {
+          try {
+            dispatch(${2:actionName}Request(data))
+            // const response = await api.doSomething(data)
+
+            dispatch(${2:actionName}Success(response.data.data))
+          } catch (error) {
+            dispatch(${2:actionName}Error(error))
+          }
+        }
+        """
+
   'Redux Connect':
     'prefix': 'redcon'
     'body': """
