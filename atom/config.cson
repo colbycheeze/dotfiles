@@ -22,7 +22,7 @@
       "solarized-dark-syntax"
     ]
   editor:
-    fontSize: 13
+    fontSize: 18
     invisibles: {}
     preferredLineLength: 100
     scrollPastEnd: true
@@ -44,6 +44,8 @@
     fixOnSave: true
     globalNodePath: "/usr/local"
   "linter-ui-default":
+    panelHeight: 143
+    showPanel: true
     tooltipFollows: "Keyboard"
   "merge-conflicts":
     gitPath: "/usr/local/bin/git"

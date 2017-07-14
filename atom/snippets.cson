@@ -34,14 +34,14 @@
         const setup = () => {
           const spies = {
             someFunction: jest.fn(),
-          }
+          };
 
           const props = {
             id: '1',
             isLoading: true,
-          }
+          };
 
-          return { spies, props }
+          return { spies, props };
         }
         """
 
@@ -50,7 +50,7 @@
     'body': """
         describe('${1:Unit being tested}', () => {
           $2
-        })
+        });
         """
 
   'it block':
@@ -58,126 +58,126 @@
     'body': """
         it('${1:will do something}', () => {
           $2
-        })
+        });
         """
 
   'expect':
     'prefix': 'xp'
-    'body': "expect($1).$2()"
+    'body': "expect($1).$2();"
 
   'toBe':
     'prefix': 'xp='
-    'body': "expect($1).toBe($2)"
+    'body': "expect($1).toBe($2);"
 
   'toBeTruthy':
     'prefix': 'xpt'
-    'body': "expect($1).toBeTruthy($2)"
+    'body': "expect($1).toBeTruthy($2);"
 
   'toBeFalsy':
     'prefix': 'xpf'
-    'body': "expect($1).toBeFalsy($2)"
+    'body': "expect($1).toBeFalsy($2);"
 
   'toBeDefined':
     'prefix': 'xpd'
-    'body': "expect($1).toBeDefined()"
+    'body': "expect($1).toBeDefined();"
 
   'toBeNull':
     'prefix': 'xpn'
-    'body': "expect($1).toBeNull()"
+    'body': "expect($1).toBeNull();"
 
   'toBeGreaterThan':
     'prefix': 'xp>'
-    'body': "expect(${1:aNumber}).toBeGreaterThan(${2:anotherNumber})"
+    'body': "expect(${1:aNumber}).toBeGreaterThan(${2:anotherNumber});"
 
   'toBeGreaterThanOrEqual':
     'prefix': 'xp>='
-    'body': "expect(${1:aNumber}).toBeGreaterThanOrEqual(${2:anotherNumber})"
+    'body': "expect(${1:aNumber}).toBeGreaterThanOrEqual(${2:anotherNumber});"
 
   'toBeLessThan':
     'prefix': 'xp<'
-    'body': "expect(${1:aNumber}).toBeLessThan(${2:anotherNumber})"
+    'body': "expect(${1:aNumber}).toBeLessThan(${2:anotherNumber});"
 
   'toBeLessThanOrEqual':
     'prefix': 'xp<='
-    'body': "expect(${1:aNumber}).toBeLessThanOrEqual(${2:anotherNumber})"
+    'body': "expect(${1:aNumber}).toBeLessThanOrEqual(${2:anotherNumber});"
 
   'toEqual (Deep Equal)':
     'prefix': 'xpde'
-    'body': "expect(${1:deepNestedObject}).toEqual(${2:matchingObject})"
+    'body': "expect(${1:deepNestedObject}).toEqual(${2:matchingObject});"
 
   'toMatch (Regexp)':
     'prefix': 'xpreg'
-    'body': "expect(${1:'string'}).toMatch(${2:/matcher/})"
+    'body': "expect(${1:'string'}).toMatch(${2:/matcher/});"
 
   'toHaveLength':
     'prefix': 'xplen'
-    'body': "expect(${1:[1, 2, 3]}).toHaveLength(${2:3})"
+    'body': "expect(${1:[1, 2, 3]}).toHaveLength(${2:3});"
 
   'toHaveLength':
     'prefix': 'xplen'
-    'body': "expect(${1:[1, 2, 3]}).toHaveLength(${2:3})"
+    'body': "expect(${1:[1, 2, 3]}).toHaveLength(${2:3});"
 
   'toContain (item in array)':
     'prefix': 'xpin'
-    'body': "expect(${1:['orange', 'apple', 'pineapple']}).toContain(${2:'apple'})"
+    'body': "expect(${1:['orange', 'apple', 'pineapple']}).toContain(${2:'apple'});"
 
   'toContainEqual (deep equal in array)':
     'prefix': 'xpinde'
-    'body': "expect(${1:[object1, object2]}).toContainEqual(${2:{age: 21}})"
+    'body': "expect(${1:[object1, object2]}).toContainEqual(${2:{age: 21}});"
 
   'toMatchObject (match a subset of key/val in object)':
     'prefix': 'xpmo'
-    'body': "expect(${1:objectWithManyKeys}).toMatchObject(${2:objectWithSomeKeys})"
+    'body': "expect(${1:objectWithManyKeys}).toMatchObject(${2:objectWithSomeKeys});"
 
   'toThrow':
     'prefix': 'xpthrow'
-    'body': "expect(() => ${1:someFunction}($2)).toThrow()"
+    'body': "expect(() => ${1:someFunction}($2)).toThrow();"
 
   'toBeCalled':
     'prefix': 'xptbc'
-    'body': "expect(${1:someFunction}).toBeCalled()"
+    'body': "expect(${1:someFunction}).toBeCalled();"
 
   'toBeCalledWith':
     'prefix': 'xptbcw'
-    'body': "expect(${1:someFunction}).toBeCalledWith(${2:'value'})"
+    'body': "expect(${1:someFunction}).toBeCalledWith(${2:'value'});"
 
   'toHaveBeenCalledTimes':
     'prefix': 'xptbct'
-    'body': "expect(${1:someFunction}).toHaveBeenCalledTimes(${2:numberOfTimes})"
+    'body': "expect(${1:someFunction}).toHaveBeenCalledTimes(${2:numberOfTimes});"
 
   'toHaveBeenLastCalledWith':
     'prefix': 'xptbcwl'
-    'body': "expect(${1:someFunction}).toHaveBeenLastCalledWith(${2:'value'})"
+    'body': "expect(${1:someFunction}).toHaveBeenLastCalledWith(${2:'value'});"
 
   'toMatchSnapshot':
     'prefix': 'xpsnap'
-    'body': "expect(${1:wrapper}).toMatchSnapshot()"
+    'body': "expect(${1:wrapper}).toMatchSnapshot();"
 
   '(Enzyme) Shallow':
     'prefix': 'shallow'
     'body': """
-        const { props, spies } = setup()
-        const wrapper = shallow(<${1:ComponentName} {...props} />)
+        const { props, spies } = setup();
+        const wrapper = shallow(<${1:ComponentName} {...props} />);
 
-        expect(wrapper).toMatchSnapshot()
+        expect(wrapper).toMatchSnapshot();
         """
 
   '(Enzyme) Mount':
     'prefix': 'mount'
     'body': """
-        const { props, spies } = setup()
-        const wrapper = mount(<${1:ComponentName} {...props} />)
+        const { props, spies } = setup();
+        const wrapper = mount(<${1:ComponentName} {...props} />);
 
-        expect(wrapper).toMatchSnapshot()
+        expect(wrapper).toMatchSnapshot();
         """
 
   '(Enzyme) Render':
     'prefix': 'render'
     'body': """
-        const { props, spies } = setup()
-        const wrapper = render(<${1:ComponentName} {...props} />)
+        const { props, spies } = setup();
+        const wrapper = render(<${1:ComponentName} {...props} />);
 
-        expect(wrapper).toMatchSnapshot()
+        expect(wrapper).toMatchSnapshot();
         """
 
   'Big Block Comment':
@@ -199,9 +199,9 @@
   'index':
     'prefix': 'index'
     'body': """
-        import ${1:ComponentName} from './$1'
+        import ${1:ComponentName} from './$1';
 
-        export default $1
+        export default $1;
         """
 
   'className':
@@ -210,7 +210,7 @@
 
   'import from':
     'prefix': 'imp'
-    'body': "import ${1:ComponentName} from '${2:./pathto/ComponentName}'"
+    'body': "import ${1:ComponentName} from '${2:./pathto/ComponentName}';"
 
   'Validate Children':
     'prefix': 'children'
@@ -225,12 +225,13 @@
     """
   'Element Ref':
     'prefix': 'ref'
-    'body': 'ref={element => { this.${1:refName} = element }}'
+    'body': 'ref={element => { this.${1:refName} = element; }}'
 
   'React Class Starter':
     'prefix': 'rcc'
     'body': """
-        import React, { PureComponent, PropTypes as PT } from 'react'
+        import React, { PureComponent } from 'react';
+        import PT from 'prop-types';
 
         export default class ${1:ComponentName} extends PureComponent {
           static propTypes = {
@@ -242,13 +243,13 @@
           }
 
           render = () => {
-            const { name } = this.props
+            const { name } = this.props;
 
             return (
               <div>
                 Hello {name}
               </div>
-            )
+            );
           }
         }
         """
@@ -256,7 +257,7 @@
   'Redux Factory Starter':
     'prefix': 'redfact'
     'body': """
-        import { MODULE_NAME } from './reduxModuleStarter'
+        import { MODULE_NAME } from './reduxModuleStarter';
 
         export const snippetData = {
           1: {
@@ -284,57 +285,57 @@
   'Redux Action Group':
     'prefix': 'action'
     'body': """
-        export const ${1:ACTION_NAME} = `${KEY}/${1:ACTION_NAME}`
+        export const ${1:ACTION_NAME} = `${STORE_KEY}/${1:ACTION_NAME}`;
         export const ${2:actionNameFunction} = (data) => ({
           type: ${1:ACTION_NAME},
           payload: { data }
-        })
-        actions[${1:ACTION_NAME}] = (state, { payload }) => { ...state,
+        });
+        actions[${1:ACTION_NAME}] = (state, { payload }) => ({ ...state,
 
-        }
+        });
         export const ${3:thunkName} = () => async dispatch => {
           dispatch(${2:actionNameFunction}())
-        }
+        };
         """
 
   'Redux Async Action Group':
     'prefix': 'aaction'
     'body': """
-        export const ${1:ACTION_NAME}_REQUEST = `${KEY}/${1:ACTION_NAME}_REQUEST`
-        export const ${1:ACTION_NAME}_SUCCESS = `${KEY}/${1:ACTION_NAME}_SUCCESS`
-        export const ${1:ACTION_NAME}_ERROR = `${KEY}/${1:ACTION_NAME}_ERROR`
+        export const ${1:ACTION_NAME}_REQUEST = `${STORE_KEY}/${1:ACTION_NAME}_REQUEST`;
+        export const ${1:ACTION_NAME}_SUCCESS = `${STORE_KEY}/${1:ACTION_NAME}_SUCCESS`;
+        export const ${1:ACTION_NAME}_ERROR = `${STORE_KEY}/${1:ACTION_NAME}_ERROR`
 
         export const ${2:actionName}Request = (data) => ({
           type: ${1:ACTION_NAME}_REQUEST,
           payload: { data },
-        })
+        });
         export const ${2:actionName}Success = (data) => ({
           type: ${1:ACTION_NAME}_SUCCESS,
           payload: { data },
-        })
+        });
         export const ${2:actionName}Error = (error) => ({
           type: ${1:ACTION_NAME}_ERROR,
           payload: { error },
+        });
+
+        actions[${1:ACTION_NAME}_REQUEST] = (state, { payload }) => ({ ...state,
+
+        });
+        actions[${1:ACTION_NAME}_SUCCESS] = (state, { payload }) => ({ ...state,
+
+        });
+        actions[${1:ACTION_NAME}_ERROR] = (state, { payload }) => ({ ...state,
+
         })
-
-        actions[${1:ACTION_NAME}_REQUEST] = (state, { payload }) => { ...state,
-
-        }
-        actions[${1:ACTION_NAME}_SUCCESS] = (state, { payload }) => { ...state,
-
-        }
-        actions[${1:ACTION_NAME}_ERROR] = (state, { payload }) => { ...state,
-
-        }
 
         export const ${3:thunkName} = (data) => async dispatch => {
           try {
-            dispatch(${2:actionName}Request(data))
-            // const response = await api.doSomething(data)
+            dispatch(${2:actionName}Request(data));
+            // const response = await api.doSomething(data);
 
-            dispatch(${2:actionName}Success(response.data.data))
+            dispatch(${2:actionName}Success(response.data.data));
           } catch (error) {
-            dispatch(${2:actionName}Error(error))
+            dispatch(${2:actionName}Error(error));
           }
         }
         """
@@ -342,19 +343,18 @@
   'Redux Connect':
     'prefix': 'redcon'
     'body': """
-        import { connect } from 'react-redux'
-        import { selectThing } from '../modules/things'
+        import { connect } from 'react-redux';
+        import { selectThing } from '../modules/things';
 
         const mapStateToProps = (state, ownProps) => ({
           name: selectThing(state, ownProps.id).name,
           createdAt: selectThing(state, ownProps.id).createdAt,
-        })
-
+        });
         const actions = {
           doSomethingWithThing,
-        }
+        };
 
-        export default connect(mapStateToProps, actions)(${1:ComponentName})
+        export default connect(mapStateToProps, actions)(${1:ComponentName});
         """
 
   'Mocked Storybook Starter':
@@ -428,90 +428,42 @@
         """
 
   'Redux Module':
-    'prefix': 'rms'
+    'prefix': 'redmod'
     'body': """
-        import { normalize } from 'normalizr'
-        import { createSelector } from 'reselect'
-        import { pickBy } from 'lodash'
-
-        import api from 'api_module'
-
-        import ${2:moduleName}Schema from './${2:moduleName}.schema'
+        import { createSelector } from 'reselect';
+        import { pickBy } from 'lodash';
 
         // ------------------------------------
         // Selectors
         // ------------------------------------
-        const APP = '${1:appName}'
-        const MODULE = '${2:moduleName}'
-        export const MODULE_NAME = `${APP}::${MODULE}`
-        export const ${2:moduleName}Selector = state => state[MODULE_NAME].snippetData
-        export const amazing${2:moduleName}Selector = createSelector(
-          ${2:moduleName}Selector,
+        const STORE_KEY = '${1:moduleName}';
+        export const selectModuleState = state => state[STORE_KEY];
+        export const selectSomeThing = createSelector(
+          selectModuleState,
           (things) => pickBy(things, thing => thing.isAmazing)
-        )
+        );
 
         // ------------------------------------
-        // Constants
+        // Reducer
         // ------------------------------------
-        export const FETCH_DATA = `${APP}/${MODULE}/FETCH_DATA`
-        export const FETCH_DATA_SUCCESS = `${APP}/${MODULE}/FETCH_DATA_SUCCESS`
-        export const FETCH_DATA_ERROR = `${APP}/${MODULE}/FETCH_DATA_ERROR`
-
-        // ------------------------------------
-        // Actions & Creators
-        // ------------------------------------
-        const fetchDataStart = () => ({
-          type: FETCH_DATA,
-        })
-
-        const fetchDataSuccess = response => ({
-          type: FETCH_DATA_SUCCESS,
-          payload: normalize(response, ${2:moduleName}Schema),
-        })
-
-        export const fetchData = () => dispatch => {
-          dispatch(fetchDataStart())
-
-          // This is a fake call...obviously (just an example)
-          api.getData()
-          .then(({ data }) => {
-            dispatch(fetchDataSuccess(data))
-          })
-          .catch(error => {
-            // Always remember to handle your errors!
-            console.log('Error happened: ', error)
-          })
-        }
-
-        // ------------------------------------
-        // Action Handlers & Reducer
-        // ------------------------------------
-        const ACTION_HANDLERS = {
-          [FETCH_DATA]: (state) => ({
-            ...state,
-            isLoading: true,
-          }),
-          [FETCH_DATA_SUCCESS]: (state, { payload }) => ({
-            ...state,
-            ${2:moduleName}Data: payload.entities.data || [],
-            isLoading: false,
-          }),
-          [FETCH_DATA_ERROR]: (state) => ({
-            ...state,
-            isLoading: false,
-          }),
-        }
-
+        const actions = {};
         const initialState = {
-          ${2:moduleName}Data: {},
+          ${1:moduleName}Data: {},
           isLoading: false,
-        }
+          errors: [],
+        };
 
-        export const ${2:moduleName}Reducer = (state = initialState, action) => {
-          const handler = ACTION_HANDLERS[action.type]
+        export const ${1:moduleName}Reducer = (state = initialState, action) => {
+          const handler = actions[action.type]
 
           return handler ? handler(state, action) : state
-        }
+        };
 
-        export default ${2:moduleName}Reducer
+        export default ${1:moduleName}Reducer;
+
+        // ------------------------------------
+        // Rest of your logic goes here
+        // Use action or aaction snippets
+        // ------------------------------------
+
         """
