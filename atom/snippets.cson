@@ -303,37 +303,38 @@
     'body': """
         export const ${1:ACTION_NAME}_REQUEST = `${STORE_KEY}/${1:ACTION_NAME}_REQUEST`;
         export const ${1:ACTION_NAME}_SUCCESS = `${STORE_KEY}/${1:ACTION_NAME}_SUCCESS`;
-        export const ${1:ACTION_NAME}_ERROR = `${STORE_KEY}/${1:ACTION_NAME}_ERROR`
+        export const ${1:ACTION_NAME}_ERROR = `${STORE_KEY}/${1:ACTION_NAME}_ERROR`;
 
-        export const ${2:actionName}Request = (data) => ({
+        export const ${2:actionName}Request = ({ data }) => ({
           type: ${1:ACTION_NAME}_REQUEST,
           payload: { data },
         });
-        export const ${2:actionName}Success = (data) => ({
+        export const ${2:actionName}Success = ({ data }) => ({
           type: ${1:ACTION_NAME}_SUCCESS,
           payload: { data },
         });
-        export const ${2:actionName}Error = (error) => ({
+        export const ${2:actionName}Error = error => ({
           type: ${1:ACTION_NAME}_ERROR,
           payload: { error },
         });
 
-        actions[${1:ACTION_NAME}_REQUEST] = (state, { payload }) => ({ ...state,
+        actions[${1:ACTION_NAME}_REQUEST] = (state, { payload: { data } }) => ({ ...state,
 
         });
-        actions[${1:ACTION_NAME}_SUCCESS] = (state, { payload }) => ({ ...state,
-
+        actions[${1:ACTION_NAME}_SUCCESS] = (state, { payload: { data } }) => ({ ...state,
+          data,
+          hasLoaded: true,
         });
-        actions[${1:ACTION_NAME}_ERROR] = (state, { payload }) => ({ ...state,
+        actions[${1:ACTION_NAME}_ERROR] = (state, { payload: { error } }) => ({ ...state,
+          error: error,
+        });
 
-        })
-
-        export const ${3:thunkName} = (data) => async dispatch => {
+        export const ${2:thunkName} = (data) => async dispatch => {
           try {
-            dispatch(${2:actionName}Request(data));
-            // const response = await api.doSomething(data);
+            dispatch(${2:actionName}Request({ data }));
+            // const response = await api.doSomething({ data });
 
-            dispatch(${2:actionName}Success(response.data.data));
+            dispatch(${2:actionName}Success(response));
           } catch (error) {
             dispatch(${2:actionName}Error(error));
           }
@@ -430,18 +431,11 @@
   'Redux Module':
     'prefix': 'redmod'
     'body': """
-        import { createSelector } from 'reselect';
-        import { pickBy } from 'lodash';
-
         // ------------------------------------
         // Selectors
         // ------------------------------------
-        const STORE_KEY = '${1:moduleName}';
-        export const selectModuleState = state => state[STORE_KEY];
-        export const selectSomeThing = createSelector(
-          selectModuleState,
-          (things) => pickBy(things, thing => thing.isAmazing)
-        );
+        export const STORE_KEY = '${1:moduleName}';
+        export const select${2:ModuleName}State = state => state[STORE_KEY];
 
         // ------------------------------------
         // Reducer
@@ -449,16 +443,14 @@
         const actions = {};
         const initialState = {
           ${1:moduleName}Data: {},
-          isLoading: false,
-          errors: [],
+          hasLoaded: false,
+          errors: null,
         };
-
-        export const ${1:moduleName}Reducer = (state = initialState, action) => {
+        const ${1:moduleName}Reducer = (state = initialState, action) => {
           const handler = actions[action.type]
 
           return handler ? handler(state, action) : state
         };
-
         export default ${1:moduleName}Reducer;
 
         // ------------------------------------
@@ -466,4 +458,5 @@
         // Use action or aaction snippets
         // ------------------------------------
 
+        $3
         """
