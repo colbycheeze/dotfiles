@@ -15,7 +15,6 @@ apm install fonts
 apm install language-babel
 apm install linter
 apm install linter-eslint
-apm install merge-conflicts
 apm install pigments
 apm install relative-numbers
 apm install atom-keyboard-macros-vim
