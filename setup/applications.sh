@@ -64,7 +64,7 @@ brew cask install google-chrome
 brew cask install iterm2
 brew cask install github-desktop
 brew cask install dropbox
-brew cask install cloud
+brew cask install cloudapp
 brew cask install divvy
 brew cask install skype
 brew cask install caffeine
@@ -100,4 +100,3 @@ npm install -g npm-check-updates browser-sync
 fancy_echo "Installing Yarn"
 brew install yarn
 export PATH="$PATH:`yarn global bin`"
-
