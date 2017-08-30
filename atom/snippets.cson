@@ -460,3 +460,8 @@
 
         $3
         """
+
+'.text.jsp, .text.tag, .text.html':
+  'tag':
+    'prefix': 'tag'
+    'body': '<$1:${2:tagName}>$3</$1:${2:tagName}>'

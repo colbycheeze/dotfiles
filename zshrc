@@ -142,6 +142,5 @@ eval "$(rbenv init - --no-rehash)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-# Workspace Sync
-alias ninja='ninja-dev-sync -setup'
-alias nds='ninja-dev-sync'
+# Brazil
+export PATH=$BRAZIL_CLI_BIN:$PATH
