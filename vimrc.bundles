@@ -17,7 +17,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'endel/vim-github-colorscheme'
 " Awesome looking meta at bottom
 " Fugitive will help with git related stuff, and show branch on statusline
-Plug 'tpope/vim-fugitive' | Plug 'bling/vim-airline'
+Plug 'tpope/vim-fugitive' | Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 ""
 
 """ Some ESSENTIAL IDE like plugins for Vim
@@ -232,4 +232,3 @@ let g:EditorConfig_exec_path = findfile('.editorconfig', '.;')
 " " Run commands that require an interactive shell
 " nnoremap <Leader>r :RunInInteractiveShell<space>
 "
-

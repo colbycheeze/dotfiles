@@ -77,5 +77,3 @@ fancy_echo "Installing Misc Apps"
 brew cask install discord
 brew cask install disk-inventory-x
 brew cask install vlc
-
-fancy_echo "Please open ITerm2 and continue by running ./setup.sh"
