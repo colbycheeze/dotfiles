@@ -17,7 +17,6 @@ zshrc
 vimrc.bundles
 vimrc
 vim
-unison
 )
 
 nvimrcpath="~/.config/nvim/init.vim"
