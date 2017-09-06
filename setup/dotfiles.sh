@@ -23,8 +23,6 @@ nvimpath="~/.config/nvimrc"
 
 fancy_echo "Backup current config"
 today=`date +%Y%m%d`
-# for i in ; do [ -e $i ] && [ ! -L $i ] && mv $i $i.$today; done
-# for i in $HOME/.vim $HOME/.vimrc; do [ -L $i ] && unlink $i ; done
 for i in ${dotfiles[@]} ; do
   if [ "vimrc" == "$i" ]; then
     [ -e $nvimrcpath ] && [ ! -L $nvimrcpath ] && mv $nvimrcpath $nvimrcpath.bak.$today ;
@@ -50,21 +48,3 @@ for i in ${dotfiles[@]} ; do
   fi
 done
 
-
-# deprecated
-
-# TODO: Currently these will nest if a link exists, so add check
-# http://stackoverflow.com/questions/5767062/how-to-check-if-symlink-exists
-# ln -s ~/dotfiles/zsh ~/.zsh
-# ln -s ~/dotfiles/bin ~/.bin
-# ln -s ~/dotfiles/aliases ~/.aliases
-# ln -s ~/dotfiles/agignore ~/.agignore
-# ln -s ~/dotfiles/gitconfig ~/.gitconfig
-# ln -s ~/dotfiles/gitmessage ~/.gitmessage
-# ln -s ~/dotfiles/gvimrc ~/.gvimrc
-# ln -s ~/dotfiles/tmux.conf ~/.tmux.conf
-# ln -s ~/dotfiles/vimrc ~/.config/nvim/init.vim
-# ln -s ~/.vim ~/.config/nvimrc
-# ln -s ~/dotfiles/vimrc.bundles ~/.vimrc.bundles
-# ln -s ~/dotfiles/zshenv ~/.zshenv
-# ln -s ~/dotfiles/zshrc ~/.zshrc
