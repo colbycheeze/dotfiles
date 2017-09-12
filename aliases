@@ -19,22 +19,25 @@ alias path="echo $PATH | tr -s ':' '\n'"
 # Navigation
 alias cdproj="cd ~/projects"
 alias cdwork="cd ~/workplace"
+alias cdchfe="cd ~/workplace/ThrillerCheckoutWebApp/src/ThrillerCheckoutPageAssets"
+alias cdchbe="cd ~/workplace/ThrillerCheckoutWebApp/src/ThrillerCheckoutPageWebApp"
 alias cdwiki="cd ~/Dropbox/vimwiki"
+alias remote="ssh willcolb.aka.corp.amazon.com"
+
+alias reloadsync="launchctl unload ~/Library/LaunchAgents/local.unison-file-sync.plist && launchctl load ~/Library/LaunchAgents/local.unison-file-sync.plist"
 
 # Go to the root of a project (git root)
 alias root='cd $(git rev-parse --show-cdup)'
-
-# This kills a process that slows down my Mac every once in a while...??
-alias killn="ps -ax | grep notifyd | head -1 | awk '{print \$1}' | sudo xargs kill"
 
 # kill a rogue process running on a specific port
 # usage: `killp 3000`
 killp() { lsof -n "-i4TCP:${1:-3002}" | grep LISTEN | tr -s ' ' | cut -f 2 -d ' ' | xargs kill -9}
 
-# Do all of my login stuff for cf
-alias cfgo="cf login -a $CFAPI -u $CFEMAIL -p $CFPASSWORD -o $CFEMAIL -s dev && npm start"
-
 # Start a browsersync server watching the current directory
 bsync() { browser-sync start --files "./**" --server; }
 # Start a browsersync server and proxy 3000 (or pass a different number to proxy something else, IE: bsyncp 8000 for localhost:8000)
 bsyncp() { browser-sync start --files "./**" --proxy "localhost:${1:-3000}" --no-open; }
+
+chbsync() { browser-sync start --files "/Users/willcolb/workplace/ThrillerCheckoutWebApp/**/build/**" --proxy "https://willcolb.aka.corp.amazon.com:${1:-8553/tickets/purchase/123}" }
+
+

@@ -18,15 +18,15 @@
 '.source.js, .source.javascript, .source.jsx':
   'Console log':
     'prefix': 'log'
-    'body': 'console.log($1)'
+    'body': 'console.log($1);'
 
   'Console warning':
     'prefix': 'warn'
-    'body': 'console.warn($1)'
+    'body': 'console.warn($1);'
 
   'Console error':
     'prefix': 'error'
-    'body': 'console.error($1)'
+    'body': 'console.error($1);'
 
   'Component Setup for Tests':
     'prefix': 'setup'

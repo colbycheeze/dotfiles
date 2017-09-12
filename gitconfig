@@ -21,6 +21,8 @@
   rn = "!f() { git branch -m $1; }; f"
 
   # Sync current branch by rebasing on top
+  scb = !git pull origin mainline --rebase
+
   scbm = !git pull origin master --rebase
 
   scbd = !git pull origin develop --rebase
