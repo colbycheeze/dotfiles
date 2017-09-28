@@ -63,7 +63,7 @@
   required = true
 [user]
 	name = Colby Williams
-	email = colby@colbycheeze.com
+	email = willcolb@amazon.com
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

@@ -19,11 +19,14 @@ alias path="echo $PATH | tr -s ':' '\n'"
 # Navigation
 alias cdproj="cd ~/projects"
 alias cdwork="cd ~/workplace"
-alias cdchfe="cd ~/workplace/ThrillerCheckoutWebApp/src/ThrillerCheckoutPageAssets"
-alias cdchbe="cd ~/workplace/ThrillerCheckoutWebApp/src/ThrillerCheckoutPageWebApp"
+alias cdchass="cd ~/workplace/ThrillerCheckoutWebApp/src/ThrillerCheckoutPageAssets"
+alias cdchapp="cd ~/workplace/ThrillerCheckoutWebApp/src/ThrillerCheckoutPageWebApp"
 alias cdwiki="cd ~/Dropbox/vimwiki"
 alias remote="ssh willcolb.aka.corp.amazon.com"
 
+alias chcr="cr --new-review --include 'ThrillerCheckoutPageWebApp,ThrillerCheckoutPageAssets'"
+
+alias syncws="brazil ws --sync --md"
 alias reloadsync="launchctl unload ~/Library/LaunchAgents/local.unison-file-sync.plist && launchctl load ~/Library/LaunchAgents/local.unison-file-sync.plist"
 
 # Go to the root of a project (git root)

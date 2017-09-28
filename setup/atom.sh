@@ -17,6 +17,7 @@ apm install linter
 apm install linter-eslint
 apm install pigments
 apm install gist
+apm install language-hjson
 
 fancy_echo "Installing atom packages for vim mode"
 apm install relative-numbers

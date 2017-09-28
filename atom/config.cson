@@ -25,6 +25,7 @@
     invisibles: {}
     preferredLineLength: 100
     scrollPastEnd: true
+    tabLength: 4
   "exception-reporting":
     userId: "a58af052-dcc6-4331-81cb-59b673e99ccc"
   fonts: {}
