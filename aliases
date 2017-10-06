@@ -27,7 +27,7 @@ alias remote="ssh willcolb.aka.corp.amazon.com"
 alias chcr="cr --new-review --include 'ThrillerCheckoutPageWebApp,ThrillerCheckoutPageAssets'"
 
 alias syncws="brazil ws --sync --md"
-alias reloadsync="launchctl unload ~/Library/LaunchAgents/local.unison-file-sync.plist && launchctl load ~/Library/LaunchAgents/local.unison-file-sync.plist"
+alias reloadsync="launchctl unload~/Library/LaunchAgents/local.unison-file-sync.plist && launchctl load ~/Library/LaunchAgents/local.unison-file-sync.plist"
 
 # Go to the root of a project (git root)
 alias root='cd $(git rev-parse --show-cdup)'
