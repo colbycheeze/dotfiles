@@ -12,22 +12,23 @@ alias -g L='| wc -l'
 alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
+alias srcsh="source ~/.zshrc"
 
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
 
 # Navigation
 alias cdproj="cd ~/projects"
-alias cdwork="cd ~/workplace"
-alias cdchass="cd ~/workplace/ThrillerCheckoutWebApp/src/ThrillerCheckoutPageAssets"
-alias cdchapp="cd ~/workplace/ThrillerCheckoutWebApp/src/ThrillerCheckoutPageWebApp"
 alias cdwiki="cd ~/Dropbox/vimwiki"
 alias remote="ssh willcolb.aka.corp.amazon.com"
 
 alias chcr="cr --new-review --include 'ThrillerCheckoutPageWebApp,ThrillerCheckoutPageAssets'"
 
+# Brazil
 alias syncws="brazil ws --sync --md"
-alias reloadsync="launchctl unload~/Library/LaunchAgents/local.unison-file-sync.plist && launchctl load ~/Library/LaunchAgents/local.unison-file-sync.plist"
+alias bws="brazil ws"
+alias bbs="brazil-build server"
+alias bre="brazil-runtime-exec"
 
 # Go to the root of a project (git root)
 alias root='cd $(git rev-parse --show-cdup)'
@@ -36,11 +37,12 @@ alias root='cd $(git rev-parse --show-cdup)'
 # usage: `killp 3000`
 killp() { lsof -n "-i4TCP:${1:-3002}" | grep LISTEN | tr -s ' ' | cut -f 2 -d ' ' | xargs kill -9}
 
+# Remote Sync
+alias stopsync="launchctl unload ~/Library/LaunchAgents/local.unison-file-sync.plist"
+alias reloadsync="launchctl unload ~/Library/LaunchAgents/local.unison-file-sync.plist && launchctl load ~/Library/LaunchAgents/local.unison-file-sync.plist"
 # Start a browsersync server watching the current directory
 bsync() { browser-sync start --files "./**" --server; }
 # Start a browsersync server and proxy 3000 (or pass a different number to proxy something else, IE: bsyncp 8000 for localhost:8000)
 bsyncp() { browser-sync start --files "./**" --proxy "localhost:${1:-3000}" --no-open; }
-
 chbsync() { browser-sync start --files "/Users/willcolb/workplace/ThrillerCheckoutWebApp/**/build/**" --proxy "https://willcolb.aka.corp.amazon.com:${1:-8553/tickets/purchase/123}" }
-
 

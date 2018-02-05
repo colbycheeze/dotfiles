@@ -21,11 +21,13 @@
   rn = "!f() { git branch -m $1; }; f"
 
   # Sync current branch by rebasing on top
-  scb = !git pull origin mainline --rebase
+  scb = !git pull --rebase
 
-  scbm = !git pull origin master --rebase
+  # Sync current branch with mainline
+  up = "!f() { git branch --set-upstream-to origin/$1; }; f"
 
-  scbd = !git pull origin develop --rebase
+  # View all branches, upstreams, info etc
+  vv = !git branch -vv
 
   # Sync upstream with origin remote
   gg = "!f() { old=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $old; }; f"

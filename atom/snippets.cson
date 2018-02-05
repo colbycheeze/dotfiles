@@ -53,10 +53,10 @@
         });
         """
 
-  'it block':
-    'prefix': 'it'
+  'test block':
+    'prefix': 'test'
     'body': """
-        it('${1:will do something}', () => {
+        test('${1:will do something}', () => {
           $2
         });
         """
@@ -242,7 +242,7 @@
             name: 'Colby',
           }
 
-          render = () => {
+          render() {
             const { name } = this.props;
 
             return (
