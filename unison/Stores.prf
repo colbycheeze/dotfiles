@@ -1,0 +1,74 @@
+# Roots of the synchronization
+# If you make these two equivalent, most things "just work"
+root = /users/willcolb/projects/amazon
+root = ssh://willcolb@willcolb.aka.corp.amazon.com//home/willcolb/projects
+
+# Specific paths to synchronize (or leave out to sync all) 
+#path = workplacename
+
+# Some regexps specifying names and paths to ignore (globbed)
+ignore = Name .FBCIndex
+ignore = Name .FBCLockFolder
+ignore = Name {.Trash*,.VolumeIcon.icns,.HSicon,Temporary*,.Temporary*,TheFindByContentFolder}
+ignore = Name {TheVolumeSettingsFolder,.Metadata,.filler,.idsff,.Spotlight,.DS_Store,.CFUserTextEncoding}
+ignore = Name */src/*/eclipse-bin
+ignore = Name */.project
+ignore = Name */.settings
+ignore = Name */.classpath
+ignore = Name *.swp
+ignore = Name */env
+ignore = Name */RemoteSystemsTempFiles
+ignore = Name */.idea
+ignore = Name */src/*/*.iml
+ignore = Name */node_modules
+ 
+# Comment out the below line if you want 'build' folders to be synced across by Unison. Note that doing so may cause BrazilCLI2.0 and/or IntelliJ to become confused on the Mac side.
+ignore = Name */src/*/build/*
+ignore = Name */src/*/dist/*
+ignore = Name */build
+ignore = Name */dist
+
+# Uncomment the below two lines if you want 'build' folders to be synced across by Unison. Note that doing so may cause BrazilCLI2.0 and/or IntelliJ to become confused on the Mac side.
+#ignorenot = Path */src/*/build/generated-src
+#follow = Path */src/*/build
+ 
+# Perl builds sometimes includes both "pod" and "Pod", which can't sync to a case-insensitive filesystem
+ignore = Regex .*/runtime/perl/lib/perl...-dist/[pP]od
+
+# Tell it to automatically sync every 5 seconds
+# Alternatively, you can run the sync from cron (launchd on mac)
+# If you have unison-fsmonitor, you can set this to "watch" to listen for fs notifications rather than repeatedly poll the entire file list
+repeat = watch
+
+# Backup settings. Keep 5 backups of all changed files
+backup = Name *
+maxbackups = 5
+
+# Retry once on failure
+retry = 1
+
+# Skip asking for confirmation on non-conflicting changes
+auto = true
+
+# No questions asked by the user interface
+batch = true
+
+# Unison will request an extra confirmation if it appears that the entire replica has been deleted
+confirmbigdeletes = true
+
+# Synchronize modification times (needed for below)
+times = true
+
+# Automatically take the newer version when there's a conflict
+prefer = newer
+
+# Suppress status messages
+terse = true
+
+# Suppress the contacting server message during startup
+contactquietly = true
+
+# Log output to file
+log = true
+logfile = /Users/willcolb/.unison/unison.log
+

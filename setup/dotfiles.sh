@@ -16,6 +16,7 @@ zshrc
 vimrc.bundles
 vimrc
 vim
+unison
 )
 
 nvimrcpath="~/.config/nvim/init.vim"
@@ -34,7 +35,6 @@ for i in ${dotfiles[@]} ; do
     [ -e ~/.$i ] && [ ! -L ~/.$i ] && mv ~/.$i ~/.$i.bak.$today ;
     [ -L ~/.$i ] && unlink ~/.$i ;
   fi
-
 done
 
 fancy_echo "Symlinking dotfiles"

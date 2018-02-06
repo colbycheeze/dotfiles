@@ -39,6 +39,7 @@ brew install tree
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 fancy_echo "Installing python and setting up Neovim"
+brew install python
 brew install python3
 brew install neovim/neovim/neovim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \

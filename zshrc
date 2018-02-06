@@ -145,3 +145,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # Brazil
 export PATH=$BRAZIL_CLI_BIN:$PATH
 export PATH=$HOME/.toolbox/bin:$PATH
+export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+

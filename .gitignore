@@ -12,3 +12,6 @@ atom/*
 !atom/keymap.cson
 !atom/snippets.cson
 !atom/styles.less
+
+unison/*
+!unison/Stores.prf
