@@ -26,6 +26,7 @@ alias chcr="cr --new-review --include 'ThrillerCheckoutPageWebApp,ThrillerChecko
 
 # Brazil
 alias syncws="brazil ws --sync --md"
+alias bb="brazil-build"
 alias bws="brazil ws"
 alias bbs="brazil-build server"
 alias bre="brazil-runtime-exec"
@@ -38,6 +39,7 @@ alias root='cd $(git rev-parse --show-cdup)'
 killp() { lsof -n "-i4TCP:${1:-3002}" | grep LISTEN | tr -s ' ' | cut -f 2 -d ' ' | xargs kill -9}
 
 # Remote Sync
+alias keepsync="~/dotfiles/unison/keepsync.sh"
 alias stopsync="launchctl unload ~/Library/LaunchAgents/local.unison-file-sync.plist"
 alias reloadsync="launchctl unload ~/Library/LaunchAgents/local.unison-file-sync.plist && launchctl load ~/Library/LaunchAgents/local.unison-file-sync.plist"
 # Start a browsersync server watching the current directory
