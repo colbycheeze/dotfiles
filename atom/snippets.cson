@@ -39,6 +39,7 @@
           const props = {
             id: '1',
             isLoading: true,
+            ...spies,
           };
 
           return { spies, props };

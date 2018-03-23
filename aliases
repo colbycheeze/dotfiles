@@ -21,6 +21,7 @@ alias path="echo $PATH | tr -s ':' '\n'"
 alias cdproj="cd ~/projects"
 alias cdwiki="cd ~/Dropbox/vimwiki"
 alias remote="ssh willcolb.aka.corp.amazon.com"
+alias chime="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome -app=https://app.chime.aws/"
 
 alias chcr="cr --new-review --include 'ThrillerCheckoutPageWebApp,ThrillerCheckoutPageAssets'"
 

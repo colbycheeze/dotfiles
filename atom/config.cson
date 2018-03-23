@@ -14,6 +14,10 @@
       "autocomplete-flow"
       "linter-flow"
       "atom-ternjs"
+      "linter-checkstyle"
+    ]
+    packagesWithKeymapsDisabled: [
+      "git-blame"
     ]
     projectHome: "/Users/colbywilliams/projects"
     telemetryConsent: "limited"
@@ -33,10 +37,10 @@
   "gist-it":
     openAfterCreate: true
   "git-blame":
+    columnWidth: 556
     showOnlyLastNames: false
   "git-diff": {}
-  "language-babel":
-    autoIndentJSX: true
+  "language-babel": {}
   linter: {}
   "linter-eslint":
     disableEslintIgnore: true
@@ -69,6 +73,7 @@
   "sync-settings":
     _analyticsUserId: "971b17cd-cd84-406f-aa72-4dd819000ce2"
   "tree-view":
+    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   "vim-mode":
     useSmartcaseForSearch: true

@@ -21,11 +21,17 @@ ignore = Name */RemoteSystemsTempFiles
 ignore = Name */.idea
 ignore = Name */src/*/*.iml
 ignore = Name */node_modules
+
+
+ignore = Name ReportHeader.css
+ignore = Name reportHeader.css
  
 # Comment out the below line if you want 'build' folders to be synced across by Unison. Note that doing so may cause BrazilCLI2.0 and/or IntelliJ to become confused on the Mac side.
 ignore = Name */src/*/build/*
 ignore = Name */src/*/dist/*
 ignore = Name */build
+ignore = Name */build/**
+ignore = Name */var
 ignore = Name */dist
 
 # Uncomment the below two lines if you want 'build' folders to be synced across by Unison. Note that doing so may cause BrazilCLI2.0 and/or IntelliJ to become confused on the Mac side.
@@ -38,7 +44,7 @@ ignore = Regex .*/runtime/perl/lib/perl...-dist/[pP]od
 # Tell it to automatically sync every 5 seconds
 # Alternatively, you can run the sync from cron (launchd on mac)
 # If you have unison-fsmonitor, you can set this to "watch" to listen for fs notifications rather than repeatedly poll the entire file list
-repeat = watch
+repeat = 1
 
 # Backup settings. Keep 5 backups of all changed files
 backup = Name *
