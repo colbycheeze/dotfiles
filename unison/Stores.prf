@@ -21,6 +21,7 @@ ignore = Name */RemoteSystemsTempFiles
 ignore = Name */.idea
 ignore = Name */src/*/*.iml
 ignore = Name */node_modules
+ignore = Name */npm/src/*
 
 
 ignore = Name ReportHeader.css

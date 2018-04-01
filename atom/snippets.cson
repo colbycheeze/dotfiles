@@ -28,6 +28,10 @@
     'prefix': 'error'
     'body': 'console.error($1);'
 
+  'Styled Component theme fn':
+    'prefix': 'theme'
+    'body': '${({ theme }) => theme.${1:something}};'
+
   'Component Setup for Tests':
     'prefix': 'setup'
     'body': """
@@ -109,10 +113,6 @@
   'toMatch (Regexp)':
     'prefix': 'xpreg'
     'body': "expect(${1:'string'}).toMatch(${2:/matcher/});"
-
-  'toHaveLength':
-    'prefix': 'xplen'
-    'body': "expect(${1:[1, 2, 3]}).toHaveLength(${2:3});"
 
   'toHaveLength':
     'prefix': 'xplen'

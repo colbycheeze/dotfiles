@@ -6,7 +6,7 @@
   ui = auto
 [alias]
   aa = add --all
-	ci = commit -v
+  ci = commit -v
 
   # Commit all changes
   ca = !git add -A && git commit -av
@@ -15,7 +15,7 @@
   caa = !git add -A && git commit --amend -av
 
   # Switch to a branch, creating it if necessary
-	co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
+  co = "!f() { git checkout -b \"$1\" 2> /dev/null || git checkout \"$1\"; }; f"
 
   # Rename local branch
   rn = "!f() { git branch -m $1; }; f"
@@ -29,17 +29,6 @@
   # View all branches, upstreams, info etc
   vv = !git branch -vv
 
-  # Sync upstream with origin remote
-  gg = "!f() { old=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $old; }; f"
-
-  # Grab latest from upstream, sync with origin, and rebase changes from current branch on top
-  # Use this if you haven't pushed to your remote yet
-  ggr = "!f() { old=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $old && git rebase master; }; f"
-
-  # Grab latest from upstream, sync with origin, and merge changes from current branch
-  # Use this if you have already pushed changes to the remote
-  ggm = "!f() { old=$(git current-branch) && git checkout master && git pull upstream master && git push origin master && git checkout $old && git merge origin/master; }; f"
-
   # Show the diff between the latest commit and the current state
   d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat"
 
@@ -48,11 +37,11 @@
 
   current-branch = !sh -c 'git rev-parse --abbrev-ref HEAD' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
-	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
+  dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
 [core]
   excludesfile = ~/.gitignore
   autocrlf = input
-	pager = less -FMRiX
+  pager = less -FMRiX
 [commit]
   template = ~/.gitmessage
 [fetch]
@@ -64,12 +53,12 @@
   smudge = git hawser smudge %f
   required = true
 [user]
-	name = Colby Williams
-	email = willcolb@amazon.com
+  name = Colby Williams
+  email = willcolb@amazon.com
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [github]
   user = colbycheeze
