@@ -66,6 +66,14 @@
         });
         """
 
+  'it style test block':
+    'prefix': 'it'
+    'body': """
+        it('${1:will do something}', () => {
+          $2
+        });
+        """
+
   'expect':
     'prefix': 'xp'
     'body': "expect($1).$2();"
@@ -199,11 +207,7 @@
 
   'index':
     'prefix': 'index'
-    'body': """
-        import ${1:ComponentName} from './$1';
-
-        export default $1;
-        """
+    'body': "export { default } from './$1';"
 
   'className':
     'prefix': '.'

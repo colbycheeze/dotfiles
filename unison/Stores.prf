@@ -36,8 +36,11 @@ ignore = Name */var
 ignore = Name */dist
 
 # Uncomment the below two lines if you want 'build' folders to be synced across by Unison. Note that doing so may cause BrazilCLI2.0 and/or IntelliJ to become confused on the Mac side.
-#ignorenot = Path */src/*/build/generated-src
-#follow = Path */src/*/build
+ignorenot = Path */src/*/build/lib
+follow = Path */src/*/build/lib
+
+ignorenot = Path */build/lib
+follow = Path */build/lib
  
 # Perl builds sometimes includes both "pod" and "Pod", which can't sync to a case-insensitive filesystem
 ignore = Regex .*/runtime/perl/lib/perl...-dist/[pP]od

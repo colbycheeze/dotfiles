@@ -22,7 +22,7 @@ alias remote="ssh willcolb.aka.corp.amazon.com"
 alias chime="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome -app=https://app.chime.aws/"
 
 # Brazil
-alias syncws="brazil ws --sync --md"
+alias bwss="brazil ws --sync --md"
 alias bb="brazil-build"
 alias bws="brazil ws"
 alias bbs="brazil-build server"

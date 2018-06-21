@@ -73,7 +73,6 @@
   "sync-settings":
     _analyticsUserId: "971b17cd-cd84-406f-aa72-4dd819000ce2"
   "tree-view":
-    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   "vim-mode":
     useSmartcaseForSearch: true
