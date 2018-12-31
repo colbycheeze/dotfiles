@@ -37,9 +37,4 @@ killp() { lsof -n "-i4TCP:${1:-3002}" | grep LISTEN | tr -s ' ' | cut -f 2 -d ' 
 
 # Remote Sync
 alias keepsync="~/dotfiles/unison/keepsync.sh"
-
-# Start a browsersync server watching the current directory
-bsync() { browser-sync start --files "./**" --server; }
-
-# Start a browsersync server and proxy 3000 (or pass a different number to proxy something else, IE: bsyncp 8000 for localhost:8000)
-bsyncp() { browser-sync start --files "./**" --proxy "localhost:${1:-3000}" --no-open; }
+alias tailuni="tail -f ~/.unison/unison.log"

@@ -48,7 +48,6 @@
     globalNodePath: "/usr/local"
   "linter-ui-default":
     panelHeight: 143
-    showPanel: true
     tooltipFollows: "Keyboard"
   "merge-conflicts":
     gitPath: "/usr/local/bin/git"

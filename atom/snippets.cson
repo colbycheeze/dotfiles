@@ -16,6 +16,10 @@
         """
 
 '.source.js, .source.javascript, .source.jsx':
+  'Debugger':
+    'prefix': 'debug'
+    'body': 'debugger // eslint-disable-line'
+
   'Console log':
     'prefix': 'log'
     'body': 'console.log($1);'
@@ -291,47 +295,57 @@
     'prefix': 'action'
     'body': """
         export const ${1:ACTION_NAME} = `${STORE_KEY}/${1:ACTION_NAME}`;
-        export const ${2:actionNameFunction} = (data) => ({
+        export const ${2:actionNameFunction} = payload => ({
           type: ${1:ACTION_NAME},
-          payload: { data }
+          payload,
         });
-        actions[${1:ACTION_NAME}] = (state, { payload }) => ({ ...state,
+        actions[${1:ACTION_NAME}] = (state, { payload }) => ({
+          ...state,
+          ...payload,
+        });
+        """
 
-        });
+
+  'Redux Thunk':
+    'prefix': 'thunk'
+    'body': """
         export const ${3:thunkName} = () => async dispatch => {
           dispatch(${2:actionNameFunction}())
-        };
-        """
+          };
+    """
 
   'Redux Async Action Group':
     'prefix': 'aaction'
     'body': """
         export const ${1:ACTION_NAME}_REQUEST = `${STORE_KEY}/${1:ACTION_NAME}_REQUEST`;
-        export const ${1:ACTION_NAME}_SUCCESS = `${STORE_KEY}/${1:ACTION_NAME}_SUCCESS`;
-        export const ${1:ACTION_NAME}_ERROR = `${STORE_KEY}/${1:ACTION_NAME}_ERROR`;
-
-        export const ${2:actionName}Request = ({ data }) => ({
+        export const ${2:actionName}Request = payload => ({
           type: ${1:ACTION_NAME}_REQUEST,
-          payload: { data },
+          payload,
         });
-        export const ${2:actionName}Success = ({ data }) => ({
+        actions[${1:ACTION_NAME}_REQUEST] = state => ({
+          ...state,
+          isLoading: true,
+        });
+
+        export const ${1:ACTION_NAME}_SUCCESS = `${STORE_KEY}/${1:ACTION_NAME}_SUCCESS`;
+        export const ${2:actionName}Success = payload => ({
           type: ${1:ACTION_NAME}_SUCCESS,
-          payload: { data },
+          payload,
         });
+        actions[${1:ACTION_NAME}_SUCCESS] = (state, { payload: { data } }) => ({
+          ...state,
+          data,
+          isLoading: false,
+        });
+
+        export const ${1:ACTION_NAME}_ERROR = `${STORE_KEY}/${1:ACTION_NAME}_ERROR`;
         export const ${2:actionName}Error = error => ({
           type: ${1:ACTION_NAME}_ERROR,
           payload: { error },
         });
-
-        actions[${1:ACTION_NAME}_REQUEST] = (state, { payload: { data } }) => ({ ...state,
-
-        });
-        actions[${1:ACTION_NAME}_SUCCESS] = (state, { payload: { data } }) => ({ ...state,
-          data,
-          hasLoaded: true,
-        });
-        actions[${1:ACTION_NAME}_ERROR] = (state, { payload: { error } }) => ({ ...state,
-          error: error,
+        actions[${1:ACTION_NAME}_ERROR] = (state, { payload: { error } }) => ({
+          ...state,
+          error,
         });
 
         export const ${2:thunkName} = (data) => async dispatch => {
@@ -344,6 +358,7 @@
             dispatch(${2:actionName}Error(error));
           }
         }
+        $3
         """
 
   'Redux Connect':
@@ -439,7 +454,7 @@
         // ------------------------------------
         // Selectors
         // ------------------------------------
-        export const STORE_KEY = '${1:moduleName}';
+        export const STORE_KEY = '${1:moduleName}'; // Dont forget to hookup in rootReducers!
         export const select${2:ModuleName}State = state => state[STORE_KEY];
 
         // ------------------------------------
@@ -452,9 +467,9 @@
           errors: null,
         };
         const ${1:moduleName}Reducer = (state = initialState, action) => {
-          const handler = actions[action.type]
+          const handler = actions[action.type];
 
-          return handler ? handler(state, action) : state
+          return handler ? handler(state, action) : state;
         };
         export default ${1:moduleName}Reducer;
 
