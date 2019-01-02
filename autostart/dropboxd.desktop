@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Dropbox Daemon
+GenericName=File Synchronizer Daemon
+Comment=Daemon for Dropbox
+Exec=/home/colbycheeze/.dropbox-dist/dropboxd
+Terminal=true
+Type=Application
+Icon=dropbox
+Categories=Network;FileTransfer;
+StartupNotify=false

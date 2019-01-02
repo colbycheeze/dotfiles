@@ -123,7 +123,7 @@ nnoremap <tab> %
 vnoremap <tab> %
 
 " Set spellfile to location that is guaranteed to exist, can be symlinked to
-" Dropbox or kept in Git and managed outside of thoughtbot/dotfiles using rcm.
+" Dropbox or kept in Git and managed outside of dotfiles.
 set spellfile=$HOME/.vim-spell-en.utf-8.add
 
 " Always use vertical diffs
@@ -145,7 +145,7 @@ filetype plugin indent on
 """ SYSTEM CLIPBOARD COPY & PASTE SUPPORT
 set pastetoggle=<F2> "F2 before pasting to preserve indentation
 "Copy paste to/from clipboard
-vnoremap <C-c> "*y
+vnoremap <C-c> "+y
 map <silent><Leader>p :set paste<CR>o<esc>"*]p:set nopaste<cr>"
 map <silent><Leader><S-p> :set paste<CR>O<esc>"*]p:set nopaste<cr>"
 

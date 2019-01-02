@@ -3,9 +3,10 @@ alias tlf="tail -f"
 alias ln='ln -v'
 alias mkdir='mkdir -p'
 alias ...='../..'
-alias l='ls'
-alias ll='ls -al'
-alias lh='ls -Alh'
+alias ls='ls --color=auto'
+alias l='ls --color=auto'
+alias ll='ls -al --color=auto'
+alias lh='ls -Alh --color=auto'
 alias -g G='| grep'
 alias -g M='| less'
 alias -g L='| wc -l'
@@ -13,20 +14,19 @@ alias -g ONE="| awk '{ print \$1}'"
 alias e="$EDITOR"
 alias v="$VISUAL"
 
+# equiv of doing 'open' in MacOS (opens file browser for folder)
+alias opn="nautilus --browser"
+
+# Should allow same functionality as MacOS command
+alias pbcopy='xsel --clipboard --input'
+alias pbpaste='xsel --clipboard --output'
+
 # Pretty print the path
 alias path="echo $PATH | tr -s ':' '\n'"
 
 # Navigation
 alias cdproj="cd ~/projects"
-alias remote="ssh willcolb.aka.corp.amazon.com"
-alias chime="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome -app=https://app.chime.aws/"
-
-# Brazil
-alias bwss="brazil ws --sync --md"
-alias bb="brazil-build"
-alias bws="brazil ws"
-alias bbs="brazil-build server"
-alias bre="brazil-runtime-exec"
+alias cddot="cd ~/dotfiles"
 
 # Go to the root of a project (git root)
 alias root='cd $(git rev-parse --show-cdup)'
@@ -34,7 +34,3 @@ alias root='cd $(git rev-parse --show-cdup)'
 # kill a rogue process running on a specific port
 # usage: `killp 3000`
 killp() { lsof -n "-i4TCP:${1:-3002}" | grep LISTEN | tr -s ' ' | cut -f 2 -d ' ' | xargs kill -9}
-
-# Remote Sync
-alias keepsync="~/dotfiles/unison/keepsync.sh"
-alias tailuni="tail -f ~/.unison/unison.log"

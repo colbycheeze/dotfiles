@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Pygrid
+Comment=Window management
+Type=Application
+Exec=/home/colbycheeze/pygrid/pygrid.py
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true

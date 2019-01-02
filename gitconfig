@@ -39,7 +39,7 @@
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git branch -D $1' -
   dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%cr%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
 [core]
-  excludesfile = /Users/willcolb/.gitignore_global
+  excludesfile = ~/.gitignore_global
   autocrlf = input
   pager = less -FMRiX
 [commit]
@@ -52,13 +52,8 @@
   clean = git hawser clean %f
   smudge = git hawser smudge %f
   required = true
-[user]
-  name = Colby Williams
-  email = willcolb@amazon.com
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
-[github]
-  user = colbycheeze

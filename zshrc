@@ -2,9 +2,6 @@
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
-# Setup for Yarn
-export PATH="$PATH:`yarn global bin`"
-
 # Configure autoload of nvm version based on presence of .nvmrc file
 autoload -U add-zsh-hook
 load-nvmrc() {
@@ -138,12 +135,3 @@ stty -ixon
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$HOME/.bin:$PATH"
-eval "$(rbenv init - --no-rehash)"
-
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# Brazil
-export PATH=$BRAZIL_CLI_BIN:$PATH
-export PATH=$HOME/.toolbox/bin:$PATH
-export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-

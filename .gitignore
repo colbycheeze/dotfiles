@@ -1,5 +1,4 @@
 !bin
-*.DS_store
 tmp/**/*
 !tmp/cache/.keep
 .env
@@ -13,5 +12,4 @@ atom/*
 !atom/snippets.cson
 !atom/styles.less
 
-unison/*
-!unison/Stores.prf
+gitconfig.local
