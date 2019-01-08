@@ -9,24 +9,27 @@
   'ctrl-j': 'window:focus-pane-on-bottom'
   'g c': 'editor:toggle-line-comments'
   'space q': 'atom-keyboard-macros-vim:execute_macro_vim'
+
+  'ctrl-f': 'find-and-replace:show'
   # '%': 'bracket-matcher:go-to-matching-bracket'
   # '%': 'vim-mode:bracket-matching-motion'
 
 'atom-text-editor.vim-mode-plus.insert-mode':
-  'ctrl-;': 'custom:semicolonize'
+  'ctrl-;': 'custom:insert-semicolon-at-end'
+  'ctrl-,': 'custom:insert-comma-at-end'
 
 'atom-text-editor.vim-mode-plus.normal-mode':
   'space s': 'window:save-all'
   'space x': 'core:close'
   'enter': 'editor:newline-below'
   'shift-enter': 'editor:newline-above'
-  'space ;': 'custom:semicolonize'
-  'ctrl-;': 'custom:semicolonize'
+  'space ;': 'custom:insert-semicolon-at-end'
+  'space ,': 'custom:insert-comma-at-end'
+  'ctrl-;': 'custom:insert-semicolon-at-end'
 
-'.platform-darwin':
-  'cmd-n': 'tree-view:toggle'
+'.platform-linux':
+  'alt-n': 'tree-view:toggle'
   'ctrl-n': 'tree-view:toggle-focus'
-  'cmd-p': 'fuzzy-finder:toggle-file-finder'
   'ctrl-p': 'fuzzy-finder:toggle-file-finder'
 
 '.fuzzy-finder atom-text-editor[mini]':
@@ -43,6 +46,9 @@
   't': 'tree-view:open-selected-entry'
   'd': 'tree-view:remove'
   'c': 'tree-view:duplicate'
+  'f': 'tree-view:add-file'
+  'F': 'tree-view:add-folder'
+
 
 'atom-workspace atom-text-editor.autocomplete-active':
   'tab': 'snippets:next-tab-stop'

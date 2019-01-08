@@ -18,7 +18,7 @@ echo "  user = $github_username" >> ~/dotfiles/gitconfig.local
 
 fancy_echo "Setting key delay and repeat rates."
 gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 35
-gsettings set org.gnome.desktop.peripherals.keyboard delay 175
+gsettings set org.gnome.desktop.peripherals.keyboard delay 200
 
 fancy_echo "Upping max file watchers."
 echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
