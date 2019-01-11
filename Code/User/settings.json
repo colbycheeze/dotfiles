@@ -1,5 +1,5 @@
 {
-  "editor.lineNumbers": "relative",
+  "editor.lineNumbers": "on",
   "editor.tabSize": 2,
   "editor.fontSize": 15,
   "editor.fontWeight": "400",
@@ -138,5 +138,7 @@
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
-  }
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "explorer.confirmDragAndDrop": false
 }

@@ -13,3 +13,5 @@ atom/*
 !atom/styles.less
 
 gitconfig.local
+Code/User/workspaceStorage/*
+Code/User/globalStorage/*

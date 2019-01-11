@@ -46,6 +46,11 @@
   },
   {
     "key": "ctrl+n",
+    "command": "workbench.files.action.focusFilesExplorer",
+    "when": "!explorerViewletFocus"
+  },
+  {
+    "key": "ctrl+n",
     "command": "-workbench.action.files.newUntitledFile",
     "when": "explorerViewletFocus && explorerViewletVisible"
   },
@@ -263,5 +268,19 @@
     "key": "escape",
     "command": "-workbench.action.closeQuickOpen",
     "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "m",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "f2",
+    "command": "-renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   }
 ]

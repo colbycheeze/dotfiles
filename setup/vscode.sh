@@ -1,8 +1,8 @@
 #!/bin/bash
-source ~/dotfiles/setup/functions.sh
+source $HOME/dotfiles/setup/functions.sh
 
 fancy_echo "Symlinking VSCode settings"
-ln -s ~/dotfiles/Code ~/.config/Code
+ln -s $HOME/dotfiles/Code/User $HOME/.config/Code/User
 
 fancy_echo "Installing Vscode"
 sudo snap install vscode --classic
@@ -19,6 +19,7 @@ code --install-extension capaj.vscode-exports-autocomplete
 code --install-extension EditorConfig.EditorConfig
 code --install-extension mgmcdermott.vscode-language-babel
 code --install-extension jaspernorth.vscode-pigments
+code --install-extension stevencl.addDocComments
 
 fancy_echo "Installing required font package, you will have to accept prompts!"
 sudo apt-get install ttf-mscorefonts-installer

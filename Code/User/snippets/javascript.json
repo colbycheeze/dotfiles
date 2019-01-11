@@ -28,6 +28,11 @@
 		],
 		"description": "Warn output to console"
 	},
+	"Class": {
+		"prefix": "class",
+		"body": "class ${1:ClassName} extends ${2:ParentName} {\n  constructor($3) {\n    super($3);\n    $4\n  }\n}",
+		"description": "New Class"
+	},
 	"Big Block Comment": {
 		"prefix": "bbcom",
 		"body": "// ====================================\n// $1\n// ====================================$0"
