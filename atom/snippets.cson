@@ -480,12 +480,3 @@
 
         $3
         """
-
-'.text.jsp, .text.tag, .text.html':
-  'JSP Tag':
-    'prefix': 'tag'
-    'body': '<$1:${2:tagName}>$3</$1:${2:tagName}>'
-
-  'hza string tag':
-    'prefix': 'hza'
-    'body': '<hza:string id="$1" />'

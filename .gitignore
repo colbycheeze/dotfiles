@@ -17,5 +17,3 @@ Code/User/workspaceStorage/*
 Code/User/globalStorage/*
 
 gitconfig.local
-unison/*
-!unison/Stores.prf

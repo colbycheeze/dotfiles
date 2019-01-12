@@ -18,7 +18,6 @@ echo "  user = $github_username" >> ~/dotfiles/gitconfig.local
 
 source ~/dotfiles/setup/shell.sh
 source ~/dotfiles/setup/applications.sh
-source ~/dotfiles/setup/unison.sh
 source ~/dotfiles/setup/dotfiles.sh
 source ~/dotfiles/setup/atom.sh
 source ~/dotfiles/setup/vscode.sh

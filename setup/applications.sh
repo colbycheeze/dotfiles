@@ -71,7 +71,6 @@ brew cask install divvy
 brew cask install caffeine
 brew cask install screenflow
 brew cask install macdown
-brew cask install unison
 
 fancy_echo "Installing Misc Apps"
 brew cask install discord
