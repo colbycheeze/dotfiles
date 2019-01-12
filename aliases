@@ -17,6 +17,7 @@ alias v="$VISUAL"
 alias path="echo $PATH | tr -s ':' '\n'"
 
 # Navigation
+alias cddot="cd ~/dotfiles"
 alias cdproj="cd ~/projects"
 alias remote="ssh willcolb.aka.corp.amazon.com"
 alias chime="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome -app=https://app.chime.aws/"

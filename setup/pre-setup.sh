@@ -48,3 +48,4 @@ fancy_echo "Add key to github to finish setup."
 echo "Press enter to open instructions."
 read throwaway_input
 open https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/
+open https://github.com/settings/keys

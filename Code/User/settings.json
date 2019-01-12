@@ -1,0 +1,141 @@
+{
+  "editor.lineNumbers": "on",
+  "editor.tabSize": 2,
+  "editor.fontSize": 14,
+  "editor.fontWeight": "400",
+  // "editor.fontFamily": "DejaVu Sans Mono",
+  "editor.fontFamily": "Menlo",
+  "editor.renderIndentGuides": false,
+  "workbench.iconTheme": "material-icon-theme",
+
+  "eslint.autoFixOnSave": true,
+
+  "settings.cycle": [
+    {
+      "id": "lineNumber", // must be unique
+      "overrideWorkspaceSettings": false,
+      "values": [
+        { "editor.lineNumbers": "on" },
+        { "editor.lineNumbers": "relative" }
+      ]
+    }
+  ],
+
+  "vim.enableNeovim": true,
+  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.easymotion": false,
+  "vim.sneak": false,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.leader": "<space>",
+
+  "vim.insertModeKeyBindings": [
+    {
+      "before": [ "j", "k" ],
+      "after": [ "<Esc>" ],
+      "commands": [{ "command": "settings.cycle.lineNumber" }]
+    },
+    {
+      "before": ["<Esc>"],
+      "after": ["<Esc>"],
+      "commands": [{ "command": "settings.cycle.lineNumber" }]
+    },
+    {
+      "before": ["<Caps-Lock>"],
+      "after": ["<Caps-Lock>"],
+      "commands": [{ "command": "settings.cycle.lineNumber" }]
+    },
+  ],
+
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [ "<tab>" ],
+      "commands": [ "editor.action.indentLines" ]
+    },
+  ],
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [ "<tab>" ],
+      "commands": [ "editor.action.indentLines" ]
+    },
+    {
+      "before": [ "<enter>" ],
+      "commands": [ "editor.action.insertLineAfter" ]
+    },
+    {
+      "before": [ "<C-n>" ],
+      "commands": [ "workbench.files.action.focusFilesExplorer" ]
+    },
+    {
+      "before": [ "<leader>", "," ],
+      "commands": [ ":nohl" ]
+    },
+    {
+      "before": [ "<C-w>" ],
+      "commands": [ "workbench.action.closeActiveEditor" ]
+    },
+    {
+      "before": [ "<leader>", "x" ],
+      "commands": [ ":x" ]
+    },
+    {
+      "before": [ "<leader>", "s" ],
+      "commands": [ "workbench.action.files.saveAll" ]
+    },
+    {
+      "before": [ "<C-h>" ],
+      "commands": [ "workbench.action.focusLeftGroup" ]
+    },
+    {
+      "before": [ "<C-l>" ],
+      "commands": [ "workbench.action.focusRightGroup" ]
+    },
+    {
+      "before": [ "<C-j>" ],
+      "commands": [ "workbench.action.focusBelowGroup" ]
+    },
+    {
+      "before": [ "<C-k>" ],
+      "commands": [ "workbench.action.focusAboveGroup" ]
+    },
+
+    // fixes for relative numbers
+    {
+      "before": [ "i" ],
+      "after": [ "i" ],
+      "commands": [{ "command": "settings.cycle.lineNumber" }]
+    },
+    {
+      "before": [ "I" ],
+      "after": [ "I" ],
+      "commands": [{ "command": "settings.cycle.lineNumber" }]
+    },
+    {
+      "before": [ "a" ],
+      "after": [ "a" ],
+      "commands": [{ "command": "settings.cycle.lineNumber" }]
+    },
+    {
+      "before": [ "A" ],
+      "after": [ "A" ],
+      "commands": [{ "command": "settings.cycle.lineNumber" }]
+    },
+    {
+      "before": [ "o" ],
+      "after": [ "o" ],
+      "commands": [{ "command": "settings.cycle.lineNumber" }]
+    },
+    {
+      "before": [ "O" ],
+      "after": [ "O" ],
+      "commands": [{ "command": "settings.cycle.lineNumber" }]
+    }
+  ],
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  }
+}

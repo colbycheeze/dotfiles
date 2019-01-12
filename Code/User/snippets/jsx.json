@@ -1,0 +1,47 @@
+{
+	// Place your snippets for jsx here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"React Class Starter": {
+		"prefix": "rcc",
+		"body": "import React, { PureComponent } from 'react';\nimport PT from 'prop-types';\n\nexport default class ${1:ComponentName} extends PureComponent {\n  static propTypes = {\n    name: PT.string,\n  }\n\n  static defaultProps = {\n    name: 'Colby',\n  }\n\n  render() {\n    const { name } = this.props;\n\n    return (\n      <div>\n        Hello {name}\n      </div>\n    );\n  }\n}$0"
+	},
+	"Redux Connect": {
+		"prefix": "redcon",
+		"body": "import { connect } from 'react-redux';\nimport { selectThing } from '../modules/things';\n\nconst mapStateToProps = (state, ownProps) => ({\n  name: selectThing(state, ownProps.id).name,\n  createdAt: selectThing(state, ownProps.id).createdAt,\n});\nconst actions = {\n  doSomethingWithThing,\n};\n\nexport default connect(mapStateToProps, actions)(${1:ComponentName});$0"
+	},
+	"Mocked Storybook Starter": {
+		"prefix": "stbm",
+		"body": "import React from 'react'\nimport { storiesOf, action } from '@kadira/storybook'\n\nimport { Provider } from 'react-redux'\nimport reduxThunk from 'redux-thunk'\nimport configureStore from 'redux-mock-store'\nimport axios from 'axios'\nimport MockAdapter from 'axios-mock-adapter'\n\nimport snippetFactory from './factoryStarter.js'\n\nconst mockStore = configureStore([reduxThunk])(snippetFactory)\nconst mockApi = new MockAdapter(axios)\nmockApi.onAny().reply(200, {})\n\nstoriesOf('${1:Feature Name}', module)\n  .addDecorator((story) => (\n    <Provider store={mockStore}>\n      {story()}\n    </Provider>\n  ))\n  .add('component with mocked store', () => (\n    <div onClick={action('You clicked a div of text!')}>I am a component of some sort</div>\n  ))$0"
+	},
+	"Styled Component theme fn": {
+		"prefix": "theme",
+		"body": "${({ theme }) => theme.${1:something}};$0"
+	},
+	"className": {
+		"prefix": ".",
+		"body": "className={classes.$1}$0"
+	},
+	"Validate Children": {
+		"prefix": "children",
+		"body": "children: PT.oneOfType([PT.element, PT.arrayOf(PT.element)])$0"
+	},
+	"Element Ref": {
+		"prefix": "ref",
+		"body": "ref={element => { this.${1:refName} = element; }}$0"
+	},
+	"Storybook Starter": {
+		"prefix": "stb",
+		"body": "import React from 'react'\nimport { storiesOf, action } from '@kadira/storybook'\n\nstoriesOf('${1:Feature Name}', module)\n  .addDecorator((story) => (\n    <div>\n      <h1>I decorate the story!</h1>\n      {story()}\n    </div>\n  ))\n  .add('Basic story', () => (\n    <div onClick={action('You clicked a div of text!')}>I am a component of some sort</div>\n  ))$0"
+	}
+}

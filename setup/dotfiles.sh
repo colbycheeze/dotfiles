@@ -8,6 +8,7 @@ bin
 aliases
 agignore
 gitconfig
+gitconfig.local
 gitmessage
 gvimrc
 tmux.conf

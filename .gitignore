@@ -13,5 +13,9 @@ atom/*
 !atom/snippets.cson
 !atom/styles.less
 
+Code/User/workspaceStorage/*
+Code/User/globalStorage/*
+
+gitconfig.local
 unison/*
 !unison/Stores.prf
