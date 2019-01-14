@@ -1,10 +1,13 @@
 {
-  "editor.lineNumbers": "on",
+  "editor.lineNumbers": "relative",
   "editor.tabSize": 2,
   "editor.fontSize": 15,
   "editor.fontWeight": "400",
   "editor.fontFamily": "DejaVu Sans Mono",
   "editor.renderIndentGuides": false,
+  "editor.snippetSuggestions": "top",
+  "editor.rulers": [100],
+  "editor.acceptSuggestionOnCommitCharacter": false,
 
   "workbench.colorTheme": "Solarized Light+",
   "workbench.iconTheme": "material-icon-theme",
@@ -57,7 +60,12 @@
     },
   ],
 
+
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [ "<C-i>" ],
+      "commands": [ "editor.action.showHover" ]
+    },
     {
       "before": [ "<tab>" ],
       "commands": [ "editor.action.indentLines" ]
@@ -71,12 +79,12 @@
       "commands": [ "workbench.files.action.focusFilesExplorer" ]
     },
     {
-      "before": [ "<leader>", "," ],
-      "commands": [ ":nohl" ]
-    },
-    {
       "before": [ "<C-w>" ],
       "commands": [ "workbench.action.closeActiveEditor" ]
+    },
+    {
+      "before": [ "<leader>", "," ],
+      "commands": [ ":nohl" ]
     },
     {
       "before": [ "<leader>", "x" ],

@@ -7,7 +7,7 @@
 	"Print to console": {
 		"prefix": "log",
 		"body": [
-			"console.log('$1');",
+			"console.log($1);",
 			"$2"
 		],
 		"description": "Log output to console"
@@ -15,7 +15,7 @@
 	"Error to console": {
 		"prefix": "error",
 		"body": [
-			"console.error('$1');",
+			"console.error($1);",
 			"$2"
 		],
 		"description": "Error output to console"
@@ -23,7 +23,7 @@
 	"Warn to console": {
 		"prefix": "warn",
 		"body": [
-			"console.warn('$1');",
+			"console.warn($1);",
 			"$2"
 		],
 		"description": "Warn output to console"
@@ -32,6 +32,10 @@
 		"prefix": "class",
 		"body": "class ${1:ClassName} extends ${2:ParentName} {\n  constructor($3) {\n    super($3);\n    $4\n  }\n}",
 		"description": "New Class"
+	},
+	"React Class Starter": {
+		"prefix": "rcc",
+		"body": "import React, { PureComponent } from 'react';\nimport PT from 'prop-types';\n\nexport default class ${1:ComponentName} extends PureComponent {\n  static propTypes = {\n    name: PT.string,\n  }\n\n  static defaultProps = {\n    name: 'Colby',\n  }\n\n  render() {\n    const { name } = this.props;\n\n    return (\n      <div>\n        Hello {name}\n      </div>\n    );\n  }\n}$0"
 	},
 	"Big Block Comment": {
 		"prefix": "bbcom",
