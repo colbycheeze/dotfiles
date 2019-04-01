@@ -1,14 +1,24 @@
 {
   "editor.lineNumbers": "on",
+  "editor.detectIndentation": false,
   "editor.tabSize": 2,
   "editor.fontSize": 14,
   "editor.fontWeight": "400",
-  // "editor.fontFamily": "DejaVu Sans Mono",
   "editor.fontFamily": "Menlo",
   "editor.renderIndentGuides": false,
+  "editor.snippetSuggestions": "inline",
+  "editor.rulers": [100],
+  "editor.acceptSuggestionOnCommitCharacter": false,
+
   "workbench.iconTheme": "material-icon-theme",
+  "update.channel": "none",
 
   "eslint.autoFixOnSave": true,
+  "tslint.alwaysShowRuleFailuresAsWarnings": false,
+  "tslint.suppressWhileTypeErrorsPresent": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": true
+  },
 
   "settings.cycle": [
     {
@@ -22,7 +32,7 @@
   ],
 
   "vim.enableNeovim": true,
-  "vim.neovimPath": "/usr/bin/nvim",
+  "vim.neovimPath": "/usr/local/bin/nvim",
   "vim.easymotion": false,
   "vim.sneak": false,
   "vim.incsearch": true,
@@ -54,9 +64,21 @@
       "before": [ "<tab>" ],
       "commands": [ "editor.action.indentLines" ]
     },
+    {
+      "before": [ "<leader>", "y" ],
+      "after": [ "\"", "a", "y" ],
+    },
+    {
+      "before": [ "<leader>", "p" ],
+      "after": [ "\"", "a", "p" ],
+    },
   ],
 
   "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": [ "<C-i>" ],
+      "commands": [ "editor.action.showHover" ]
+    },
     {
       "before": [ "<tab>" ],
       "commands": [ "editor.action.indentLines" ]
@@ -76,6 +98,10 @@
     {
       "before": [ "<C-w>" ],
       "commands": [ "workbench.action.closeActiveEditor" ]
+    },
+    {
+      "before": [ "<leader>", "d" ],
+      "commands": [ "editor.action.goToDeclaration" ]
     },
     {
       "before": [ "<leader>", "x" ],
@@ -137,5 +163,17 @@
   "vim.handleKeys": {
     "<C-a>": false,
     "<C-f>": false
-  }
+  },
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.colorTheme": "Solarized Light+",
+  "explorer.confirmDragAndDrop": false,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "explorer.confirmDelete": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 }

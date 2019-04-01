@@ -75,7 +75,7 @@
     "when": "terminalFindWidgetVisible && terminalFocus"
   },
   {
-    "key": "capslock",
+    "key": "escape",
     "command": "closeFindWidget",
     "when": "editorFocus && findWidgetVisible"
   },
@@ -118,5 +118,18 @@
   {
     "key": "cmd+p",
     "command": "-workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+f",
+    "command": "editor.action.startFindReplaceAction"
+  },
+  {
+    "key": "alt+cmd+f",
+    "command": "-editor.action.startFindReplaceAction"
+  },
+  {
+    "key": "/",
+    "command": "-list.toggleKeyboardNavigation",
+    "when": "listFocus && listSupportsKeyboardNavigation && !inputFocus"
   }
 ]

@@ -46,6 +46,8 @@
     disableEslintIgnore: true
     fixOnSave: true
     globalNodePath: "/usr/local"
+  "linter-tslint":
+    fixOnSave: true
   "linter-ui-default":
     panelHeight: 143
     tooltipFollows: "Keyboard"

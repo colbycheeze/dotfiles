@@ -7,7 +7,7 @@
 	"Print to console": {
 		"prefix": "log",
 		"body": [
-			"console.log('$1');",
+			"console.log($1);",
 			"$2"
 		],
 		"description": "Log output to console"
@@ -15,7 +15,7 @@
 	"Error to console": {
 		"prefix": "error",
 		"body": [
-			"console.error('$1');",
+			"console.error($1);",
 			"$2"
 		],
 		"description": "Error output to console"
@@ -23,13 +23,13 @@
 	"Warn to console": {
 		"prefix": "warn",
 		"body": [
-			"console.warn('$1');",
+			"console.warn($1);",
 			"$2"
 		],
 		"description": "Warn output to console"
 	},
 	"Class": {
-		"prefix": "class",
+		"prefix": "class,",
 		"body": "class ${1:ClassName} extends ${2:ParentName} {\n  constructor($3) {\n    super($3);\n    $4\n  }\n}",
 		"description": "New Class"
 	},
@@ -42,8 +42,9 @@
 		"body": "// ------------------------------------\n// $1\n// ------------------------------------$0"
 	},
 	"Debugger": {
-		"prefix": "debug",
-		"body": "debugger // eslint-disable-line$0"
+		"prefix": "debug,",
+		"body": "debugger // eslint-disable-line",
+		"description": "Add a debugger statement"
 	},
 	"Component Setup for Tests": {
 		"prefix": "setup",
