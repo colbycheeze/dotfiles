@@ -133,6 +133,9 @@ _load_settings() {
 }
 _load_settings "$HOME/.zsh/configs"
 
+# https://superuser.com/questions/433746/is-there-a-fix-for-the-too-many-open-files-in-system-error-on-os-x-10-7-1
+ulimit -S -n 2048 # Fix for OSX crashing b/c of VSCode
+
 stty -ixon
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -146,4 +149,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH=$BRAZIL_CLI_BIN:$PATH
 export PATH=$HOME/.toolbox/bin:$PATH
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+
 
