@@ -19,7 +19,9 @@ alias path="echo $PATH | tr -s ':' '\n'"
 # Navigation
 alias cddot="cd ~/dotfiles"
 alias cdproj="cd ~/projects"
-alias remote="ssh willcolb.aka.corp.amazon.com"
+# alias remote="ssh willcolb.aka.corp.amazon.com"
+# alias remote="ssh dev-dsk-willcolb-2c-5995eb52.us-west-2.amazon.com"
+alias remote="ssh willcolb-1-click.aka.corp.amazon.com"
 alias chime="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome -app=https://app.chime.aws/"
 
 # Brazil
