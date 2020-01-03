@@ -1,0 +1,201 @@
+{
+	// Place your snippets for javascript here. Each snippet is defined under a snippet name and has a prefix, body and
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the
+	// same ids are connected.
+	// Example:
+	"Print to console": {
+		"prefix": "log",
+		"body": [
+			"console.log($1);",
+			"$2"
+		],
+		"description": "Log output to console"
+	},
+	"Error to console": {
+		"prefix": "error",
+		"body": [
+			"console.error($1);",
+			"$2"
+		],
+		"description": "Error output to console"
+	},
+	"Warn to console": {
+		"prefix": "warn",
+		"body": [
+			"console.warn($1);",
+			"$2"
+		],
+		"description": "Warn output to console"
+	},
+	"Class": {
+		"prefix": "class,",
+		"body": "class ${1:ClassName} extends ${2:ParentName} {\n  constructor($3) {\n    super($3);\n    $4\n  }\n}",
+		"description": "New Class"
+	},
+	"Big Block Comment": {
+		"prefix": "bbcom",
+		"body": "// ====================================\n// $1\n// ====================================$0"
+	},
+	"Block Comment": {
+		"prefix": "bcom",
+		"body": "// ------------------------------------\n// $1\n// ------------------------------------$0"
+	},
+	"Debugger": {
+		"prefix": "debug,",
+		"body": "debugger // eslint-disable-line",
+		"description": "Add a debugger statement"
+	},
+	"Component Setup for Tests": {
+		"prefix": "setup",
+		"body": "const setup = () => {\n  const spies = {\n    someFunction: jest.fn(),\n  };\n\n  const props = {\n    id: '1',\n    isLoading: true,\n    ...spies,\n  };\n\n  return { spies, props };\n}$0"
+	},
+	"describe block": {
+		"prefix": "desc",
+		"body": "describe('${1:Unit being tested}', () => {\n  $2\n});$0"
+	},
+	"test block": {
+		"prefix": "test",
+		"body": "test('${1:will do something}', () => {\n  $2\n});$0"
+	},
+	"it style test block": {
+		"prefix": "it",
+		"body": "it('${1:will do something}', () => {\n  $2\n});$0"
+	},
+	"expect": {
+		"prefix": "xp",
+		"body": "expect($1).$2();$0"
+	},
+	"toBe": {
+		"prefix": "xp=",
+		"body": "expect($1).toBe($2);$0"
+	},
+	"toBeTruthy": {
+		"prefix": "xpt",
+		"body": "expect($1).toBeTruthy($2);$0"
+	},
+	"toBeFalsy": {
+		"prefix": "xpf",
+		"body": "expect($1).toBeFalsy($2);$0"
+	},
+	"toBeDefined": {
+		"prefix": "xpd",
+		"body": "expect($1).toBeDefined();$0"
+	},
+	"toBeNull": {
+		"prefix": "xpn",
+		"body": "expect($1).toBeNull();$0"
+	},
+	"toBeGreaterThan": {
+		"prefix": "xp>",
+		"body": "expect(${1:aNumber}).toBeGreaterThan(${2:anotherNumber});$0"
+	},
+	"toBeGreaterThanOrEqual": {
+		"prefix": "xp>=",
+		"body": "expect(${1:aNumber}).toBeGreaterThanOrEqual(${2:anotherNumber});$0"
+	},
+	"toBeLessThan": {
+		"prefix": "xp<",
+		"body": "expect(${1:aNumber}).toBeLessThan(${2:anotherNumber});$0"
+	},
+	"toBeLessThanOrEqual": {
+		"prefix": "xp<=",
+		"body": "expect(${1:aNumber}).toBeLessThanOrEqual(${2:anotherNumber});$0"
+	},
+	"toEqual (Deep Equal)": {
+		"prefix": "xpde",
+		"body": "expect(${1:deepNestedObject}).toEqual(${2:matchingObject});$0"
+	},
+	"toMatch (Regexp)": {
+		"prefix": "xpreg",
+		"body": "expect(${1:'string'}).toMatch(${2:/matcher/});$0"
+	},
+	"toHaveLength": {
+		"prefix": "xplen",
+		"body": "expect(${1:[1, 2, 3]}).toHaveLength(${2:3});$0"
+	},
+	"toContain (item in array)": {
+		"prefix": "xpin",
+		"body": "expect(${1:['orange', 'apple', 'pineapple']}).toContain(${2:'apple'});$0"
+	},
+	"toContainEqual (deep equal in array)": {
+		"prefix": "xpinde",
+		"body": "expect(${1:[object1, object2]}).toContainEqual(${2:{age: 21}});$0"
+	},
+	"toMatchObject (match a subset of key/val in object)": {
+		"prefix": "xpmo",
+		"body": "expect(${1:objectWithManyKeys}).toMatchObject(${2:objectWithSomeKeys});$0"
+	},
+	"toThrow": {
+		"prefix": "xpthrow",
+		"body": "expect(() => ${1:someFunction}($2)).toThrow();$0"
+	},
+	"toBeCalled": {
+		"prefix": "xptbc",
+		"body": "expect(${1:someFunction}).toBeCalled();$0"
+	},
+	"toBeCalledWith": {
+		"prefix": "xptbcw",
+		"body": "expect(${1:someFunction}).toBeCalledWith(${2:'value'});$0"
+	},
+	"toHaveBeenCalledTimes": {
+		"prefix": "xptbct",
+		"body": "expect(${1:someFunction}).toHaveBeenCalledTimes(${2:numberOfTimes});$0"
+	},
+	"toHaveBeenLastCalledWith": {
+		"prefix": "xptbcwl",
+		"body": "expect(${1:someFunction}).toHaveBeenLastCalledWith(${2:'value'});$0"
+	},
+	"toMatchSnapshot": {
+		"prefix": "xpsnap",
+		"body": "expect(${1:wrapper}).toMatchSnapshot();$0"
+	},
+	"(Enzyme) Shallow": {
+		"prefix": "shallow",
+		"body": "const { props, spies } = setup();\nconst wrapper = shallow(<${1:ComponentName} {...props} />);\n\nexpect(wrapper).toMatchSnapshot();$0"
+	},
+	"(Enzyme) Mount": {
+		"prefix": "mount",
+		"body": "const { props, spies } = setup();\nconst wrapper = mount(<${1:ComponentName} {...props} />);\n\nexpect(wrapper).toMatchSnapshot();$0"
+	},
+	"(Enzyme) Render": {
+		"prefix": "render",
+		"body": "const { props, spies } = setup();\nconst wrapper = render(<${1:ComponentName} {...props} />);\n\nexpect(wrapper).toMatchSnapshot();$0"
+	},
+	"index": {
+		"prefix": "index",
+		"body": "export { default } from './$1';$0"
+	},
+	"import from": {
+		"prefix": "imp",
+		"body": "import ${1:ComponentName} from '${2:./pathto/ComponentName}';$0"
+	},
+	"Function": {
+		"prefix": "f",
+		"body": "${1:doSomething} = (${2:param1, param2}) => {\n  ${3:// do some things}\n}$0"
+	},
+	"Redux Factory Starter": {
+		"prefix": "redfact",
+		"body": "import { MODULE_NAME } from './reduxModuleStarter';\n\nexport const snippetData = {\n  1: {\n    id: '1',\n    isAmazing: true,\n    name: 'Amazing Data',\n    awards: ['1', '2', '3', '4'],\n  },\n  2: {\n    id: '2',\n    isAmazing: false,\n    name: 'Failure Data',\n    awards: [],\n  },\n}\n\nexport default {\n  [MODULE_NAME]: {\n    snippetData,\n    isLoading: false,\n  },\n}$0"
+	},
+	"Redux Action Group": {
+		"prefix": "action",
+		"body": "export const ${1:ACTION_NAME} = `${STORE_KEY}/${1:ACTION_NAME}`;\nexport const ${2:actionNameFunction} = payload => ({\n  type: ${1:ACTION_NAME},\n  payload,\n});\nactions[${1:ACTION_NAME}] = (state, { payload }) => ({\n  ...state,\n  ...payload,\n});$0"
+	},
+	"Redux Thunk": {
+		"prefix": "thunk",
+		"body": "export const ${3:thunkName} = () => async dispatch => {\n  dispatch(${2:actionNameFunction}())\n  };$0"
+	},
+	"Redux Async Action Group": {
+		"prefix": "aaction",
+		"body": "export const ${1:ACTION_NAME}_REQUEST = `${STORE_KEY}/${1:ACTION_NAME}_REQUEST`;\nexport const ${2:actionName}Request = payload => ({\n  type: ${1:ACTION_NAME}_REQUEST,\n  payload,\n});\nactions[${1:ACTION_NAME}_REQUEST] = state => ({\n  ...state,\n  isLoading: true,\n});\n\nexport const ${1:ACTION_NAME}_SUCCESS = `${STORE_KEY}/${1:ACTION_NAME}_SUCCESS`;\nexport const ${2:actionName}Success = payload => ({\n  type: ${1:ACTION_NAME}_SUCCESS,\n  payload,\n});\nactions[${1:ACTION_NAME}_SUCCESS] = (state, { payload: { data } }) => ({\n  ...state,\n  data,\n  isLoading: false,\n});\n\nexport const ${1:ACTION_NAME}_ERROR = `${STORE_KEY}/${1:ACTION_NAME}_ERROR`;\nexport const ${2:actionName}Error = error => ({\n  type: ${1:ACTION_NAME}_ERROR,\n  payload: { error },\n});\nactions[${1:ACTION_NAME}_ERROR] = (state, { payload: { error } }) => ({\n  ...state,\n  error,\n});\n\nexport const ${2:thunkName} = (data) => async dispatch => {\n  try {\n    dispatch(${2:actionName}Request({ data }));\n    // const response = await api.doSomething({ data });\n\n    dispatch(${2:actionName}Success(response));\n  } catch (error) {\n    dispatch(${2:actionName}Error(error));\n  }\n}\n$0"
+	},
+	"Schema Starter": {
+		"prefix": "schs",
+		"body": "import { schema } from 'normalizr'\n\nconst entity = new schema.Entity('entities', {\n  awards: [award],\n}, {\n  processStrategy: (value) => ({\n      id: value.id,\n      name: value.attributes.name,\n      isAmazing: value.attributes.is_amazing,\n      awards: value.awards,\n    }),\n})\n\nconst child = new schema.Entity('children')\n\nexport default {\n  data: [entity],\n}$0"
+	},
+	"Redux Module": {
+		"prefix": "redmod",
+		"body": "// ------------------------------------\n// Selectors\n// ------------------------------------\nexport const STORE_KEY = '${1:moduleName}'; // Dont forget to hookup in rootReducers!\nexport const select${2:ModuleName}State = state => state[STORE_KEY];\n\n// ------------------------------------\n// Reducer\n// ------------------------------------\nconst actions = {};\nconst initialState = {\n  ${1:moduleName}Data: {},\n  hasLoaded: false,\n  errors: null,\n};\nconst ${1:moduleName}Reducer = (state = initialState, action) => {\n  const handler = actions[action.type];\n\n  return handler ? handler(state, action) : state;\n};\nexport default ${1:moduleName}Reducer;\n\n// ------------------------------------\n// Rest of your logic goes here\n// Use action or aaction snippets\n// ------------------------------------\n\n$0"
+	},
+}

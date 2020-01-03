@@ -5,7 +5,6 @@
   "editor.fontSize": 14,
   "editor.fontWeight": "400",
   "editor.fontFamily": "Menlo",
-  "editor.renderIndentGuides": false,
   "editor.snippetSuggestions": "inline",
   "editor.rulers": [100],
   "editor.acceptSuggestionOnCommitCharacter": false,
@@ -15,7 +14,6 @@
 
   "eslint.autoFixOnSave": true,
   "tslint.alwaysShowRuleFailuresAsWarnings": false,
-  "tslint.suppressWhileTypeErrorsPresent": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.tslint": true
   },
@@ -176,4 +174,9 @@
   "explorer.confirmDelete": false,
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "eslint.alwaysShowStatus": true,
+  "tslint.jsEnable": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "editor.renderIndentGuides": false,
 }

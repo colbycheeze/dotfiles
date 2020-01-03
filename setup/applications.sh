@@ -35,7 +35,7 @@ brew install watchman # needed for jest --watch
 fancy_echo "Installing python and setting up Neovim"
 brew install python
 brew install python3
-brew install neovim/neovim/neovim
+brew install neovim
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 pip3 install neovim

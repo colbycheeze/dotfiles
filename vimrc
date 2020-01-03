@@ -4,6 +4,9 @@
 " possible, as it has side effects.
 set nocompatible
 
+syntax enable
+set background=light
+
 " Leader - ( Spacebar )
 let mapleader = " "
 

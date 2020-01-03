@@ -141,7 +141,6 @@ stty -ixon
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 export PATH="$HOME/.bin:$PATH"
-eval "$(rbenv init - --no-rehash)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
@@ -151,3 +150,5 @@ export PATH=$HOME/.toolbox/bin:$PATH
 export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 
 
+export PATH="/usr/local/opt/ruby/bin:$PATH"
+export PATH="/Users/willcolb/projects/amazon/aws-emp/src/AWSEMPDevTools/bin:$PATH"
